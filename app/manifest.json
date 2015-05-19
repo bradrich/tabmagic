@@ -1,54 +1,54 @@
 {
-	"name": "TabMagic",
-	"version": "0.0.1",
-	"manifest_version": 2,
-	"description": "Automagically have full control over your Chrome tabs.",
-	"icons": {
-		"16": "images/icon-16.png",
-		"128": "images/icon-128.png"
-	},
-	"default_locale": "en",
-	"background": {
-		"scripts": [
-			"bower_components/angular/angular.js",
-			"bower_components/jquery/dist/jquery.js",
-			"scripts/chromereload.js",
-			"scripts/background.js"
-		]
-	},
-	"browser_action": {
-		"default_icon": {
-			"19": "images/icon-19.png",
-			"38": "images/icon-38.png"
-		},
-		"default_title": "TabMagic",
-		"default_popup": "popup.html"
-	},
-	"options_page": "options.html",
-	"omnibox": {
-		"keyword": "TabMagic"
-	},
-	"content_scripts": [
-		{
-			"matches": [
-				"http://*/*",
-				"https://*/*"
-			],
-			"js": [
-				"bower_components/angular/angular.js",
-				"bower_components/jquery/dist/jquery.js",
-				"scripts/contentscript.js"
-			],
-			"run_at": "document_end",
-			"all_frames": false
-		}
-	],
-	"permissions": [
-		"tabs",
-		"history",
-		"management",
-		"http://*/*",
-		"https://*/*"
-	],
-	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "name": "TabMagic",
+  "version": "0.0.2",
+  "manifest_version": 2,
+  "description": "Automagically have full control over your Chrome tabs.",
+  "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+      "bower_components/angular/angular.js",
+      "bower_components/jquery/dist/jquery.js",
+      "scripts/chromereload.js",
+      "scripts/background.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icon-19.png",
+      "38": "images/icon-38.png"
+    },
+    "default_title": "TabMagic",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "omnibox": {
+    "keyword": "TabMagic"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "bower_components/angular/angular.js",
+        "bower_components/jquery/dist/jquery.js",
+        "scripts/contentscript.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "history",
+    "management",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

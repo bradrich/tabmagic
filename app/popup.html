@@ -12,16 +12,31 @@
 </head>
 <body id="ng-app" ng-app="TabMagicApp">
 
-	<div ng-controller="PopUpCtrl">
-		<div class="row">
+	<div class="popup" ng-controller="PopUpCtrl">
+    <div class="row popup-header">
+      <div class="medium-12 columns">
+        <h6>TabMagic</h6>
+      </div>
+    </div>
+		<div class="row popup-content" ng-repeat="window in windows">
+      <div class="medium-12 columns item title">
+        <span ng-show="window.focused"><strong>Current Window</strong></span>
+        <span ng-show="!window.focused"><strong>Window #{{$index + 1}}</strong></span>
+      </div>
 			<div class="medium-12 columns">
-				<ul>
-					<li ng-repeat="tab in tabs"><img ng-src="{{tab.favIconUrl}}" />&nbsp;&nbsp;<a target="_blank" ng-href="{{tab.url}}">{{tab.title}}</a></li>
-				</ul>
-				<ul>
-					<li ng-repeat="mark in marks"><a target="_blank" ng-href="{{mark.url}}">{{mark.title}}</li>
-				</ul>
+        <div class="row item bordered" ng-class="{ selected: tab.tmSelected }" ng-repeat="tab in window.tabs" ng-click="tab.tmSelected = !tab.tmSelected">
+          <div class="small-1 columns image-cntr"><img ng-src="{{tab.favIconUrl}}" /></div>
+          <div class="columns" ng-class="{ 'small-9': tab.tmSelected, 'small-11': !tab.tmSelected }">{{tab.title}}</div>
+          <div class="small-2 columns text-right" ng-show="tab.tmSelected"><i class="fa fa-check success-color"></i></div>
+        </div>
 			</div>
+      <div class="medium-12 columns">
+        <div class="row item">
+          <div class="small-4 columns end">
+            <button class="expand radius tiny no-margin-bottom" ng-click="createTab(window.id)">Send All Tabs</button>
+          </div>
+        </div>
+      </div>
 		</div>
 	</div>
 
@@ -34,12 +49,14 @@
 	<script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
 	<script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
 	<script src="bower_components/foundation/js/foundation.js"></script>
+	<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
 
 	<!-- build:js scripts/scripts.js -->
 	<script src="scripts/app.js"></script>
 	<script src="scripts/popup.js"></script>
+  <script src="scripts/utils.js"></script>
 	<!-- endbuild -->
 
 </body>

@@ -1,7 +1,9 @@
 'use strict';
 /* exported tabMagicApp */
 
-var tabMagicApp = angular.module('TabMagicApp', [])
+var tabMagicApp = angular.module('TabMagicApp', [
+  'LocalStorageModule'
+])
 
 .run(['$document', function($document){
 
