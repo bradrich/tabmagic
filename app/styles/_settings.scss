@@ -1,0 +1,147 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+// Table of Contents
+// Foundation Settings
+//
+// a. Base
+// b. Grid
+// c. Global
+// d. Media Query Ranges
+// e. Typography
+// 01. Accordion
+// 02. Alert Boxes
+// 03. Block Grid
+// 04. Breadcrumbs
+// 05. Buttons
+// 06. Button Groups
+// 07. Clearing
+// 08. Dropdown
+// 09. Dropdown Buttons
+// 10. Flex Video
+// 11. Forms
+// 12. Icon Bar
+// 13. Inline Lists
+// 14. Joyride
+// 15. Keystrokes
+// 16. Labels
+// 17. Magellan
+// 18. Off-canvas
+// 19. Orbit
+// 20. Pagination
+// 21. Panels
+// 22. Pricing Tables
+// 23. Progress Bar
+// 24. Range Slider
+// 25. Reveal
+// 26. Side Nav
+// 27. Split Buttons
+// 28. Sub Nav
+// 29. Switch
+// 30. Tables
+// 31. Tabs
+// 32. Thumbnails
+// 33. Tooltips
+// 34. Top Bar
+// 36. Visibility Classes
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+// a. Base
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@import "foundation/scss/foundation/functions";
+
+// These are defined here in pixel values in order to keep compass from showing warnings in the grunt build
+$base-font-size: 14px; // Browser default
+$base-line-height: 21px; // Browser default
+
+// Foundation rem-base
+$rem-base: $base-font-size;
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+// b. Grid
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$row-width: rem-calc(768);
+$row-width-small: rem-calc(350);
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+// c. Global
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Font-awesome font path
+$fa-font-path: "https://netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts" !default; // for referencing Bootstrap CDN font files directly
+
+// Default font stack
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// Default font weights
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
+
+// Helpers colors
+$white: #ffffff;
+$black: #000000;
+
+// Primary colors - Green and variations
+$primary-color: #006633;
+$primary-color-light: #588b48;
+$primary-color-light-2x: #639b5a;
+$primary-color-light-3x: #a9e09d;
+// Secondary colors - Gray and variations
+$secondary-color-dark-3x: #060606;
+$secondary-color-dark-2x: #333333;
+$secondary-color-dark: #5e6063;
+$secondary-color: #808184;
+$secondary-color-light: #b7b7b7;
+$secondary-color-light-2x: #cccccc;
+$secondary-color-light-3x: #efefef;
+$secondary-color-light-4x: #fdfdfd;
+// Success colors - Blue and variations
+$success-color: #1870bb;
+$success-color-dark: #2556ae;
+$success-color-light: #5897f3;
+$success-color-light-2x: #749ad6;
+// Alert colors - Red
+$alert-color: #ff3333;
+$alert-color-dark: darken($alert-color, 10%);
+// Warning colors - Yellow and variations
+$warning-color: #eebb22;
+$warning-color-dark: #b08709;
+$warning-color-dark-2x: #aa7711;
+$warning-color-light: #fec325;
+// Disabled color
+$disabled-color: $secondary-color-light-2x;
+
+// Global style colors
+$body-bg: $secondary-color-light-2x;
+$body-font-color: $secondary-color-dark;
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+// c. Typography
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Header font sizes
+$h5-font-size: rem-calc(20);
+
+// Paragraphs
+$paragraph-font-size: rem-calc($base-font-size);
+
+// <hr>
+$hr-border-color: $secondary-color;
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+// 23. Progress Bar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Border
+$progress-bar-border-size: 0;
+
+// Margin & padding
+$progress-bar-pad: 0;
