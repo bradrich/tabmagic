@@ -70,26 +70,26 @@ a:not(.button) {
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 .popup {
-  width: rem-calc(350);
-  .popup-header {
-    padding-top: rem-calc(10);
-    padding-bottom: rem-calc(10);
-    background: $success-color;
-    h1, h2, h3, h4, h5, h6 {
-      margin: 0;
-      color: $white;
-    }
-  }
-  .popup-content {
-    .item {
-      padding-top: rem-calc(7);
-      padding-bottom: rem-calc(7);
-      &.bordered { border-bottom: dashed rem-calc(1) $secondary-color; }
-      &.title { background: $secondary-color-light-2x; }
-      &.selected { background: $success-color-light-3x; }
-      .image-cntr { padding-right: 0; }
-    }
-  }
+	width: rem-calc(350);
+	.popup-header {
+		padding-top: rem-calc(10);
+		padding-bottom: rem-calc(10);
+		background: $success-color;
+		h1, h2, h3, h4, h5, h6 {
+			margin: 0;
+			color: $white;
+		}
+	}
+	.popup-content {
+		.item {
+			padding-top: rem-calc(7);
+			padding-bottom: rem-calc(7);
+			&.bordered { border-bottom: dashed rem-calc(1) $secondary-color; }
+			&.title { background: $secondary-color-light-2x; }
+			&.selected { background: $success-color-light-3x; }
+			.image-cntr { padding-right: 0; }
+		}
+	}
 }
 
 
