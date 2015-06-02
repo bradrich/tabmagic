@@ -12850,37 +12850,44 @@ th.hide-for-touch {
   width: 100% !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000327}}
+.collapsable {
+  float: left;
+  overflow: hidden;
+  width: 100%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000338}}
 .primary-color {
   color: #006633;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000339}}
 .success-color {
   color: #1870bb;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000335}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000340}}
 .alert-color {
   color: #ff3333;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000336}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000341}}
 .warning-color {
   color: #eebb22;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000342}}
 .disabled-color {
   color: #cccccc;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000350}}
 h6 {
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000348}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000353}}
 a:not(.button) {
   outline: none;
   -moz-transition: background 300ms ease-out;
@@ -12889,12 +12896,12 @@ a:not(.button) {
   transition: background 300ms ease-out;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000358}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000363}}
 .button, button {
   outline: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000365}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000370}}
 .fa {
   -moz-transition: color 300ms ease-out;
   -o-transition: color 300ms ease-out;
@@ -12902,39 +12909,41 @@ a:not(.button) {
   transition: color 300ms ease-out;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000377}}
 .popup {
   width: 26.92308rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000374}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000379}}
 .popup .popup-header {
   padding-top: 0.76923rem;
   padding-bottom: 0.76923rem;
   background: #1870bb;
+  border-bottom: solid #2556ae 2px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000378}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000384}}
 .popup .popup-header h1, .popup .popup-header h2, .popup .popup-header h3, .popup .popup-header h4, .popup .popup-header h5, .popup .popup-header h6 {
   margin: 0;
   color: #ffffff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000384}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000390}}
 .popup .popup-content .item {
   padding-top: 0.53846rem;
   padding-bottom: 0.53846rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000393}}
 .popup .popup-content .item.bordered {
   border-bottom: dashed 0.07692rem #808184;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000394}}
 .popup .popup-content .item.title {
   background: #cccccc;
+  border-bottom: solid #b7b7b7 2px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000389}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000398}}
 .popup .popup-content .item.selected {
   background: #f2f6fb;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000390}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000399}}
 .popup .popup-content .item .image-cntr {
   padding-right: 0;
 }

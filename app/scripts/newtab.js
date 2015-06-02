@@ -1,14 +1,30 @@
 'use strict';
 
-tabMagicApp.controller('NewTabCtrl', ['$scope', '$q', '$utils', function($scope, $q, $utils){
+tabMagicApp.controller('NewTabCtrl', [
+	'$scope',
+	'$q',
+	'$utils',
+	'$moment',
+function($scope, $q, $utils, $moment){
 
-	// Get new tab from local storage
+	// Function to remove a tab
+	var removeTabs = function(tabIds){
+		chrome.tabs.remove(tabIds);
+	};
+
+	// Get needed info from data storage
 	$scope.newTab = $utils.dataStorage.get('tmNewTab');
-
-	// Get previously selected tabs from local storage
 	$scope.selectedTabs = $utils.dataStorage.get('tmSelectedTabs');
+	$scope.selectedTabsIds = $utils.dataStorage.get('tmSelectedTabsIds');
+	var savedDT = $utils.dataStorage.get('tmDateTime');
+	$scope.dateTime = $moment(savedDT).format('llll');
+
+	// Remove all selected tabs
+	removeTabs($scope.selectedTabsIds);
 
 	console.log($scope.newTab);
 	console.log($scope.selectedTabs);
+	console.log($scope.selectedTabsIds);
+	console.log($scope.dateTime);
 
 }]);

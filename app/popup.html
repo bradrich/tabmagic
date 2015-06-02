@@ -18,22 +18,59 @@
 				<h6>TabMagic</h6>
 			</div>
 		</div>
-		<div class="row popup-content" ng-repeat="window in windows">
+		<div class="row popup-content">
 			<div class="medium-12 columns item title">
-				<span ng-show="window.focused"><strong>Current Window</strong></span>
-				<span ng-show="!window.focused"><strong>Window #{{$index + 1}}</strong></span>
-			</div>
-			<div class="medium-12 columns">
-				<div class="row item bordered" ng-class="{ selected: tab.tmSelected }" ng-repeat="tab in window.tabs" ng-click="tab.tmSelected = !tab.tmSelected">
-					<div class="small-1 columns image-cntr"><img ng-src="{{tab.favIconUrl}}" /></div>
-					<div class="columns" ng-class="{ 'small-9': tab.tmSelected, 'small-11': !tab.tmSelected }">{{tab.title}}</div>
-					<div class="small-2 columns text-right" ng-show="tab.tmSelected"><i class="fa fa-check success-color"></i></div>
+				<div class="row" ng-click="sessionsCollapsed = !sessionsCollapsed">
+					<div class="small-10 columns">Recently Closed Tabs</div>
+					<div class="small-2 columns text-right" ng-show="sessionsCollapsed"><i class="fa fa-chevron-right"></i></div>
+					<div class="small-2 columns text-right" ng-show="!sessionsCollapsed"><i class="fa fa-chevron-down"></i></div>
 				</div>
 			</div>
-			<div class="medium-12 columns">
-				<div class="row item">
-					<div class="small-4 columns end">
-						<button class="expand radius tiny no-margin-bottom" ng-click="createTab(window.id)">Send All Tabs</button>
+			<div collapse="sessionsCollapsed" class="collapsable">
+				<div class="medium-12 columns">
+					<div ng-repeat="session in recentlyClosedSessions" class="row item bordered" ng-class="{ selected: session.tab.tmSelected }" ng-click="session.tab.tmSelected = !session.tab.tmSelected">
+						<div class="small-1 columns image-cntr" ng-if="'' !== session.tab.favIconUrl"><img ng-src="{{session.tab.favIconUrl}}" /></div>
+						<div class="columns" ng-class="{ 'small-9': '' !== session.tab.favIconUrl, 'small-10': '' === session.tab.favIconUrl }">{{session.tab.title | limitTo: 40}}<span ng-if="session.tab.title.length > 40">...</span></div>
+						<div class="small-2 columns text-right"><i class="fa fa-check" ng-class="{ 'disabled-color': !session.tab.tmSelected, 'success-color': session.tab.tmSelected }"></i></div>
+					</div>
+				</div>
+				<div class="medium-12 columns">
+					<div class="row collapse item">
+						<div class="small-4 columns">
+							<button class="radius tiny no-margin-bottom">Restore All Tabs</button>
+						</div>
+						<div class="small-4 columns end">
+							<button class="radius tiny no-margin-bottom">Restore Selected</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row popup-content" ng-repeat="window in windows">
+			<div class="medium-12 columns item title">
+				<div class="row" ng-click="window.tmCollapsed = !window.tmCollapsed">
+					<div class="small-10 columns" ng-show="window.focused">Current Window - Open Tabs</div>
+					<div class="small-10 columns" ng-show="!window.focused">Window #{{$index + 1}} - Open Tabs</div>
+					<div class="small-2 columns text-right" ng-show="window.tmCollapsed"><i class="fa fa-chevron-right"></i></div>
+					<div class="small-2 columns text-right" ng-show="!window.tmCollapsed"><i class="fa fa-chevron-down"></i></div>
+				</div>
+			</div>
+			<div collapse="window.tmCollapsed" class="collapsable">
+				<div class="medium-12 columns">
+					<div ng-repeat="tab in window.tabs" class="row item bordered" ng-class="{ selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
+						<div class="small-1 columns image-cntr" ng-if="'' !== tab.favIconUrl && tab.favIconUrl"><img ng-src="{{tab.favIconUrl}}" /></div>
+						<div class="columns" ng-class="{ 'small-9': '' !== tab.favIconUrl && tab.favIconUrl, 'small-10': '' === tab.favIconUrl || !tab.favIconUrl }">{{tab.title}}</div>
+						<div class="small-2 columns text-right"><i class="fa fa-check" ng-class="{ 'disabled-color': !tab.tmSelected, 'success-color': tab.tmSelected }"></i></div>
+					</div>
+				</div>
+				<div class="medium-12 columns">
+					<div class="row collapse item">
+						<div class="small-4 columns">
+							<button class="radius tiny no-margin-bottom" ng-click="createTab(window.id, true)">Send All Tabs</button>
+						</div>
+						<div class="small-4 columns end">
+							<button class="radius tiny no-margin-bottom" ng-click="createTab(window.id)">Send Selected</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -50,6 +87,11 @@
 	<script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
 	<script src="bower_components/foundation/js/foundation.js"></script>
 	<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+	<script src="bower_components/moment/moment.js"></script>
+	<script src="bower_components/angular-momentjs/angular-momentjs.js"></script>
+	<script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
 

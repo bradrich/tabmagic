@@ -24,6 +24,11 @@
 .odd { background: $secondary-color-light-4x; }
 .clickable { cursor: pointer; }
 .full-width { width: 100% !important; }
+.collapsable {
+	float: left;
+	overflow: hidden;
+	width: 100%;
+}
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -75,6 +80,7 @@ a:not(.button) {
 		padding-top: rem-calc(10);
 		padding-bottom: rem-calc(10);
 		background: $success-color;
+		border-bottom: solid $success-color-dark 2px;
 		h1, h2, h3, h4, h5, h6 {
 			margin: 0;
 			color: $white;
@@ -85,15 +91,12 @@ a:not(.button) {
 			padding-top: rem-calc(7);
 			padding-bottom: rem-calc(7);
 			&.bordered { border-bottom: dashed rem-calc(1) $secondary-color; }
-			&.title { background: $secondary-color-light-2x; }
+			&.title {
+				background: $secondary-color-light-2x;
+				border-bottom: solid $secondary-color-light 2px;
+			}
 			&.selected { background: $success-color-light-3x; }
 			.image-cntr { padding-right: 0; }
 		}
 	}
 }
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - -
-// Footer
-// - - - - - - - - - - - - - - - - - - - - - - - - -
-

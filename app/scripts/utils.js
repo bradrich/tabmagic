@@ -109,16 +109,6 @@ tabMagicApp.factory('$utils', [
 
 			},
 
-			// Environment
-			environment: {
-
-				// Prod check
-				prodCheck: function(){
-					return ($environment.apiEndpoint.indexOf('prd.advanceamerica.net') > -1) ? true : false;
-				}
-
-			},
-
 			// Time zones
 			timeZones: {
 

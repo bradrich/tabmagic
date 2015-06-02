@@ -2,7 +2,10 @@
 /* exported tabMagicApp */
 
 var tabMagicApp = angular.module('TabMagicApp', [
-  'LocalStorageModule'
+	'ngAnimate',
+	'LocalStorageModule',
+	'angular-momentjs',
+	'ui.bootstrap'
 ])
 
 .run(['$document', function($document){

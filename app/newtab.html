@@ -12,7 +12,21 @@
 </head>
 <body id="ng-app" ng-app="TabMagicApp">
 
-	<p ng-controller="NewTabCtrl">Got here!</p>
+	<div class="row" ng-controller="NewTabCtrl">
+		<div class="medium-12 columns">
+			<p><strong ng-bind="selectedTabs.length"></strong> tabs</p>
+			<p>Created on <span ng-bind="dateTime"></span></p>
+			<!-- <button class="radius tiny" ng-click="restoreAllTabs">Restore All</button> -->
+			<div class="row" ng-repeat="tab in selectedTabs">
+				<div class="medium-1 columns tiny-margin-bottom text-center">
+					<img ng-src="{{tab.favIconUrl}}" width="16" />
+				</div>
+				<div class="medium-11 columns tiny-margin-bottom">
+					<a ng-href="{{tab.url}}" ng-bind="tab.title" target="_blank"></a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- build:js scripts/vendor.js -->
 	<!-- bower:js -->
@@ -24,6 +38,11 @@
 	<script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
 	<script src="bower_components/foundation/js/foundation.js"></script>
 	<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+	<script src="bower_components/moment/moment.js"></script>
+	<script src="bower_components/angular-momentjs/angular-momentjs.js"></script>
+	<script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
 

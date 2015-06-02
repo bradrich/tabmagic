@@ -47,6 +47,7 @@
     "tabs",
     "history",
     "management",
+    "sessions",
     "http://*/*",
     "https://*/*"
   ],
