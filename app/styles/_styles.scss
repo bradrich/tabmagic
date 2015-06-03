@@ -16,6 +16,7 @@
 	margin-right: 0 !important;
 	margin-left: 0 !important;
 }
+.no-padding-right { padding-right: 0; }
 .even, .odd {
 	padding: $column-gutter / 2 $column-gutter / 2 0 $column-gutter / 2;
 	background: $secondary-color-light-2x;
@@ -80,23 +81,45 @@ a:not(.button) {
 		padding-top: rem-calc(10);
 		padding-bottom: rem-calc(10);
 		background: $success-color;
-		border-bottom: solid $success-color-dark 2px;
+		border-bottom: solid $success-color-dark 3px;
 		h1, h2, h3, h4, h5, h6 {
 			margin: 0;
 			color: $white;
+		}
+	}
+	.popup-menu {
+		padding-top: rem-calc(20);
+		padding-bottom: rem-calc(20);
+		.item {
+			width: 100%;
+			padding: rem-calc(7) rem-calc(10) rem-calc(10) rem-calc(10);
+			background: $secondary-color-dark-2x;
+			border-bottom: solid $secondary-color-dark-4x 3px;
+			cursor: pointer;
+			@include border-radius($global-radius);
+			@include transition(all 100ms ease-out);
+			&:hover {
+				padding-top: rem-calc(10);
+				background: $secondary-color-dark;
+				border-bottom-width: 0px;
+			}
 		}
 	}
 	.popup-content {
 		.item {
 			padding-top: rem-calc(7);
 			padding-bottom: rem-calc(7);
-			&.bordered { border-bottom: dashed rem-calc(1) $secondary-color; }
+			&.bordered { border-bottom: dashed rem-calc(1) $secondary-color-dark-2x; }
 			&.title {
-				background: $secondary-color-light-2x;
-				border-bottom: solid $secondary-color-light 2px;
+				background: $primary-color;
+				border-bottom: solid $primary-color-dark 2px;
+				i { color: $primary-color-light-2x; }
 			}
-			&.selected { background: $success-color-light-3x; }
-			.image-cntr { padding-right: 0; }
+			&.selected {
+				background: $secondary-color-dark-2x;
+				i { color: $success-color; }
+			}
+			i { color: $secondary-color-dark; }
 		}
 	}
 }

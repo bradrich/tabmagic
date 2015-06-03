@@ -3,6 +3,7 @@
 
 var tabMagicApp = angular.module('TabMagicApp', [
 	'ngAnimate',
+	'ngFx',
 	'LocalStorageModule',
 	'angular-momentjs',
 	'ui.bootstrap'

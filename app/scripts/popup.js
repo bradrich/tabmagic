@@ -7,6 +7,9 @@ tabMagicApp.controller('PopUpCtrl', [
 	'$moment',
 function($scope, $q, $utils, $moment){
 
+	// Navigation
+	$scope.navigation =  'menu';
+
 	// Function to return a promise containing all windows data
 	var getWindows = function(){
 		var deferred = $q.defer();
@@ -41,11 +44,10 @@ function($scope, $q, $utils, $moment){
 	getRecentlyClosedSessions().then(function(sessions){
 
 		// Set collapsed
-		$scope.sessionsCollapsed = true;
+		$scope.sessionsCollapsed = false;
 
 		// Set recently closed sessions
 		$scope.recentlyClosedSessions = sessions;
-		console.log($scope.recentlyClosedSessions);
 
 	});
 
