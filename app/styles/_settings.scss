@@ -54,7 +54,7 @@
 @import "foundation/scss/foundation/functions";
 
 // These are defined here in pixel values in order to keep compass from showing warnings in the grunt build
-$base-font-size: 13px; // Browser default
+$base-font-size: 14px; // Browser default
 $base-line-height: 20px; // Browser default
 
 // Foundation rem-base
@@ -91,6 +91,7 @@ $gray-dark: #171b21;
 $gray: #222830;
 $gray-light: #33373d;
 $gray-light-2x: #5d6166;
+$gray-light-3x: lighten($gray-light-2x, 5%);
 
 // Primary colors - Green and variations
 // $primary-color: #006633;

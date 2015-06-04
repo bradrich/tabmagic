@@ -1,4 +1,15 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - -
+// HTML & Body
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+html, body {
+	width: auto;
+	height: auto;
+	overflow: hidden;
+}
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - -
 // Tools
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -17,12 +28,7 @@
 	margin-left: 0 !important;
 }
 .no-padding-right { padding-right: 0; }
-.even, .odd {
-	padding: $column-gutter / 2 $column-gutter / 2 0 $column-gutter / 2;
-	// background: $secondary-color-light-2x;
-}
-// .even .disabled-color { color: $secondary-color-light; }
-// .odd { background: $secondary-color-light-4x; }
+.even { background: $gray-light; }
 .clickable { cursor: pointer; }
 .full-width { width: 100% !important; }
 .collapsable {
@@ -30,6 +36,7 @@
 	overflow: hidden;
 	width: 100%;
 }
+.overflow-visible { overflow: visible; }
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -129,23 +136,68 @@ a:not(.button) {
 	height: rem-calc(600);
 	// Top header
 	.header {
-		height: rem-calc(82);
+		z-index: 10;
+		position: relative;
+		height: rem-calc(80);
 		padding-top: rem-calc(29);
+		border-bottom: solid $gray rem-calc(2);
+		&.bordered { border-bottom-color: $primary-color; }
+		@include transition(border-color 300ms ease-out);
 		h1, h2, h3, h4, h5, h6 {
 			margin: 0;
 			color: $white;
 			font-weight: $font-weight-bold;
 		}
+		.action-button {
+			z-index: 20;
+			position: absolute;
+			bottom: -7px;
+			right: $column-gutter / 2;
+			width: rem-calc(40);
+			height: rem-calc(40);
+			padding: rem-calc(5);
+			@include border-radius($global-rounded);
+			background: $primary-color;
+			i { color: $white; }
+		}
 	}
 	// Content
 	.content {
-		height: rem-calc(463);
+		z-index: 10;
+		height: rem-calc(461);
+		.item {
+			padding-top: rem-calc(5);
+			padding-bottom: rem-calc(5);
+			color: $gray-light-3x;
+			&.selected { color: $white; }
+			&.window {
+				color: $white;
+				border-bottom: solid $primary-color rem-calc(2);
+				@include background-image(linear-gradient($gray, $gray-light));
+				i { color: $primary-color; }
+			}
+		}
 	}
 	// Bottom nav bar
 	.nav-bar {
+		z-index: 10;
 		height: rem-calc(55);
-		padding-top: rem-calc(7);
 		background: $gray-light;
-		line-height: rem-calc(10) !important;
+		border-top: solid $gray rem-calc(2);
+		line-height: rem-calc(12) !important;
+		color: $gray-light-3x !important;
+		.clickable {
+			padding-top: rem-calc(6);
+			@include transition(color 300ms ease-out);
+			&:hover {
+				color: $white !important;
+				i { color: $primary-color !important; }
+			}
+			&.selected {
+				padding-top: rem-calc(4);
+				border-top: solid $primary-color rem-calc(2);
+				i { color: $primary-color !important; }
+			}
+		}
 	}
 }
