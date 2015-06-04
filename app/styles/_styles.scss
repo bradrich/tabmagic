@@ -19,10 +19,10 @@
 .no-padding-right { padding-right: 0; }
 .even, .odd {
 	padding: $column-gutter / 2 $column-gutter / 2 0 $column-gutter / 2;
-	background: $secondary-color-light-2x;
+	// background: $secondary-color-light-2x;
 }
-.even .disabled-color { color: $secondary-color-light; }
-.odd { background: $secondary-color-light-4x; }
+// .even .disabled-color { color: $secondary-color-light; }
+// .odd { background: $secondary-color-light-4x; }
 .clickable { cursor: pointer; }
 .full-width { width: 100% !important; }
 .collapsable {
@@ -37,10 +37,10 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 .primary-color { color: $primary-color; }
-.success-color { color: $success-color; }
-.alert-color { color: $alert-color; }
-.warning-color { color: $warning-color; }
-.disabled-color { color: $disabled-color; }
+// .success-color { color: $success-color; }
+// .alert-color { color: $alert-color; }
+// .warning-color { color: $warning-color; }
+// .disabled-color { color: $disabled-color; }
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -75,51 +75,75 @@ a:not(.button) {
 // Popup
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
+// .popup {
+// 	width: rem-calc(350);
+// 	.popup-header {
+// 		padding-top: rem-calc(10);
+// 		padding-bottom: rem-calc(10);
+// 		background: $success-color;
+// 		border-bottom: solid $success-color-dark 3px;
+// 		.menu-icon { height: 28px; }
+// 		h1, h2, h3, h4, h5, h6 {
+// 			margin: 0;
+// 			color: $white;
+// 		}
+// 	}
+// 	.popup-menu {
+// 		padding-top: rem-calc(20);
+// 		padding-bottom: rem-calc(20);
+// 		.item {
+// 			width: 100%;
+// 			padding: rem-calc(7) rem-calc(10) rem-calc(10) rem-calc(10);
+// 			background: $secondary-color-dark-2x;
+// 			border-bottom: solid $secondary-color-dark-4x 3px;
+// 			cursor: pointer;
+// 			@include border-radius($global-radius);
+// 			@include transition(all 100ms ease-out);
+// 			&:hover {
+// 				padding-top: rem-calc(10);
+// 				background: $secondary-color-dark;
+// 				border-bottom-width: 0px;
+// 			}
+// 		}
+// 	}
+// 	.popup-content {
+// 		.item {
+// 			padding-top: rem-calc(7);
+// 			padding-bottom: rem-calc(7);
+// 			&.bordered { border-bottom: dashed rem-calc(1) $secondary-color-dark-2x; }
+// 			&.title {
+// 				background: $primary-color;
+// 				border-bottom: solid $primary-color-dark 2px;
+// 				i { color: $primary-color-light-2x; }
+// 			}
+// 			&.selected {
+// 				background: $secondary-color-dark-2x;
+// 				i { color: $success-color; }
+// 			}
+// 			i { color: $secondary-color-dark; }
+// 		}
+// 	}
+// }
 .popup {
 	width: rem-calc(350);
-	.popup-header {
-		padding-top: rem-calc(10);
-		padding-bottom: rem-calc(10);
-		background: $success-color;
-		border-bottom: solid $success-color-dark 3px;
+	height: rem-calc(600);
+	// Top header
+	.header {
+		height: rem-calc(82);
+		padding-top: rem-calc(29);
 		h1, h2, h3, h4, h5, h6 {
 			margin: 0;
 			color: $white;
+			font-weight: $font-weight-bold;
 		}
 	}
-	.popup-menu {
-		padding-top: rem-calc(20);
-		padding-bottom: rem-calc(20);
-		.item {
-			width: 100%;
-			padding: rem-calc(7) rem-calc(10) rem-calc(10) rem-calc(10);
-			background: $secondary-color-dark-2x;
-			border-bottom: solid $secondary-color-dark-4x 3px;
-			cursor: pointer;
-			@include border-radius($global-radius);
-			@include transition(all 100ms ease-out);
-			&:hover {
-				padding-top: rem-calc(10);
-				background: $secondary-color-dark;
-				border-bottom-width: 0px;
-			}
-		}
+	// Content
+	.content {
+		height: rem-calc(473);
 	}
-	.popup-content {
-		.item {
-			padding-top: rem-calc(7);
-			padding-bottom: rem-calc(7);
-			&.bordered { border-bottom: dashed rem-calc(1) $secondary-color-dark-2x; }
-			&.title {
-				background: $primary-color;
-				border-bottom: solid $primary-color-dark 2px;
-				i { color: $primary-color-light-2x; }
-			}
-			&.selected {
-				background: $secondary-color-dark-2x;
-				i { color: $success-color; }
-			}
-			i { color: $secondary-color-dark; }
-		}
+	// Bottom nav bar
+	.nav-bar {
+		height: rem-calc(45);
+		background: $gray-light;
 	}
 }

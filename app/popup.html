@@ -14,103 +14,28 @@
 <body id="ng-app" ng-app="TabMagicApp">
 
 	<div class="popup" ng-controller="PopUpCtrl">
-		<div class="row popup-header">
-			<div class="columns" ng-class="{ 'small-10': navigation !== 'menu', 'small-12': navigation === 'menu' }"><h5>TabMagic</h5></div>
-			<div class="small-2 columns tiny-margin-top clickable text-right" ng-click="navigation = 'menu'" ng-show="navigation !== 'menu'"><i class="fa icon-menu fa-lg"></i></div>
+
+		<!-- Header -->
+		<div class="row header">
+			<div class="small-12 columns">
+				<h4><span class="primary-color">TAB</span>MAGIC</h4>
+			</div>
 		</div>
-		<div>
+		<!-- End Header -->
 
-			<!-- Menu -->
-			<div class="row popup-menu fx-fade-up" ng-show="navigation === 'menu'">
-				<div class="medium-12 columns">
-					<div class="row">
-						<div class="small-4 columns">
-							<div class="item text-center" ng-click="navigation = 'recentlyClosed'">
-								<i class="fa icon-history fa-4x"></i>
-								<small class="caption">Recently Closed</small>
-							</div>
-						</div>
-						<div class="small-4 columns">
-							<div class="item text-center" ng-click="navigation = 'bringToOne'">
-								<i class="fa icon-filter-list fa-4x"></i>
-								<small class="caption">Bring to One</small>
-							</div>
-						</div>
-						<div class="small-4 columns">
-							<div class="item text-center" ng-click="navigation = 'suspend'">
-								<i class="fa icon-pause-circle-outline fa-4x"></i>
-								<small class="caption">Suspend</small>
-							</div>
-						</div>
-					</div>
-				</div>
+		<!-- Content -->
+		<div class="row content"></div>
+		<!-- End Content -->
+
+		<!-- Bottom Nav Bar -->
+		<div class="row nav-bar">
+			<div class="small-3 columns text-center">
+				<i class="fa fa-repeat fa-lg"></i>
+				<small>Recent</small>
 			</div>
-			<!-- End Menu -->
-
-			<!-- Recently Closed -->
-			<div class="row popup-content fx-fade-up" ng-show="navigation === 'recentlyClosed'">
-				<div class="medium-12 columns item title">
-					<div class="row" ng-click="sessionsCollapsed = !sessionsCollapsed">
-						<div class="small-10 columns">Recently Closed Tabs</div>
-						<div class="small-2 columns text-right" ng-show="sessionsCollapsed"><i class="fa icon-chevron-right fa-lg"></i></div>
-						<div class="small-2 columns text-right" ng-show="!sessionsCollapsed"><i class="fa icon-expand-more fa-lg"></i></div>
-					</div>
-				</div>
-				<div collapse="sessionsCollapsed" class="collapsable">
-					<div class="medium-12 columns">
-						<div ng-repeat="session in recentlyClosedSessions" class="row item bordered" ng-class="{ selected: session.tab.tmSelected }" ng-click="session.tab.tmSelected = !session.tab.tmSelected">
-							<div class="small-1 columns no-padding-right" ng-if="'' !== session.tab.favIconUrl"><img ng-src="{{session.tab.favIconUrl}}" /></div>
-							<div class="columns" ng-class="{ 'small-9': '' !== session.tab.favIconUrl, 'small-10': '' === session.tab.favIconUrl }">{{session.tab.title | limitTo: 40}}<span ng-if="session.tab.title.length > 40">...</span></div>
-							<div class="small-2 columns text-right"><i class="fa fa-check" ng-class="{ 'selected': !session.tab.tmSelected }"></i></div>
-						</div>
-					</div>
-					<div class="medium-12 columns">
-						<div class="row collapse item">
-							<div class="small-4 columns">
-								<button class="radius tiny no-margin-bottom">Restore All Tabs</button>
-							</div>
-							<div class="small-4 columns end">
-								<button class="radius tiny no-margin-bottom">Restore Selected</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Recently Closed -->
-
-			<!-- Bring to One -->
-			<div class="row popup-content fx-fade-up" ng-repeat="window in windows" ng-show="navigation === 'bringToOne'">
-				<div class="medium-12 columns item title">
-					<div class="row" ng-click="window.tmCollapsed = !window.tmCollapsed">
-						<div class="small-10 columns" ng-show="window.focused">Current Window - Open Tabs</div>
-						<div class="small-10 columns" ng-show="!window.focused">Window #{{$index + 1}} - Open Tabs</div>
-						<div class="small-2 columns text-right" ng-show="window.tmCollapsed"><i class="fa icon-chevron-right fa-lg"></i></div>
-						<div class="small-2 columns text-right" ng-show="!window.tmCollapsed"><i class="fa icon-expand-more fa-lg"></i></div>
-					</div>
-				</div>
-				<div collapse="window.tmCollapsed" class="collapsable">
-					<div class="medium-12 columns">
-						<div ng-repeat="tab in window.tabs" class="row item bordered" ng-class="{ selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
-							<div class="small-1 columns no-padding-right" ng-if="'' !== tab.favIconUrl && tab.favIconUrl"><img ng-src="{{tab.favIconUrl}}" /></div>
-							<div class="columns" ng-class="{ 'small-9': '' !== tab.favIconUrl && tab.favIconUrl, 'small-10': '' === tab.favIconUrl || !tab.favIconUrl }">{{tab.title}}</div>
-							<div class="small-2 columns text-right"><i class="fa fa-check" ng-class="{ 'selected': !tab.tmSelected }"></i></div>
-						</div>
-					</div>
-					<div class="medium-12 columns">
-						<div class="row collapse item">
-							<div class="small-4 columns">
-								<button class="radius tiny no-margin-bottom" ng-click="createTab(window.id, true)">Send All Tabs</button>
-							</div>
-							<div class="small-4 columns end">
-								<button class="radius tiny no-margin-bottom" ng-click="createTab(window.id)">Send Selected</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Bring to One -->
-
 		</div>
+		<!-- End Bottom Nav Bar -->
+
 	</div>
 
 	<!-- build:js scripts/vendor.js -->

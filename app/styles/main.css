@@ -525,8 +525,8 @@ body {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_global\.scss}line{font-family:\00003438}}
 body {
-  background: #333333;
-  color: #efefef;
+  background: #222830;
+  color: #ffffff;
   cursor: auto;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -2175,8 +2175,8 @@ select {
   padding: 1.07692rem 1.84615rem 1.07692rem 1.07692rem;
   position: relative;
   transition: opacity 300ms ease-out;
-  background-color: #006633;
-  border-color: #00582c;
+  background-color: #d6000b;
+  border-color: #b80009;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_alert-boxes\.scss}line{font-family:\00003115}}
@@ -2206,33 +2206,33 @@ select {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_alert-boxes\.scss}line{font-family:\00003120}}
 .alert-box.success {
-  background-color: #1870bb;
-  border-color: #1560a1;
+  background-color: #43AC6A;
+  border-color: #3a945b;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_alert-boxes\.scss}line{font-family:\00003121}}
 .alert-box.alert {
-  background-color: #ff3333;
-  border-color: #ff0808;
+  background-color: #f04124;
+  border-color: #de2d0f;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_alert-boxes\.scss}line{font-family:\00003122}}
 .alert-box.secondary {
-  background-color: #808184;
-  border-color: #6e6f72;
-  color: #ffffff;
+  background-color: #e7e7e7;
+  border-color: #c7c7c7;
+  color: #4f4f4f;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_alert-boxes\.scss}line{font-family:\00003123}}
 .alert-box.warning {
-  background-color: #eebb22;
-  border-color: #d9a711;
+  background-color: #f08a24;
+  border-color: #de770f;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_alert-boxes\.scss}line{font-family:\00003124}}
 .alert-box.info {
   background-color: #a0d3e8;
   border-color: #74bfdd;
-  color: #2b2c2d;
+  color: #4f4f4f;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_alert-boxes\.scss}line{font-family:\00003125}}
 .alert-box.alert-close {
@@ -2778,13 +2778,13 @@ select {
   margin-left: 0;
   overflow: hidden;
   padding: 0.69231rem 1.07692rem 0.69231rem;
-  background-color: #c6c6c8;
-  border-color: #b2b2b4;
+  background-color: #f4f4f4;
+  border-color: gainsboro;
   border-radius: 3px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_breadcrumbs\.scss}line{font-family:\00003122}}
 .breadcrumbs > * {
-  color: #006633;
+  color: #d6000b;
   float: left;
   font-size: 0.84615rem;
   line-height: 0.84615rem;
@@ -2797,7 +2797,7 @@ select {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_breadcrumbs\.scss}line{font-family:\0000370}}
 .breadcrumbs > * a {
-  color: #006633;
+  color: #d6000b;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_breadcrumbs\.scss}line{font-family:\0000375}}
 .breadcrumbs > *.current {
@@ -2866,14 +2866,14 @@ button, .button {
   display: inline-block;
   padding: 1.23077rem 2.46154rem 1.30769rem 2.46154rem;
   font-size: 1.23077rem;
-  background-color: #006633;
-  border-color: #005229;
+  background-color: #d6000b;
+  border-color: #ab0009;
   color: #ffffff;
   transition: background-color 300ms ease-out;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 button:hover, button:focus, .button:hover, .button:focus {
-  background-color: #005229;
+  background-color: #ab0009;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 button:hover, button:focus, .button:hover, .button:focus {
@@ -2881,27 +2881,27 @@ button:hover, button:focus, .button:hover, .button:focus {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003220}}
 button.secondary, .button.secondary {
-  background-color: #808184;
-  border-color: #66676a;
-  color: #ffffff;
+  background-color: #e7e7e7;
+  border-color: #b9b9b9;
+  color: #333333;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
-  background-color: #66676a;
+  background-color: #b9b9b9;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
-  color: #ffffff;
+  color: #333333;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003221}}
 button.success, .button.success {
-  background-color: #1870bb;
-  border-color: #135a96;
+  background-color: #43AC6A;
+  border-color: #368a55;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
-  background-color: #135a96;
+  background-color: #368a55;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
@@ -2909,13 +2909,13 @@ button.success:hover, button.success:focus, .button.success:hover, .button.succe
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003222}}
 button.alert, .button.alert {
-  background-color: #ff3333;
-  border-color: #f50000;
+  background-color: #f04124;
+  border-color: #cf2a0e;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
-  background-color: #f50000;
+  background-color: #cf2a0e;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
@@ -2923,13 +2923,13 @@ button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003223}}
 button.warning, .button.warning {
-  background-color: #eebb22;
-  border-color: #ca9b10;
+  background-color: #f08a24;
+  border-color: #cf6e0e;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 button.warning:hover, button.warning:focus, .button.warning:hover, .button.warning:focus {
-  background-color: #ca9b10;
+  background-color: #cf6e0e;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 button.warning:hover, button.warning:focus, .button.warning:hover, .button.warning:focus {
@@ -2990,8 +2990,8 @@ button.round, .button.round {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003237}}
 button.disabled, button[disabled], .button.disabled, .button[disabled] {
-  background-color: #006633;
-  border-color: #005229;
+  background-color: #d6000b;
+  border-color: #ab0009;
   color: #ffffff;
   box-shadow: none;
   cursor: default;
@@ -2999,7 +2999,7 @@ button.disabled, button[disabled], .button.disabled, .button[disabled] {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-  background-color: #005229;
+  background-color: #ab0009;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
@@ -3007,33 +3007,33 @@ button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[dis
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003175}}
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-  background-color: #006633;
+  background-color: #d6000b;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003238}}
 button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
-  background-color: #808184;
-  border-color: #66676a;
-  color: #ffffff;
+  background-color: #e7e7e7;
+  border-color: #b9b9b9;
+  color: #333333;
   box-shadow: none;
   cursor: default;
   opacity: 0.7;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
-  background-color: #66676a;
+  background-color: #b9b9b9;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
-  color: #ffffff;
+  color: #333333;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003175}}
 button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
-  background-color: #808184;
+  background-color: #e7e7e7;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003239}}
 button.disabled.success, button[disabled].success, .button.disabled.success, .button[disabled].success {
-  background-color: #1870bb;
-  border-color: #135a96;
+  background-color: #43AC6A;
+  border-color: #368a55;
   color: #ffffff;
   box-shadow: none;
   cursor: default;
@@ -3041,7 +3041,7 @@ button.disabled.success, button[disabled].success, .button.disabled.success, .bu
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
-  background-color: #135a96;
+  background-color: #368a55;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
@@ -3049,12 +3049,12 @@ button.disabled.success:hover, button.disabled.success:focus, button[disabled].s
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003175}}
 button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
-  background-color: #1870bb;
+  background-color: #43AC6A;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003240}}
 button.disabled.alert, button[disabled].alert, .button.disabled.alert, .button[disabled].alert {
-  background-color: #ff3333;
-  border-color: #f50000;
+  background-color: #f04124;
+  border-color: #cf2a0e;
   color: #ffffff;
   box-shadow: none;
   cursor: default;
@@ -3062,7 +3062,7 @@ button.disabled.alert, button[disabled].alert, .button.disabled.alert, .button[d
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
-  background-color: #f50000;
+  background-color: #cf2a0e;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
@@ -3070,12 +3070,12 @@ button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003175}}
 button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
-  background-color: #ff3333;
+  background-color: #f04124;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003241}}
 button.disabled.warning, button[disabled].warning, .button.disabled.warning, .button[disabled].warning {
-  background-color: #eebb22;
-  border-color: #ca9b10;
+  background-color: #f08a24;
+  border-color: #cf6e0e;
   color: #ffffff;
   box-shadow: none;
   cursor: default;
@@ -3083,7 +3083,7 @@ button.disabled.warning, button[disabled].warning, .button.disabled.warning, .bu
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].warning:hover, button[disabled].warning:focus, .button.disabled.warning:hover, .button.disabled.warning:focus, .button[disabled].warning:hover, .button[disabled].warning:focus {
-  background-color: #ca9b10;
+  background-color: #cf6e0e;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].warning:hover, button[disabled].warning:focus, .button.disabled.warning:hover, .button.disabled.warning:focus, .button[disabled].warning:hover, .button[disabled].warning:focus {
@@ -3091,7 +3091,7 @@ button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].w
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003175}}
 button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].warning:hover, button[disabled].warning:focus, .button.disabled.warning:hover, .button.disabled.warning:focus, .button[disabled].warning:hover, .button[disabled].warning:focus {
-  background-color: #eebb22;
+  background-color: #f08a24;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003242}}
 button.disabled.info, button[disabled].info, .button.disabled.info, .button[disabled].info {
@@ -4829,7 +4829,7 @@ fieldset legend {
   margin-bottom: 1.23077rem;
   margin-top: -1px;
   padding: 0.46154rem 0.69231rem 0.69231rem;
-  background: #ff3333;
+  background: #f04124;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003556}}
@@ -4846,7 +4846,7 @@ span.error, small.error {
   margin-bottom: 1.23077rem;
   margin-top: -1px;
   padding: 0.46154rem 0.69231rem 0.69231rem;
-  background: #ff3333;
+  background: #f04124;
   color: #ffffff;
 }
 
@@ -4864,7 +4864,7 @@ span.error, small.error {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003575}}
 .error label,
 .error label.error {
-  color: #ff3333;
+  color: #f04124;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003580}}
 .error small.error {
@@ -4875,7 +4875,7 @@ span.error, small.error {
   margin-bottom: 1.23077rem;
   margin-top: -1px;
   padding: 0.46154rem 0.69231rem 0.69231rem;
-  background: #ff3333;
+  background: #f04124;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003585}}
@@ -4903,7 +4903,7 @@ select.error {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003607}}
 label.error {
-  color: #ff3333;
+  color: #f04124;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_icon-bar\.scss}line{font-family:\00003347}}
@@ -5025,7 +5025,7 @@ label.error {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_icon-bar\.scss}line{font-family:\00003182}}
 .icon-bar > a:hover {
-  background: #006633;
+  background: #d6000b;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_icon-bar\.scss}line{font-family:\00003186}}
 .icon-bar > a:hover label {
@@ -5037,7 +5037,7 @@ label.error {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_icon-bar\.scss}line{font-family:\00003191}}
 .icon-bar > a.active {
-  background: #006633;
+  background: #d6000b;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_icon-bar\.scss}line{font-family:\00003195}}
 .icon-bar > a.active label {
@@ -5591,7 +5591,7 @@ kbd {
   white-space: nowrap;
   padding: 0.30769rem 0.61538rem 0.30769rem;
   font-size: 0.84615rem;
-  background-color: #006633;
+  background-color: #d6000b;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_labels\.scss}line{font-family:\0000396}}
@@ -5604,23 +5604,23 @@ kbd {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_labels\.scss}line{font-family:\0000399}}
 .label.alert {
-  background-color: #ff3333;
+  background-color: #f04124;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_labels\.scss}line{font-family:\00003100}}
 .label.warning {
-  background-color: #eebb22;
+  background-color: #f08a24;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_labels\.scss}line{font-family:\00003101}}
 .label.success {
-  background-color: #1870bb;
+  background-color: #43AC6A;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_labels\.scss}line{font-family:\00003102}}
 .label.secondary {
-  background-color: #808184;
-  color: #ffffff;
+  background-color: #e7e7e7;
+  color: #333333;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_labels\.scss}line{font-family:\00003103}}
 .label.info {
@@ -6026,14 +6026,14 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus, ul.p
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_pagination\.scss}line{font-family:\0000368}}
 ul.pagination li.current a, ul.pagination li.current button {
-  background: #006633;
+  background: #d6000b;
   color: #ffffff;
   cursor: default;
   font-weight: bold;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_pagination\.scss}line{font-family:\0000374}}
 ul.pagination li.current a:hover, ul.pagination li.current a:focus, ul.pagination li.current button:hover, ul.pagination li.current button:focus {
-  background: #006633;
+  background: #d6000b;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_pagination\.scss}line{font-family:\00003136}}
 ul.pagination li {
@@ -6091,7 +6091,7 @@ ul.pagination li {
   border-color: #d8d8d8;
   margin-bottom: 1.53846rem;
   padding: 1.53846rem;
-  background: #e7fff3;
+  background: #ffedee;
   color: #333333;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_panels\.scss}line{font-family:\0000361}}
@@ -6117,11 +6117,11 @@ ul.pagination li {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_panels\.scss}line{font-family:\0000390}}
 .panel.callout a:not(.button) {
-  color: #006633;
+  color: #d6000b;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_panels\.scss}line{font-family:\0000393}}
 .panel.callout a:not(.button):hover, .panel.callout a:not(.button):focus {
-  color: #00582c;
+  color: #b80009;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_panels\.scss}line{font-family:\00003100}}
 .panel.radius {
@@ -6199,25 +6199,25 @@ ul.pagination li {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_progress-bars\.scss}line{font-family:\0000361}}
 .progress .meter {
-  background: #006633;
+  background: #d6000b;
   display: block;
   height: 100%;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_progress-bars\.scss}line{font-family:\0000364}}
 .progress.secondary .meter {
-  background: #808184;
+  background: #e7e7e7;
   display: block;
   height: 100%;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_progress-bars\.scss}line{font-family:\0000365}}
 .progress.success .meter {
-  background: #1870bb;
+  background: #43AC6A;
   display: block;
   height: 100%;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_progress-bars\.scss}line{font-family:\0000366}}
 .progress.alert .meter {
-  background: #ff3333;
+  background: #f04124;
   display: block;
   height: 100%;
 }
@@ -6284,12 +6284,12 @@ ul.pagination li {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_range-slider\.scss}line{font-family:\00003153}}
 .range-slider.radius .range-slider-handle {
-  background: #006633;
+  background: #d6000b;
   border-radius: 3px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_range-slider\.scss}line{font-family:\00003118}}
 .range-slider.radius .range-slider-handle:hover {
-  background: #005a2d;
+  background: #bc000a;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_range-slider\.scss}line{font-family:\00003155}}
 .range-slider.round {
@@ -6298,12 +6298,12 @@ ul.pagination li {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_range-slider\.scss}line{font-family:\00003157}}
 .range-slider.round .range-slider-handle {
-  background: #006633;
+  background: #d6000b;
   border-radius: 1000px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_range-slider\.scss}line{font-family:\00003118}}
 .range-slider.round .range-slider-handle:hover {
-  background: #005a2d;
+  background: #bc000a;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_range-slider\.scss}line{font-family:\00003159}}
 .range-slider.disabled, .range-slider[disabled] {
@@ -6313,18 +6313,18 @@ ul.pagination li {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_range-slider\.scss}line{font-family:\00003161}}
 .range-slider.disabled .range-slider-handle, .range-slider[disabled] .range-slider-handle {
-  background: #006633;
+  background: #d6000b;
   cursor: default;
   opacity: 0.7;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_range-slider\.scss}line{font-family:\00003118}}
 .range-slider.disabled .range-slider-handle:hover, .range-slider[disabled] .range-slider-handle:hover {
-  background: #005a2d;
+  background: #bc000a;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_range-slider\.scss}line{font-family:\00003164}}
 .range-slider-active-segment {
-  background: #7f8083;
+  background: #e5e5e5;
   border-bottom-left-radius: inherit;
   border-top-left-radius: inherit;
   display: inline-block;
@@ -6344,11 +6344,11 @@ ul.pagination li {
   z-index: 1;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-  background: #006633;
+  background: #d6000b;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_range-slider\.scss}line{font-family:\00003118}}
 .range-slider-handle:hover {
-  background: #005a2d;
+  background: #bc000a;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_reveal\.scss}line{font-family:\00003169}}
@@ -6529,7 +6529,7 @@ ul.pagination li {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_side-nav\.scss}line{font-family:\0000376}}
 .side-nav li a:not(.button) {
-  color: #006633;
+  color: #d6000b;
   display: block;
   margin: 0;
   padding: 0.53846rem 1.07692rem;
@@ -6537,15 +6537,15 @@ ul.pagination li {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_side-nav\.scss}line{font-family:\0000381}}
 .side-nav li a:not(.button):hover, .side-nav li a:not(.button):focus {
   background: rgba(0, 0, 0, 0.025);
-  color: #00e070;
+  color: #ff303a;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_side-nav\.scss}line{font-family:\0000386}}
 .side-nav li a:not(.button):active {
-  color: #00e070;
+  color: #ff303a;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_side-nav\.scss}line{font-family:\0000391}}
 .side-nav li.active > a:first-child:not(.button) {
-  color: #00e070;
+  color: #ff303a;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
@@ -6559,7 +6559,7 @@ ul.pagination li {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_side-nav\.scss}line{font-family:\00003105}}
 .side-nav li.heading {
-  color: #006633;
+  color: #d6000b;
   font-size: 1.07692rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -6757,7 +6757,7 @@ ul.pagination li {
 .sub-nav dd.active a,
 .sub-nav li.active a {
   border-radius: 3px;
-  background: #006633;
+  background: #d6000b;
   color: #ffffff;
   cursor: default;
   font-weight: normal;
@@ -6767,7 +6767,7 @@ ul.pagination li {
 .sub-nav dt.active a:hover,
 .sub-nav dd.active a:hover,
 .sub-nav li.active a:hover {
-  background: #00582c;
+  background: #b80009;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_switches\.scss}line{font-family:\00003215}}
@@ -6830,7 +6830,7 @@ ul.pagination li {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_switches\.scss}line{font-family:\00003110}}
 .switch input:checked + label {
-  background: #006633;
+  background: #d6000b;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_switches\.scss}line{font-family:\00003114}}
 .switch input:checked + label:after {
@@ -6861,7 +6861,7 @@ ul.pagination li {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_switches\.scss}line{font-family:\00003166}}
 .switch input:checked + label {
-  background: #006633;
+  background: #d6000b;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_switches\.scss}line{font-family:\00003126}}
 .switch.large label {
@@ -7131,7 +7131,7 @@ table tr td {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_thumbs\.scss}line{font-family:\0000348}}
 .th:hover, .th:focus {
-  box-shadow: 0 0 6px 1px rgba(0, 102, 51, 0.5);
+  box-shadow: 0 0 6px 1px rgba(214, 0, 11, 0.5);
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_thumbs\.scss}line{font-family:\0000363}}
 .th.radius {
@@ -7148,8 +7148,8 @@ table tr td {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_tooltips\.scss}line{font-family:\0000344}}
 .has-tip:hover, .has-tip:focus {
-  border-bottom: dotted 1px #002e17;
-  color: #006633;
+  border-bottom: dotted 1px #600005;
+  color: #d6000b;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_tooltips\.scss}line{font-family:\0000350}}
 .has-tip.tip-left, .has-tip.tip-right {
@@ -7202,8 +7202,8 @@ table tr td {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_tooltips\.scss}line{font-family:\0000395}}
 .tooltip.opened {
-  border-bottom: dotted 1px #002e17 !important;
-  color: #006633 !important;
+  border-bottom: dotted 1px #600005 !important;
+  color: #d6000b !important;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_tooltips\.scss}line{font-family:\00003101}}
@@ -7483,13 +7483,13 @@ meta.foundation-mq-topbar {
   font-size: 1rem;
   padding-left: 1.15385rem;
   padding-right: 1.15385rem;
-  background-color: #006633;
-  border-color: #005229;
+  background-color: #d6000b;
+  border-color: #ab0009;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 .top-bar-section ul li > a.button:hover, .top-bar-section ul li > a.button:focus {
-  background-color: #005229;
+  background-color: #ab0009;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 .top-bar-section ul li > a.button:hover, .top-bar-section ul li > a.button:focus {
@@ -7497,27 +7497,27 @@ meta.foundation-mq-topbar {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003352}}
 .top-bar-section ul li > a.button.secondary {
-  background-color: #808184;
-  border-color: #66676a;
-  color: #ffffff;
+  background-color: #e7e7e7;
+  border-color: #b9b9b9;
+  color: #333333;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 .top-bar-section ul li > a.button.secondary:hover, .top-bar-section ul li > a.button.secondary:focus {
-  background-color: #66676a;
+  background-color: #b9b9b9;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 .top-bar-section ul li > a.button.secondary:hover, .top-bar-section ul li > a.button.secondary:focus {
-  color: #ffffff;
+  color: #333333;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003353}}
 .top-bar-section ul li > a.button.success {
-  background-color: #1870bb;
-  border-color: #135a96;
+  background-color: #43AC6A;
+  border-color: #368a55;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 .top-bar-section ul li > a.button.success:hover, .top-bar-section ul li > a.button.success:focus {
-  background-color: #135a96;
+  background-color: #368a55;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 .top-bar-section ul li > a.button.success:hover, .top-bar-section ul li > a.button.success:focus {
@@ -7525,13 +7525,13 @@ meta.foundation-mq-topbar {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003354}}
 .top-bar-section ul li > a.button.alert {
-  background-color: #ff3333;
-  border-color: #f50000;
+  background-color: #f04124;
+  border-color: #cf2a0e;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 .top-bar-section ul li > a.button.alert:hover, .top-bar-section ul li > a.button.alert:focus {
-  background-color: #f50000;
+  background-color: #cf2a0e;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 .top-bar-section ul li > a.button.alert:hover, .top-bar-section ul li > a.button.alert:focus {
@@ -7539,13 +7539,13 @@ meta.foundation-mq-topbar {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003355}}
 .top-bar-section ul li > a.button.warning {
-  background-color: #eebb22;
-  border-color: #ca9b10;
+  background-color: #f08a24;
+  border-color: #cf6e0e;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 .top-bar-section ul li > a.button.warning:hover, .top-bar-section ul li > a.button.warning:focus {
-  background-color: #ca9b10;
+  background-color: #cf6e0e;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 .top-bar-section ul li > a.button.warning:hover, .top-bar-section ul li > a.button.warning:focus {
@@ -7570,13 +7570,13 @@ meta.foundation-mq-topbar {
   font-size: 1rem;
   padding-left: 1.15385rem;
   padding-right: 1.15385rem;
-  background-color: #006633;
-  border-color: #005229;
+  background-color: #d6000b;
+  border-color: #ab0009;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
-  background-color: #005229;
+  background-color: #ab0009;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
@@ -7584,27 +7584,27 @@ meta.foundation-mq-topbar {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003365}}
 .top-bar-section ul li > button.secondary {
-  background-color: #808184;
-  border-color: #66676a;
-  color: #ffffff;
+  background-color: #e7e7e7;
+  border-color: #b9b9b9;
+  color: #333333;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 .top-bar-section ul li > button.secondary:hover, .top-bar-section ul li > button.secondary:focus {
-  background-color: #66676a;
+  background-color: #b9b9b9;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 .top-bar-section ul li > button.secondary:hover, .top-bar-section ul li > button.secondary:focus {
-  color: #ffffff;
+  color: #333333;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003366}}
 .top-bar-section ul li > button.success {
-  background-color: #1870bb;
-  border-color: #135a96;
+  background-color: #43AC6A;
+  border-color: #368a55;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 .top-bar-section ul li > button.success:hover, .top-bar-section ul li > button.success:focus {
-  background-color: #135a96;
+  background-color: #368a55;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 .top-bar-section ul li > button.success:hover, .top-bar-section ul li > button.success:focus {
@@ -7612,13 +7612,13 @@ meta.foundation-mq-topbar {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003367}}
 .top-bar-section ul li > button.alert {
-  background-color: #ff3333;
-  border-color: #f50000;
+  background-color: #f04124;
+  border-color: #cf2a0e;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 .top-bar-section ul li > button.alert:hover, .top-bar-section ul li > button.alert:focus {
-  background-color: #f50000;
+  background-color: #cf2a0e;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 .top-bar-section ul li > button.alert:hover, .top-bar-section ul li > button.alert:focus {
@@ -7626,13 +7626,13 @@ meta.foundation-mq-topbar {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003368}}
 .top-bar-section ul li > button.warning {
-  background-color: #eebb22;
-  border-color: #ca9b10;
+  background-color: #f08a24;
+  border-color: #cf6e0e;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003158}}
 .top-bar-section ul li > button.warning:hover, .top-bar-section ul li > button.warning:focus {
-  background-color: #ca9b10;
+  background-color: #cf6e0e;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_buttons\.scss}line{font-family:\00003164}}
 .top-bar-section ul li > button.warning:hover, .top-bar-section ul li > button.warning:focus {
@@ -7660,12 +7660,12 @@ meta.foundation-mq-topbar {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003383}}
 .top-bar-section ul li.active > a {
-  background: #006633;
+  background: #d6000b;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003387}}
 .top-bar-section ul li.active > a:hover {
-  background: #00582c;
+  background: #b80009;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003395}}
@@ -7869,14 +7869,14 @@ meta.foundation-mq-topbar {
   }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003569}}
   .top-bar-section li.active:not(.has-form) a:not(.button) {
-    background: #006633;
+    background: #d6000b;
     color: #ffffff;
     line-height: 3.46154rem;
     padding: 0 1.15385rem;
   }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003574}}
   .top-bar-section li.active:not(.has-form) a:not(.button):hover {
-    background: #00582c;
+    background: #b80009;
     color: #ffffff;
   }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003584}}
@@ -8014,7 +8014,7 @@ meta.foundation-mq-topbar {
   }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003717}}
   .no-js .top-bar-section ul li:active > a {
-    background: #006633;
+    background: #d6000b;
     color: #ffffff;
   }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_top-bar\.scss}line{font-family:\00003725}}
@@ -8296,13 +8296,13 @@ td {
 /* Default Link Styles */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_type\.scss}line{font-family:\00003217}}
 a {
-  color: #006633;
+  color: #d6000b;
   line-height: inherit;
   text-decoration: none;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_type\.scss}line{font-family:\00003222}}
 a:hover, a:focus {
-  color: #00582c;
+  color: #b80009;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_type\.scss}line{font-family:\00003230}}
 a img {
@@ -8391,7 +8391,7 @@ h6 {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_type\.scss}line{font-family:\00003278}}
 hr {
-  border: solid #808184;
+  border: solid #DDDDDD;
   border-width: 1px 0 0;
   clear: both;
   height: 0;
@@ -8421,8 +8421,8 @@ small {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_type\.scss}line{font-family:\00003304}}
 code {
-  background-color: #d9d9da;
-  border-color: #c3c3c5;
+  background-color: #f8f8f8;
+  border-color: #dfdfdf;
   border-style: solid;
   border-width: 1px;
   color: #333333;
@@ -8519,7 +8519,7 @@ abbr,
 acronym {
   text-transform: uppercase;
   font-size: 90%;
-  color: #efefef;
+  color: #ffffff;
   cursor: help;
 }
 
@@ -12832,17 +12832,6 @@ th.hide-for-touch {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000320}}
 .even, .odd {
   padding: 1.15385rem 1.15385rem 0 1.15385rem;
-  background: #cccccc;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000324}}
-.even .disabled-color {
-  color: #b7b7b7;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000325}}
-.odd {
-  background: #fdfdfd;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000326}}
@@ -12864,27 +12853,7 @@ th.hide-for-touch {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000339}}
 .primary-color {
-  color: #006633;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000340}}
-.success-color {
-  color: #1870bb;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000341}}
-.alert-color {
-  color: #ff3333;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000342}}
-.warning-color {
-  color: #eebb22;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000343}}
-.disabled-color {
-  color: #cccccc;
+  color: #d6000b;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000351}}
@@ -12914,75 +12883,28 @@ a:not(.button) {
   transition: color 300ms ease-out;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000378}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003127}}
 .popup {
   width: 26.92308rem;
+  height: 38.46154rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000380}}
-.popup .popup-header {
-  padding-top: 0.76923rem;
-  padding-bottom: 0.76923rem;
-  background: #1870bb;
-  border-bottom: solid #2556ae 3px;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003131}}
+.popup .header {
+  height: 6.30769rem;
+  padding-top: 2.23077rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000385}}
-.popup .popup-header h1, .popup .popup-header h2, .popup .popup-header h3, .popup .popup-header h4, .popup .popup-header h5, .popup .popup-header h6 {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003134}}
+.popup .header h1, .popup .header h2, .popup .header h3, .popup .header h4, .popup .header h5, .popup .header h6 {
   margin: 0;
   color: #ffffff;
+  font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000390}}
-.popup .popup-menu {
-  padding-top: 1.53846rem;
-  padding-bottom: 1.53846rem;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003141}}
+.popup .content {
+  height: 28.69231rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\0000393}}
-.popup .popup-menu .item {
-  width: 100%;
-  padding: 0.53846rem 0.76923rem 0.76923rem 0.76923rem;
-  background: #444444;
-  border-bottom: solid #060606 3px;
-  cursor: pointer;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  -moz-transition: all 100ms ease-out;
-  -o-transition: all 100ms ease-out;
-  -webkit-transition: all 100ms ease-out;
-  transition: all 100ms ease-out;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003101}}
-.popup .popup-menu .item:hover {
-  padding-top: 0.76923rem;
-  background: #5e6063;
-  border-bottom-width: 0px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003109}}
-.popup .popup-content .item {
-  padding-top: 0.53846rem;
-  padding-bottom: 0.53846rem;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003112}}
-.popup .popup-content .item.bordered {
-  border-bottom: dashed 0.07692rem #444444;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003113}}
-.popup .popup-content .item.title {
-  background: #006633;
-  border-bottom: solid #004d26 2px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003116}}
-.popup .popup-content .item.title i {
-  color: #639b5a;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003118}}
-.popup .popup-content .item.selected {
-  background: #444444;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003120}}
-.popup .popup-content .item.selected i {
-  color: #1870bb;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003122}}
-.popup .popup-content .item i {
-  color: #5e6063;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003145}}
+.popup .nav-bar {
+  height: 3.46154rem;
+  background: #33373d;
 }

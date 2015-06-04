@@ -86,43 +86,51 @@ $font-weight-bold: bold !default;
 // Helpers colors
 $white: #ffffff;
 $black: #000000;
+// Grays and variations
+$gray-dark: #171b21;
+$gray: #222830;
+$gray-light: #33373d;
+$gray-light-2x: #5d6166;
 
 // Primary colors - Green and variations
-$primary-color: #006633;
-$primary-color-dark: darken($primary-color, 5%);
-$primary-color-light: #588b48;
-$primary-color-light-2x: #639b5a;
-$primary-color-light-3x: #a9e09d;
+// $primary-color: #006633;
+// $primary-color-dark: darken($primary-color, 5%);
+// $primary-color-light: #588b48;
+// $primary-color-light-2x: #639b5a;
+// $primary-color-light-3x: #a9e09d;
 // Secondary colors - Gray and variations
-$secondary-color-dark-4x: #060606;
-$secondary-color-dark-3x: #333333;
-$secondary-color-dark-2x: #444444;
-$secondary-color-dark: #5e6063;
-$secondary-color: #808184;
-$secondary-color-light: #b7b7b7;
-$secondary-color-light-2x: #cccccc;
-$secondary-color-light-3x: #efefef;
-$secondary-color-light-4x: #fdfdfd;
+// $secondary-color-dark-4x: #060606;
+// $secondary-color-dark-3x: #333333;
+// $secondary-color-dark-2x: #444444;
+// $secondary-color-dark: #5e6063;
+// $secondary-color: #808184;
+// $secondary-color-light: #b7b7b7;
+// $secondary-color-light-2x: #cccccc;
+// $secondary-color-light-3x: #efefef;
+// $secondary-color-light-4x: #fdfdfd;
 // Success colors - Blue and variations
-$success-color: #1870bb;
-$success-color-dark: #2556ae;
-$success-color-light: #5897f3;
-$success-color-light-2x: #749ad6;
-$success-color-light-3x: lighten($success-color-light-2x, 32%);
+// $success-color: #1870bb;
+// $success-color-dark: #2556ae;
+// $success-color-light: #5897f3;
+// $success-color-light-2x: #749ad6;
+// $success-color-light-3x: lighten($success-color-light-2x, 32%);
 // Alert colors - Red
-$alert-color: #ff3333;
-$alert-color-dark: darken($alert-color, 10%);
+// $alert-color: #ff3333;
+// $alert-color-dark: darken($alert-color, 10%);
 // Warning colors - Yellow and variations
-$warning-color: #eebb22;
-$warning-color-dark: #b08709;
-$warning-color-dark-2x: #aa7711;
-$warning-color-light: #fec325;
+// $warning-color: #eebb22;
+// $warning-color-dark: #b08709;
+// $warning-color-dark-2x: #aa7711;
+// $warning-color-light: #fec325;
 // Disabled color
-$disabled-color: $secondary-color-light-2x;
+// $disabled-color: $secondary-color-light-2x;
+
+// Primary colors - Red and variations
+$primary-color: #d6000b;
 
 // Global style colors
-$body-bg: $secondary-color-dark-3x;
-$body-font-color: $secondary-color-light-3x;
+$body-bg: $gray;
+$body-font-color: $white;
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -139,7 +147,7 @@ $paragraph-font-size: rem-calc($base-font-size);
 $small-font-size: 70% !default;
 
 // <hr>
-$hr-border-color: $secondary-color;
+// $hr-border-color: $secondary-color;
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - -
