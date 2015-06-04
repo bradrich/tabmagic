@@ -139,11 +139,13 @@ a:not(.button) {
 	}
 	// Content
 	.content {
-		height: rem-calc(473);
+		height: rem-calc(463);
 	}
 	// Bottom nav bar
 	.nav-bar {
-		height: rem-calc(45);
+		height: rem-calc(55);
+		padding-top: rem-calc(7);
 		background: $gray-light;
+		line-height: rem-calc(10) !important;
 	}
 }

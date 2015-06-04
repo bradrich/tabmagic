@@ -12886,7 +12886,7 @@ a:not(.button) {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003127}}
 .popup {
   width: 26.92308rem;
-  height: 38.46154rem;
+  height: 46.15385rem;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003131}}
 .popup .header {
@@ -12901,10 +12901,12 @@ a:not(.button) {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003141}}
 .popup .content {
-  height: 28.69231rem;
+  height: 35.61538rem;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003145}}
 .popup .nav-bar {
-  height: 3.46154rem;
+  height: 4.23077rem;
+  padding-top: 0.53846rem;
   background: #33373d;
+  line-height: 0.76923rem !important;
 }
