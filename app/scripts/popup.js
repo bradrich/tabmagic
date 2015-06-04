@@ -49,14 +49,14 @@ function($scope, $q, $utils, $moment){
 		// Set recently closed sessions
 		$scope.recentlyClosedSessions = sessions;
 
-		console.log($scope.recentlyClosedSessions);
+		// console.log($scope.recentlyClosedSessions);
 
-		// Remove unwanted urls from sessions
-		angular.forEach($scope.recentlyClosedSessions, function(session, sIndex){
-			if(session.tab.url.indexOf('chrome-extension:') > -1 || session.tab.url.indexOf('chrome:') > -1 || session.tab.url.indexOf('chrome-devtools:') > -1 || session.tab.url.indexOf('file:') > -1 || session.tab.url.indexOf('chrome.google.com/webstore') > -1){
-				$scope.recentlyClosedSessions.splice(sIndex, 1);
-			}
-		});
+		// // Remove unwanted urls from sessions
+		// angular.forEach($scope.recentlyClosedSessions, function(session, sIndex){
+		// 	if(session.tab.url.indexOf('chrome-extension:') > -1 || session.tab.url.indexOf('chrome:') > -1 || session.tab.url.indexOf('chrome-devtools:') > -1 || session.tab.url.indexOf('file:') > -1 || session.tab.url.indexOf('chrome.google.com/webstore') > -1){
+		// 		$scope.recentlyClosedSessions.splice(sIndex, 1);
+		// 	}
+		// });
 
 	});
 
