@@ -1,47 +1,50 @@
 'use strict';
 
 tabMagicApp.controller('PopUpCtrl', [
+	'$tabs',
+	'$windows',
+	'$sessions',
 	'$scope',
 	'$q',
 	'$utils',
 	'$moment',
-function($scope, $q, $utils, $moment){
+function($tabs, $windows, $sessions, $scope, $q, $utils, $moment){
 
 	// Navigation
 	$scope.navigation =  'recentlyClosed';
 
 	// Function to return a promise containing all windows data
-	var getWindows = function(){
-		var deferred = $q.defer();
-		chrome.windows.getAll({ populate: true }, function(windows){
-			deferred.resolve(windows);
-		});
-		return deferred.promise;
-	};
+	// var getWindows = function(){
+	// 	var deferred = $q.defer();
+	// 	chrome.windows.getAll({ populate: true }, function(windows){
+	// 		deferred.resolve(windows);
+	// 	});
+	// 	return deferred.promise;
+	// };
 
 	// Function to return a promise containing newly created tab data
-	var createTab = function(url){
-		var deferred = $q.defer();
-		chrome.tabs.create({ url: url }, function(tab){
-			deferred.resolve(tab);
-		});
-		return deferred.promise;
-	};
+	// var createTab = function(url){
+	// 	var deferred = $q.defer();
+	// 	chrome.tabs.create({ url: url }, function(tab){
+	// 		deferred.resolve(tab);
+	// 	});
+	// 	return deferred.promise;
+	// };
 
 	// Function to return a promise containing recently closed session data
-	var getRecentlyClosedSessions = function(){
-		var deferred = $q.defer();
-		chrome.sessions.getRecentlyClosed(function(sessions){
-			deferred.resolve(sessions);
-		});
-		return deferred.promise;
-	};
+	// var getRecentlyClosedSessions = function(){
+	// 	var deferred = $q.defer();
+	// 	chrome.sessions.getRecentlyClosed(function(sessions){
+	// 		deferred.resolve(sessions);
+	// 	});
+	// 	return deferred.promise;
+	// };
 
 	// Remove any previously stored tabs
 	$utils.dataStorage.clearAll();
 
 	// Get recently closed sessions
-	getRecentlyClosedSessions().then(function(sessions){
+	$sessions.getRecentlyClosed().then(function(sessions){
 
 		// Set collapsed
 		$scope.sessionsCollapsed = false;
@@ -61,7 +64,7 @@ function($scope, $q, $utils, $moment){
 	});
 
 	// Get windows
-	getWindows().then(function(windows){
+	$windows.getAll().then(function(windows){
 
 		// Set windows
 		$scope.windows = windows;
@@ -110,7 +113,7 @@ function($scope, $q, $utils, $moment){
 	$scope.createTab = function(fromRecent, fromBringToOne, sendAll){
 
 		// Handle fromRecent-based request
-		if(!fromBringToOne && fromRecent){
+		if(fromRecent && !fromBringToOne){
 
 			// Loop through all of the recently closed sessions to find selected sessions
 			angular.forEach($scope.recentlyClosedSessions, function(session){
@@ -132,7 +135,7 @@ function($scope, $q, $utils, $moment){
 				angular.forEach($scope.selectedTabs, function(tab){
 
 					// Create tab
-					createTab(tab.url);
+					$tabs.create(tab.url);
 
 				});
 
@@ -140,7 +143,7 @@ function($scope, $q, $utils, $moment){
 
 		}
 		// Handle fromBringToOne-based request
-		else if(fromBringToOne && !fromRecent){
+		else if(!fromRecent && fromBringToOne){
 
 			// Loop through all windows and tabs to find selected tabs
 			angular.forEach($scope.windows, function(window){
@@ -171,7 +174,7 @@ function($scope, $q, $utils, $moment){
 				$utils.dataStorage.set('tmDateTime', $moment());
 
 				// Create
-				createTab('newtab.html').then(function(tab){
+				$tabs.create('newtab.html').then(function(tab){
 
 					// Save new tab to data storage
 					$scope.newTab = tab;
@@ -186,31 +189,3 @@ function($scope, $q, $utils, $moment){
 	};
 
 }]);
-
-tabMagicApp.directive('addBorder', function(){
-	return {
-		restrict: 'A',
-		link: function(scope, element, attrs){
-
-			// Check that the requested id is available
-			var trigger = element.parent().find('#' + attrs.addBorder);
-			if(trigger.length > 0){
-
-				// Handle trigger scroll event
-				trigger.scroll(function(){
-
-					// If trigger is scrolled, add border
-					if(trigger.scrollTop() > 5){
-						element.addClass('bordered');
-					}
-					else{
-						element.removeClass('bordered');
-					}
-
-				});
-
-			}
-
-		}
-	};
-});
