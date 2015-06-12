@@ -13,33 +13,6 @@ function($tabs, $windows, $sessions, $scope, $q, $utils, $moment){
 	// Navigation
 	$scope.navigation =  'recentlyClosed';
 
-	// Function to return a promise containing all windows data
-	// var getWindows = function(){
-	// 	var deferred = $q.defer();
-	// 	chrome.windows.getAll({ populate: true }, function(windows){
-	// 		deferred.resolve(windows);
-	// 	});
-	// 	return deferred.promise;
-	// };
-
-	// Function to return a promise containing newly created tab data
-	// var createTab = function(url){
-	// 	var deferred = $q.defer();
-	// 	chrome.tabs.create({ url: url }, function(tab){
-	// 		deferred.resolve(tab);
-	// 	});
-	// 	return deferred.promise;
-	// };
-
-	// Function to return a promise containing recently closed session data
-	// var getRecentlyClosedSessions = function(){
-	// 	var deferred = $q.defer();
-	// 	chrome.sessions.getRecentlyClosed(function(sessions){
-	// 		deferred.resolve(sessions);
-	// 	});
-	// 	return deferred.promise;
-	// };
-
 	// Remove any previously stored tabs
 	$utils.dataStorage.clearAll();
 
@@ -50,16 +23,7 @@ function($tabs, $windows, $sessions, $scope, $q, $utils, $moment){
 		$scope.sessionsCollapsed = false;
 
 		// Set recently closed sessions
-		$scope.recentlyClosedSessions = sessions;
-
-		// console.log($scope.recentlyClosedSessions);
-
-		// // Remove unwanted urls from sessions
-		// angular.forEach($scope.recentlyClosedSessions, function(session, sIndex){
-		// 	if(session.tab.url.indexOf('chrome-extension:') > -1 || session.tab.url.indexOf('chrome:') > -1 || session.tab.url.indexOf('chrome-devtools:') > -1 || session.tab.url.indexOf('file:') > -1 || session.tab.url.indexOf('chrome.google.com/webstore') > -1){
-		// 		$scope.recentlyClosedSessions.splice(sIndex, 1);
-		// 	}
-		// });
+		$scope.recentlyClosedSessions = sessions.filter($sessions.removeSessionsBasedOnUrl);
 
 	});
 
@@ -185,6 +149,18 @@ function($tabs, $windows, $sessions, $scope, $q, $utils, $moment){
 			}
 
 		}
+
+	};
+
+	// Check if tab is suspended
+	$scope.tabIsSuspended = function(){
+
+		// Get the active tab
+		$tabs.query({ active: true, currentWindow: true }).then(function(tabs){
+			if(tabs.length > 0){
+				return $tabs.isSuspended(tabs[0]);
+			}
+		});
 
 	};
 

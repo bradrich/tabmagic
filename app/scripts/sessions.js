@@ -14,6 +14,15 @@ function($q){
 				deferred.resolve(sessions);
 			});
 			return deferred.promise;
+		},
+
+		// Session url filter
+		removeSessionsBasedOnUrl: function(session){
+			return !(session.tab.url.indexOf('chrome-extension:') > -1 ||
+				session.tab.url.indexOf('chrome:') > -1 ||
+				session.tab.url.indexOf('chrome-devtools:') > -1 ||
+				session.tab.url.indexOf('file:') > -1 ||
+				session.tab.url.indexOf('chrome.google.com/webstore') > -1);
 		}
 
 	};

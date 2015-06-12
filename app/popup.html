@@ -78,7 +78,17 @@
 				<!-- Suspend -->
 				<div class="row fx-fade-up" ng-show="navigation === 'suspend'">
 					<div class="small-12 columns">
-						Suspend
+
+						<!-- This Tab -->
+						<div class="row" ng-show="tabIsSuspended()">
+							<div class="small-12 columns">Tab is currently suspended</div>
+						</div>
+						<div class="row clickable" ng-show="!tabIsSuspended()">
+							<div class="small-1 columns no-padding-right"><i class="fa icon-pause-circle-outline fa-lg primary-color"></i></div>
+							<div class="small-11 columns">Suspend this tab</div>
+						</div>
+						<!-- End This Tab -->
+
 					</div>
 				</div>
 				<!-- End Suspend -->
