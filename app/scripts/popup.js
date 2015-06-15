@@ -27,18 +27,30 @@ function($tabs, $windows, $sessions, $scope, $q, $utils, $moment){
 
 	});
 
+	// Windows
+	$scope.windows = [];
+
 	// Get windows
-	$windows.getAll().then(function(windows){
+	$scope.getAllWindows = function(){
 
-		// Set windows
-		$scope.windows = windows;
+		// Reset needed data
+		$scope.windows.length = 0;
+		$scope.emptySelectedTabs();
 
-		// Set necessary attributes
-		angular.forEach($scope.windows, function(window){
-			window.tmCollapsed = false;
+		// Make promise
+		$windows.getAll().then(function(windows){
+
+			// Set windows
+			$scope.windows = windows;
+
+			// Set necessary attributes
+			angular.forEach($scope.windows, function(window){
+				window.tmCollapsed = false;
+			});
+
 		});
 
-	});
+	};
 
 	// Selected tabs (to be sent to new tab)
 	$scope.selectedTabs = [];
@@ -59,7 +71,7 @@ function($tabs, $windows, $sessions, $scope, $q, $utils, $moment){
 			});
 		}
 		// Bring to one
-		else if('bringToOne' === button){
+		else if('bringToOne' === button || 'suspend' === button){
 			angular.forEach($scope.windows, function(window){
 				angular.forEach(window.tabs, function(tab){
 					if(tab.tmSelected){
@@ -73,87 +85,92 @@ function($tabs, $windows, $sessions, $scope, $q, $utils, $moment){
 
 	};
 
-	// Create new tab
-	$scope.createTab = function(fromRecent, fromBringToOne, sendAll){
+	// Bring to one tab
+	$scope.bringToOneTab = function(sendAll){
 
-		// Handle fromRecent-based request
-		if(fromRecent && !fromBringToOne){
-
-			// Loop through all of the recently closed sessions to find selected sessions
-			angular.forEach($scope.recentlyClosedSessions, function(session){
+		// Loop through all windows and tabs to find selected tabs
+		angular.forEach($scope.windows, function(window){
+			angular.forEach(window.tabs, function(tab){
 
 				// Is this for all tabs?
 				if(sendAll){
-					$scope.selectedTabs.push(session.tab);
+					$scope.selectedTabs.push(tab);
+					$scope.selectedTabsIds.push(tab.id);
 				}
-				else if(session.tmSelected){
-					$scope.selectedTabs.push(session.tab);
+				// Not all tabs, is tab selected?
+				else if(tab.tmSelected){
+					$scope.selectedTabs.push(tab);
+					$scope.selectedTabsIds.push(tab.id);
 				}
 
 			});
+		});
 
-			// If there are any selected tabs
-			if($scope.selectedTabs.length > 0){
+		// If there are any selected tabs
+		if($scope.selectedTabs.length > 0){
 
-				// Loop through selected tabs and create a new tab for each
-				angular.forEach($scope.selectedTabs, function(tab){
+			// Store selected tabs
+			$utils.dataStorage.set('tmSelectedTabs', $scope.selectedTabs);
+			$utils.dataStorage.set('tmSelectedTabsIds', $scope.selectedTabsIds);
 
-					// Create tab
-					$tabs.create(tab.url);
+			// Store creation time
+			$utils.dataStorage.set('tmDateTime', $moment());
 
-				});
+			// Create
+			$tabs.create('newtab.html').then(function(tab){
 
-			}
+				// Save new tab to data storage
+				$scope.newTab = tab;
+				$utils.dataStorage.set('tmNewTab', $scope.newTab);
 
-		}
-		// Handle fromBringToOne-based request
-		else if(!fromRecent && fromBringToOne){
-
-			// Loop through all windows and tabs to find selected tabs
-			angular.forEach($scope.windows, function(window){
-				angular.forEach(window.tabs, function(tab){
-
-					// Is this for all tabs?
-					if(sendAll){
-						$scope.selectedTabs.push(tab);
-						$scope.selectedTabsIds.push(tab.id);
-					}
-					// Not all tabs, is tab selected?
-					else if(tab.tmSelected){
-						$scope.selectedTabs.push(tab);
-						$scope.selectedTabsIds.push(tab.id);
-					}
-
-				});
 			});
 
-			// If there are any selected tabs
-			if($scope.selectedTabs.length > 0){
-
-				// Store selected tabs
-				$utils.dataStorage.set('tmSelectedTabs', $scope.selectedTabs);
-				$utils.dataStorage.set('tmSelectedTabsIds', $scope.selectedTabsIds);
-
-				// Store creation time
-				$utils.dataStorage.set('tmDateTime', $moment());
-
-				// Create
-				$tabs.create('newtab.html').then(function(tab){
-
-					// Save new tab to data storage
-					$scope.newTab = tab;
-					$utils.dataStorage.set('tmNewTab', $scope.newTab);
-
-				});
-
-			}
-
 		}
+
+		// Empty selectedTabs
+		$scope.emptySelectedTabs();
 
 	};
 
-	// Check if tab is suspended
-	$scope.tabIsSuspended = function(){
+	// Reopen recently closed
+	$scope.recentlyClosedReopen = function(){
+
+		// Loop through all of the recently closed sessions to find selected sessions
+		angular.forEach($scope.recentlyClosedSessions, function(session){
+
+			// Is this for all tabs?
+			if(session.tmSelected){
+				$scope.selectedTabs.push(session.tab);
+			}
+
+		});
+
+		// If there are any selected tabs
+		if($scope.selectedTabs.length > 0){
+
+			// Loop through selected tabs and create a new tab for each
+			angular.forEach($scope.selectedTabs, function(tab){
+
+				// Create tab
+				$tabs.create(tab.url);
+
+			});
+
+		}
+
+		// Empty selected tabs
+		$scope.emptySelectedTabs();
+
+	};
+
+	// Empty selected tabs arrays
+	$scope.emptySelectedTabs = function(){
+		$scope.selectedTabs.length = 0;
+		$scope.selectedTabsIds.length = 0;
+	};
+
+	// Check if the current tab is suspended
+	$scope.currentTabIsSuspended = function(){
 
 		// Get the active tab
 		$tabs.query({ active: true, currentWindow: true }).then(function(tabs){
@@ -161,6 +178,41 @@ function($tabs, $windows, $sessions, $scope, $q, $utils, $moment){
 				return $tabs.isSuspended(tabs[0]);
 			}
 		});
+
+	};
+
+	// Suspend current tab
+	$scope.suspendCurrentTab = function(){
+
+		// Get the current tab
+		$tabs.query({ active: true, currentWindow: true }).then(function(tabs){
+			if(tabs.length > 0){
+				$scope.suspendTab(tabs[0]);
+			}
+		});
+
+	};
+
+	$scope.suspendSelectedTabs = function(){
+		return;
+	};
+
+	// Suspend tab
+	$scope.suspendTab = function(tab){
+
+		// Make sure we have a legit tab
+		if('undefined' !== typeof(tab) && !$tabs.isSuspended(tab)){
+
+			// Create suspended url
+			var url = chrome.extension.getURL('suspended.html#uri=' + tab.url);
+
+			// Send message to contentScript
+			chrome.tabs.sendMessage(tab.id, {
+				action: 'confirmSuspendTab',
+				suspendedTabUrl: url
+			});
+
+		}
 
 	};
 

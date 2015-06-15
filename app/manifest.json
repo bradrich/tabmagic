@@ -7,6 +7,7 @@
     "16": "images/icon-16.png",
     "128": "images/icon-128.png"
   },
+  "web_accessible_resources": ["suspended.html"],
   "default_locale": "en",
   "background": {
     "scripts": [

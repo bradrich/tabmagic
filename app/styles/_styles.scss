@@ -116,10 +116,18 @@ a:not(.button) {
 	.content {
 		z-index: 10;
 		height: rem-calc(461);
+		.title {
+			margin-top: rem-calc(10);
+			margin-bottom: rem-calc(5);
+			padding-top: rem-calc(10);
+			padding-bottom: rem-calc(10);
+			background: $gray-dark;
+		}
 		.item {
 			padding-top: rem-calc(5);
 			padding-bottom: rem-calc(5);
 			color: $gray-light-3x;
+			&:hover { color: $white; }
 			&.selected { color: $white; }
 			&.window {
 				color: $white;
