@@ -1,8 +1,6 @@
 'use strict';
 
-tabMagicApp.factory('$sessions', [
-	'$q',
-function($q){
+tabMagicApp.factory('$sessions', function($q){
 
 	// API of factory
 	var factory = {
@@ -31,4 +29,4 @@ function($q){
 
 	return factory;
 
-}]);
+});

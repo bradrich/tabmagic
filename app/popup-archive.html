@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<!-- build:css styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+	<!-- build:css styles/vendor.css -->
+	<link rel="stylesheet" href="bower_components/icomoon/styles/style.css">
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+	<!-- endbower -->
+	<!-- endbuild -->
+</head>
+<body id="ng-app" ng-app="TabMagicApp">
+
+	<div class="popup" ng-controller="PopUpCtrl">
+
+		<!-- Header -->
+		<div class="row header overflow-visible" add-border="content">
+			<div class="small-12 columns">
+				<h4><span class="primary-color">TAB</span>MAGIC</h4>
+			</div>
+			<div class="action-button text-center clickable fx-fade-normal" title="Restore selected" ng-show="actionButtonShow('recentlyClosed') && navigation === 'recentlyClosed'" ng-click="recentlyClosedReopen()">
+				<i class="fa icon-refresh fa-2x"></i>
+			</div>
+			<div class="action-button text-center clickable fx-fade-normal" title="Bring selected to one" ng-show="actionButtonShow('bringToOne') && navigation === 'bringToOne'" ng-click="bringToOneTab(false)">
+				<i class="fa icon-filter-list fa-2x"></i>
+			</div>
+			<div class="action-button text-center clickable fx-fade-normal" title="Suspend selected" ng-show="actionButtonShow('suspend') && navigation === 'suspend'" ng-click="suspendSelectedTabs()">
+				<i class="fa icon-pause fa-2x"></i>
+			</div>
+		</div>
+		<!-- End Header -->
+
+		<!-- Content -->
+		<div id="content" class="row content" custom-scrollbar="#5d6166" max-height="461">
+			<div class="small-12 columns">
+
+				<!-- Recent -->
+				<div class="row fx-fade-up" ng-show="navigation === 'recentlyClosed'">
+					<div class="small-12 columns">
+						<div class="row item clickable" ng-repeat="session in recentlyClosedSessions" ng-class="{ even: $even, selected: session.tmSelected }" ng-click="session.tmSelected = !session.tmSelected">
+							<div class="small-1 columns no-padding-right" ng-show="'' !== session.tab.favIconUrl && session.tab.favIconUrl">
+								<img ng-src="{{session.tab.favIconUrl}}" />
+							</div>
+							<div class="columns" ng-class="{ 'small-11': '' !== session.tab.favIconUrl && session.tab.favIconUrl, 'small-12': '' === session.tab.favIconUrl || !session.tab.favIconUrl }" ng-bind="session.tab.title"></div>
+						</div>
+					</div>
+				</div>
+				<!-- End Recent -->
+
+				<!-- Bring to One -->
+				<div class="row fx-fade-up" ng-show="navigation === 'bringToOne'">
+					<div class="small-12 columns">
+						<div class="row" ng-repeat="window in windows">
+							<div class="small-12 columns">
+								<div class="row item window clickable" ng-click="window.tmCollapsed = !window.tmCollapsed">
+									<div class="small-10 columns">
+										<span ng-show="window.focused">Window #{{$index + 1}} (Current)</span>
+										<span ng-show="!window.focused">Window #{{$index + 1}}</span>
+									</div>
+									<div class="small-2 columns text-right">
+										<i class="fa icon-expand-more fa-lg" ng-show="!window.tmCollapsed" disable-animate></i>
+										<i class="fa icon-chevron-right fa-lg" ng-show="window.tmCollapsed" disable-animate></i>
+									</div>
+								</div>
+								<div class="collapsable" collapse="window.tmCollapsed">
+									<div class="row item clickable" ng-class="{ selected: tab.tmSelected }" ng-repeat="tab in window.tabs" ng-click="tab.tmSelected = !tab.tmSelected">
+										<div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
+											<img ng-src="{{tab.favIconUrl}}" />
+										</div>
+										<div class="columns" ng-class="{ 'small-11': '' !== tab.favIconUrl && tab.favIconUrl, 'small-12': '' === tab.favIconUrl || !tab.favIconUrl }" ng-bind="tab.title"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Bring to One -->
+
+				<!-- Suspend -->
+				<div class="row fx-fade-up" ng-show="navigation === 'suspend'">
+					<div class="small-12 columns">
+
+						<!-- This Tab -->
+						<div class="row item" ng-show="currentTabIsSuspended()">
+							<div class="small-12 columns">Tab is currently suspended</div>
+						</div>
+						<div class="row item clickable" ng-show="currentTabIsSuspended()">
+							<div class="small-1 columns no-padding-right"><i class="fa icon-play-circle-outline fa-lg primary-color"></i></div>
+							<div class="small-11 columns">Unsuspend this tab</div>
+						</div>
+						<div class="row item clickable" ng-show="!currentTabIsSuspended()" ng-click="suspendCurrentTab()">
+							<div class="small-1 columns no-padding-right"><i class="fa icon-pause-circle-outline fa-lg primary-color"></i></div>
+							<div class="small-11 columns">Suspend this tab</div>
+						</div>
+						<!-- End This Tab -->
+
+						<!-- Other Tabs -->
+						<div class="row item clickable">
+							<div class="small-1 columns no-padding-right"><i class="fa icon-pause-circle-fill fa-lg primary-color"></i></div>
+							<div class="small-11 columns">Suspend all tabs</div>
+						</div>
+						<div class="row item clickable">
+							<div class="small-1 columns no-padding-right"><i class="fa icon-play-circle-fill fa-lg primary-color"></i></div>
+							<div class="small-11 columns">Unsuspend all tabs</div>
+						</div>
+						<!-- End Other Tabs -->
+
+						<!-- Select Tabs -->
+						<div class="row title">
+							<div class="small-12 columns">Suspend select tabs</div>
+						</div>
+						<div class="row" ng-repeat="window in windows">
+							<div class="small-12 columns">
+								<div class="row item window clickable" ng-click="window.tmCollapsed = !window.tmCollapsed">
+									<div class="small-10 columns">
+										<span ng-show="window.focused">Window #{{$index + 1}} (Current)</span>
+										<span ng-show="!window.focused">Window #{{$index + 1}}</span>
+									</div>
+									<div class="small-2 columns text-right">
+										<i class="fa icon-expand-more fa-lg" ng-show="!window.tmCollapsed" disable-animate></i>
+										<i class="fa icon-chevron-right fa-lg" ng-show="window.tmCollapsed" disable-animate></i>
+									</div>
+								</div>
+								<div class="collapsable" collapse="window.tmCollapsed">
+									<div class="row item clickable" ng-class="{ selected: tab.tmSelected }" ng-repeat="tab in window.tabs" ng-click="tab.tmSelected = !tab.tmSelected">
+										<div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
+											<img ng-src="{{tab.favIconUrl}}" />
+										</div>
+										<div class="columns" ng-class="{ 'small-11': '' !== tab.favIconUrl && tab.favIconUrl, 'small-12': '' === tab.favIconUrl || !tab.favIconUrl }" ng-bind="tab.title"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- End Select Tabs -->
+
+					</div>
+				</div>
+				<!-- End Suspend -->
+
+				<!-- Settings -->
+				<div class="row fx-fade-up" ng-show="navigation === 'settings'">
+					<div class="small-12 columns">
+						Settings
+					</div>
+				</div>
+				<!-- End Settings -->
+
+			</div>
+		</div>
+		<!-- End Content -->
+
+		<!-- Nav Bar -->
+		<div class="row nav-bar">
+			<div class="small-3 columns text-center clickable" ng-class="{ selected: navigation === 'recentlyClosed' }" ng-click="navigation = 'recentlyClosed'">
+				<i class="fa icon-history fa-2x"></i><br />
+				<small>Recent</small>
+			</div>
+			<div class="small-3 columns text-center clickable" ng-class="{ selected: navigation === 'bringToOne' }" ng-click="navigation = 'bringToOne'; getAllWindows()">
+				<i class="fa icon-filter-list fa-2x"></i><br />
+				<small>Bring to One</small>
+			</div>
+			<div class="small-3 columns text-center clickable" ng-class="{ selected: navigation === 'suspend' }" ng-click="navigation = 'suspend'; getAllWindows()">
+				<i class="fa icon-pause-circle-outline fa-2x"></i><br />
+				<small>Suspend</small>
+			</div>
+			<div class="small-3 columns text-center clickable" ng-class="{ selected: navigation === 'settings' }" ng-click="navigation = 'settings'">
+				<i class="fa icon-settings fa-2x"></i><br />
+				<small>Settings</small>
+			</div>
+		</div>
+		<!-- End Nav Bar -->
+
+	</div>
+
+	<!-- build:js scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
+	<script src="bower_components/angular-aria/angular-aria.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+	<script src="bower_components/angular-material/angular-material.js"></script>
+	<script src="bower_components/moment/moment.js"></script>
+	<script src="bower_components/angular-momentjs/angular-momentjs.js"></script>
+	<script src="bower_components/fastclick/lib/fastclick.js"></script>
+	<script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+	<script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
+	<script src="bower_components/foundation/js/foundation.js"></script>
+	<script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
+	<script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+	<script src="bower_components/ngFx/dist/ngFx.js"></script>
+	<script src="bower_components/jquery.nicescroll/jquery.nicescroll.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:js scripts/scripts.js -->
+	<script src="scripts/app.js"></script>
+	<script src="scripts/tabs.js"></script>
+	<script src="scripts/windows.js"></script>
+	<script src="scripts/sessions.js"></script>
+	<script src="scripts/popup.js"></script>
+	<script src="scripts/utils.js"></script>
+	<!-- endbuild -->
+
+</body>
+</html>

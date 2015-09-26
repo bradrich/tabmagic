@@ -1,11 +1,6 @@
 'use strict';
 
-tabMagicApp.factory('$utils', [
-	'$rootScope',
-	'$location',
-	'$anchorScroll',
-	'localStorageService',
-function($rootScope, $location, $anchorScroll, localStorageService){
+tabMagicApp.factory('$utils', function($rootScope, $location, $anchorScroll, localStorageService){
 
 	// API of factory
 	var factory = {
@@ -54,7 +49,7 @@ function($rootScope, $location, $anchorScroll, localStorageService){
 
 	return factory;
 
-}]);
+});
 
 tabMagicApp.directive('customScrollbar', function(){
 	return {

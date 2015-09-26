@@ -1,11 +1,6 @@
 'use strict';
 
-tabMagicApp.controller('NewTabCtrl', [
-	'$scope',
-	'$q',
-	'$utils',
-	'$moment',
-function($scope, $q, $utils, $moment){
+tabMagicApp.controller('NewTabCtrl', function($scope, $q, $utils, $moment){
 
 	// Function to remove a tab
 	var removeTabs = function(tabIds){
@@ -27,4 +22,4 @@ function($scope, $q, $utils, $moment){
 	console.log($scope.selectedTabsIds);
 	console.log($scope.dateTime);
 
-}]);
+});

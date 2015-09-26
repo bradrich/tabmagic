@@ -40,7 +40,7 @@ module.exports = function (grunt) {
 				}
 			},
 			compass: {
-				files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
+				files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}', '<%= config.app %>/bower_components/**/*..scss'],
 				tasks: ['compass:chrome']
 			},
 			gruntfile: {
@@ -165,12 +165,16 @@ module.exports = function (grunt) {
 				src: ['<%= config.app %>/*.html'],
 				exclude: [
 					/font-awesome.css/,
-					/foundation.css/
+					/foundation.css/,
+					/angular-material.css/
 				]
 			},
 			sass: {
 				src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
-				ignorePath: '<%= config.app %>/bower_components/'
+				ignorePath: '<%= config.app %>/bower_components/',
+				exclude: [
+					/font-awesome/
+				]
 			}
 		},
 
@@ -264,6 +268,19 @@ module.exports = function (grunt) {
 		// concat: {
 		//   dist: {}
 		// },
+
+		// ng-annotate tries to make the code safe for minification automatically
+		// by using the Angular long form for dependency injection.
+		ngAnnotate: {
+			dist: {
+				files: [{
+					expand: true,
+					cwd: '.tmp/concat/scripts',
+					src: '*.js',
+					dest: '.tmp/concat/scripts'
+				}]
+			}
+		},
 
 		// Copies remaining files to places other tasks can use
 		copy: {
@@ -359,6 +376,7 @@ module.exports = function (grunt) {
 		'cssmin',
 		'concat',
 		'uglify',
+		'ngAnnotate',
 		'copy',
 		'usemin',
 		'compress'

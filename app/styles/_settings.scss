@@ -77,7 +77,8 @@ $row-width-small: rem-calc(350);
 $fa-font-path: "https://netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts" !default; // for referencing Bootstrap CDN font files directly
 
 // Default font stack
-$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif: Roboto, 'Helvetica Neue', sans-serif;
+$font-family: Roboto, 'Helvetica Neue', sans-serif;
 
 // Default font weights
 $font-weight-normal: normal !default;
@@ -89,9 +90,12 @@ $black: #000000;
 // Grays and variations
 $gray-dark: #171b21;
 $gray: #222830;
-$gray-light: #33373d;
-$gray-light-2x: #5d6166;
-$gray-light-3x: lighten($gray-light-2x, 5%);
+$gray-alt: lighten($gray, 2%);
+// $gray-light: #33373d;
+$gray-light: lighten($gray, 8%);
+// $gray-light-2x: #5d6166;
+$gray-light-2x: lighten($gray, 14%);
+$gray-light-3x: lighten($gray, 30%);
 
 // Primary colors - Green and variations
 // $primary-color: #006633;
@@ -128,6 +132,8 @@ $gray-light-3x: lighten($gray-light-2x, 5%);
 
 // Primary colors - Red and variations
 $primary-color: #d6000b;
+$primary-color-dark: darken($primary-color, 10%);
+$primary-color-light: lighten($primary-color, 10%);
 
 // Global style colors
 $body-bg: $gray;
@@ -139,13 +145,13 @@ $body-font-color: $white;
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // Header font sizes
-$h5-font-size: rem-calc(20);
+$h5-font-size: rem-calc(18);
 
 // Paragraphs
 $paragraph-font-size: rem-calc($base-font-size);
 
 // Small
-$small-font-size: 70% !default;
+$small-font-size: 85% !default;
 
 // <hr>
 // $hr-border-color: $secondary-color;
