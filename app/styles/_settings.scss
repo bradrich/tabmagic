@@ -87,6 +87,7 @@ $font-weight-bold: bold !default;
 // Helpers colors
 $white: #ffffff;
 $black: #000000;
+
 // Grays and variations
 $gray-dark: #171b21;
 $gray: #222830;
@@ -97,39 +98,6 @@ $gray-light: lighten($gray, 8%);
 $gray-light-2x: lighten($gray, 14%);
 $gray-light-3x: lighten($gray, 30%);
 
-// Primary colors - Green and variations
-// $primary-color: #006633;
-// $primary-color-dark: darken($primary-color, 5%);
-// $primary-color-light: #588b48;
-// $primary-color-light-2x: #639b5a;
-// $primary-color-light-3x: #a9e09d;
-// Secondary colors - Gray and variations
-// $secondary-color-dark-4x: #060606;
-// $secondary-color-dark-3x: #333333;
-// $secondary-color-dark-2x: #444444;
-// $secondary-color-dark: #5e6063;
-// $secondary-color: #808184;
-// $secondary-color-light: #b7b7b7;
-// $secondary-color-light-2x: #cccccc;
-// $secondary-color-light-3x: #efefef;
-// $secondary-color-light-4x: #fdfdfd;
-// Success colors - Blue and variations
-// $success-color: #1870bb;
-// $success-color-dark: #2556ae;
-// $success-color-light: #5897f3;
-// $success-color-light-2x: #749ad6;
-// $success-color-light-3x: lighten($success-color-light-2x, 32%);
-// Alert colors - Red
-// $alert-color: #ff3333;
-// $alert-color-dark: darken($alert-color, 10%);
-// Warning colors - Yellow and variations
-// $warning-color: #eebb22;
-// $warning-color-dark: #b08709;
-// $warning-color-dark-2x: #aa7711;
-// $warning-color-light: #fec325;
-// Disabled color
-// $disabled-color: $secondary-color-light-2x;
-
 // Primary colors - Red and variations
 $primary-color: #d6000b;
 $primary-color-dark: darken($primary-color, 10%);
@@ -138,6 +106,11 @@ $primary-color-light: lighten($primary-color, 10%);
 // Global style colors
 $body-bg: $gray;
 $body-font-color: $white;
+
+// Border
+$microformat-border-width: 0px;
+$microformat-border-style: solid;
+$microformat-border-color: $gray-light;
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -155,6 +128,49 @@ $small-font-size: 85% !default;
 
 // <hr>
 // $hr-border-color: $secondary-color;
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+// 11. Forms
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Form spacing and positioning
+$form-spacing: rem-calc(12);
+
+// Labels
+$form-label-font-size: $paragraph-font-size;
+$form-label-font-color: $body-font-color;
+
+// Inputs
+$input-font-color: $gray;
+$input-placeholder-font-color: $gray-light;
+$input-font-size: $paragraph-font-size;
+$input-focus-bg-color: $white;
+$input-border-color: $microformat-border-color;
+$input-focus-border-color: $primary-color;
+$input-border-width: $microformat-border-width;
+$input-disabled-bg: $gray;
+$input-disabled-placeholder-font-color: $gray-light;
+$input-box-shadow: none;
+
+// Fieldsets
+$fieldset-border-color: $gray-light-3x;
+
+// Prefix and Postfix
+$input-prefix-bg: $microformat-border-color;
+$input-prefix-border-color: $input-prefix-bg;
+$input-prefix-border-size: 0;
+$input-prefix-font-color: $body-font-color;
+
+// Errors
+$input-error-message-padding: rem-calc(4 9 5 9);
+
+// Glowing effect (outline)
+$input-include-glowing-effect: false;
+
+// Selects
+$select-bg-color: $white;
+$select-hover-bg-color: $white;
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - -

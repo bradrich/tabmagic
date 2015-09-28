@@ -148,7 +148,7 @@
 							</div>
 							<div class="row" ng-repeat="window in windows.data">
 								<div class="small-12 columns">
-									<div class="row item window clickable" ng-click="window.tmCollapsed = !window.tmCollapsed">
+									<div class="row item window clickable" ng-class="{ collapsed: window.tmCollapsed }" ng-click="window.tmCollapsed = !window.tmCollapsed">
 										<div class="small-10 columns">
 											<span ng-show="window.focused">Window #{{$index + 1}} (Current)</span>
 											<span ng-show="!window.focused">Window #{{$index + 1}}</span>
@@ -221,7 +221,7 @@
 							</div>
 							<div class="row" ng-repeat="window in windows.data">
 								<div class="small-12 columns">
-									<div class="row item window clickable" ng-click="window.tmCollapsed = !window.tmCollapsed">
+									<div class="row item window clickable" ng-class="{ collapsed: window.tmCollapsed }" ng-click="window.tmCollapsed = !window.tmCollapsed">
 										<div class="small-10 columns">
 											<span ng-show="window.focused">Window #{{$index + 1}} (Current)</span>
 											<span ng-show="!window.focused">Window #{{$index + 1}}</span>
@@ -259,7 +259,7 @@
 							</div>
 							<div class="row">
 								<div class="small-12 columns">
-									<div class="row item window clickable small-margin-bottom" ng-click="settings.snooze.tmCollapsed = !settings.snooze.tmCollapsed">
+									<div class="row item window clickable small-margin-bottom" ng-class="{ collapsed: settings.snooze.tmCollapsed }" ng-click="settings.snooze.tmCollapsed = !settings.snooze.tmCollapsed">
 										<div class="small-10 columns">Snooze</div>
 										<div class="small-2 columns text-right">
 											<i class="fa icon-expand-more fa-lg" ng-show="!settings.snooze.tmCollapsed" disable-animate></i>
@@ -268,14 +268,69 @@
 									</div>
 									<div class="row overflow-hidden" collapse="settings.snooze.tmCollapsed">
 										<div class="small-4 columns">
-											<p><strong>Snooze Times</strong></p>
+											<p class="small-margin-top"><strong>Snooze Times</strong></p>
 										</div>
 										<div class="small-8 columns">
-											<md-input-container>
-												<md-select ng-model="settings.snooze.workdayStarts.model" placeholder="Workday Starts At">
-													<md-option ng-value="option" ng-repeat="option in settings.snooze.workdayStarts.options">{{option}}</md-option>
-												</md-select>
-											</md-input-container>
+											<div class="row">
+												<div class="small-6 columns">
+													<label for="workdayStarts" class="inline">Workday Starts</label>
+												</div>
+												<div class="small-6 columns">
+													<select id="workdayStarts" class="radius" ng-model="settings.snooze.workdayStarts.data" ng-options="option for option in settings.snooze.workdayStarts.options">
+														<option value="">-- Choose time --</option>
+													</select>
+												</div>
+											</div>
+											<div class="row">
+												<div class="small-6 columns">
+													<label for="workdayEnds" class="inline">Workday Ends</label>
+												</div>
+												<div class="small-6 columns">
+													<select id="workdayEnds" class="radius" ng-model="settings.snooze.workdayEnds.data" ng-options="option for option in settings.snooze.workdayEnds.options">
+														<option value="">-- Choose time --</option>
+													</select>
+												</div>
+											</div>
+											<div class="row">
+												<div class="small-6 columns">
+													<label for="weekStarts" class="inline">Week Starts</label>
+												</div>
+												<div class="small-6 columns">
+													<select id="weekStarts" class="radius" ng-model="settings.snooze.weekStarts.data" ng-options="option for option in settings.snooze.weekStarts.options">
+														<option value="">-- Choose time --</option>
+													</select>
+												</div>
+											</div>
+											<div class="row">
+												<div class="small-6 columns">
+													<label for="weekendStarts" class="inline">Weekend Starts</label>
+												</div>
+												<div class="small-6 columns">
+													<select id="weekendStarts" class="radius" ng-model="settings.snooze.weekendStarts.data" ng-options="option for option in settings.snooze.weekendStarts.options">
+														<option value="">-- Choose time --</option>
+													</select>
+												</div>
+											</div>
+											<div class="row">
+												<div class="small-6 columns">
+													<label for="laterToday" class="inline">Later Today</label>
+												</div>
+												<div class="small-6 columns">
+													<select id="laterToday" class="radius" ng-model="settings.snooze.laterToday.data" ng-options="option for option in settings.snooze.laterToday.options">
+														<option value="">-- Choose time --</option>
+													</select>
+												</div>
+											</div>
+											<div class="row">
+												<div class="small-6 columns">
+													<label for="someday" class="inline">Someday</label>
+												</div>
+												<div class="small-6 columns">
+													<select id="someday" class="radius" ng-model="settings.snooze.someday.data" ng-options="option for option in settings.snooze.someday.options">
+														<option value="">-- Choose time --</option>
+													</select>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>

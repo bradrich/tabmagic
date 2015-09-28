@@ -4414,18 +4414,18 @@ button::-moz-focus-inner {
 /* Standard Forms */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003387}}
 form {
-  margin: 0 0 1.14286rem;
+  margin: 0 0 0.85714rem;
 }
 
 /* Using forms within rows, we need to set some defaults */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\0000392}}
 form .row .row {
-  margin: 0 -0.57143rem;
+  margin: 0 -0.42857rem;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\0000394}}
 form .row .row .column,
 form .row .row .columns {
-  padding: 0 0.57143rem;
+  padding: 0 0.42857rem;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\0000398}}
 form .row .row.collapse {
@@ -4448,13 +4448,13 @@ form .row input.column,
 form .row input.columns,
 form .row textarea.column,
 form .row textarea.columns {
-  padding-left: 0.57143rem;
+  padding-left: 0.42857rem;
 }
 
 /* Label Styles */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003393}}
 label {
-  color: #4d4d4d;
+  color: #ffffff;
   cursor: pointer;
   display: block;
   font-size: 1rem;
@@ -4470,13 +4470,13 @@ label.right {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003395}}
 label.inline {
-  margin: 0 0 1.14286rem 0;
-  padding: 0.64286rem 0;
+  margin: 0 0 0.85714rem 0;
+  padding: 0.42857rem 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003397}}
 label small {
   text-transform: capitalize;
-  color: #676767;
+  color: white;
 }
 
 /* Attach elements to the beginning or end of an input */
@@ -4484,11 +4484,11 @@ label small {
 .prefix,
 .postfix {
   border-style: solid;
-  border-width: 1px;
+  border-width: 0;
   display: block;
   font-size: 1rem;
-  height: 2.64286rem;
-  line-height: 2.64286rem;
+  height: 2.21429rem;
+  line-height: 2.21429rem;
   overflow: visible;
   padding-bottom: 0;
   padding-top: 0;
@@ -4553,17 +4553,17 @@ label small {
 /* Separate prefix and postfix styles when on span or label so buttons keep their own */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003417}}
 span.prefix, label.prefix {
-  background: #f2f2f2;
+  background: #333c48;
   border-right: none;
-  color: #333333;
-  border-color: #cccccc;
+  color: #ffffff;
+  border-color: #333c48;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003418}}
 span.postfix, label.postfix {
-  background: #f2f2f2;
-  color: #333333;
-  border-color: #cccccc;
+  background: #333c48;
+  color: #ffffff;
+  border-color: #333c48;
 }
 
 /* We use this to get basic styling on all basic form elements */
@@ -4574,16 +4574,16 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   border-radius: 0;
   background-color: #ffffff;
   border-style: solid;
-  border-width: 1px;
-  border-color: #cccccc;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.75);
+  border-width: 0px;
+  border-color: #333c48;
+  box-shadow: none;
+  color: #222830;
   display: block;
   font-family: inherit;
   font-size: 1rem;
-  height: 2.64286rem;
-  margin: 0 0 1.14286rem 0;
-  padding: 0.57143rem;
+  height: 2.21429rem;
+  margin: 0 0 0.85714rem 0;
+  padding: 0.42857rem;
   width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -4596,18 +4596,18 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003138}}
 input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="color"]:focus, textarea:focus {
-  background: #fafafa;
-  border-color: #999999;
+  background: #ffffff;
+  border-color: #d6000b;
   outline: none;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003144}}
 input[type="text"]:disabled, input[type="password"]:disabled, input[type="date"]:disabled, input[type="datetime"]:disabled, input[type="datetime-local"]:disabled, input[type="month"]:disabled, input[type="week"]:disabled, input[type="email"]:disabled, input[type="number"]:disabled, input[type="search"]:disabled, input[type="tel"]:disabled, input[type="time"]:disabled, input[type="url"]:disabled, input[type="color"]:disabled, textarea:disabled {
-  background-color: #DDDDDD;
+  background-color: #222830;
   cursor: default;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003150}}
 input[type="text"][disabled], input[type="text"][readonly], fieldset[disabled] input[type="text"], input[type="password"][disabled], input[type="password"][readonly], fieldset[disabled] input[type="password"], input[type="date"][disabled], input[type="date"][readonly], fieldset[disabled] input[type="date"], input[type="datetime"][disabled], input[type="datetime"][readonly], fieldset[disabled] input[type="datetime"], input[type="datetime-local"][disabled], input[type="datetime-local"][readonly], fieldset[disabled] input[type="datetime-local"], input[type="month"][disabled], input[type="month"][readonly], fieldset[disabled] input[type="month"], input[type="week"][disabled], input[type="week"][readonly], fieldset[disabled] input[type="week"], input[type="email"][disabled], input[type="email"][readonly], fieldset[disabled] input[type="email"], input[type="number"][disabled], input[type="number"][readonly], fieldset[disabled] input[type="number"], input[type="search"][disabled], input[type="search"][readonly], fieldset[disabled] input[type="search"], input[type="tel"][disabled], input[type="tel"][readonly], fieldset[disabled] input[type="tel"], input[type="time"][disabled], input[type="time"][readonly], fieldset[disabled] input[type="time"], input[type="url"][disabled], input[type="url"][readonly], fieldset[disabled] input[type="url"], input[type="color"][disabled], input[type="color"][readonly], fieldset[disabled] input[type="color"], textarea[disabled], textarea[readonly], fieldset[disabled] textarea {
-  background-color: #DDDDDD;
+  background-color: #222830;
   cursor: default;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003433}}
@@ -4713,24 +4713,24 @@ textarea {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003488}}
 ::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #333c48;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003492}}
 :-moz-placeholder {
   /* Firefox 18- */
-  color: #cccccc;
+  color: #333c48;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003496}}
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: #cccccc;
+  color: #333c48;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003500}}
 :-ms-input-placeholder {
-  color: #cccccc;
+  color: #333c48;
 }
 
 /* Add height value for select elements to match text input height */
@@ -4738,21 +4738,21 @@ textarea {
 select {
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
-  background-color: #FAFAFA;
+  background-color: #ffffff;
   border-radius: 0;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
   background-position: 100% center;
   background-repeat: no-repeat;
   border-style: solid;
-  border-width: 1px;
-  border-color: #cccccc;
-  color: rgba(0, 0, 0, 0.75);
+  border-width: 0px;
+  border-color: #333c48;
+  color: #222830;
   font-family: inherit;
   font-size: 1rem;
   line-height: normal;
-  padding: 0.57143rem;
+  padding: 0.42857rem;
   border-radius: 0;
-  height: 2.64286rem;
+  height: 2.21429rem;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003337}}
 select::-ms-expand {
@@ -4764,12 +4764,12 @@ select.radius {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003361}}
 select:hover {
-  background-color: #f3f3f3;
-  border-color: #999999;
+  background-color: #ffffff;
+  border-color: #d6000b;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003366}}
 select:disabled {
-  background-color: #DDDDDD;
+  background-color: #222830;
   cursor: default;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003509}}
@@ -4783,15 +4783,15 @@ input[type="file"],
 input[type="checkbox"],
 input[type="radio"],
 select {
-  margin: 0 0 1.14286rem 0;
+  margin: 0 0 0.85714rem 0;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003522}}
 input[type="checkbox"] + label,
 input[type="radio"] + label {
   display: inline-block;
-  margin-left: 0.57143rem;
-  margin-right: 1.14286rem;
+  margin-left: 0.42857rem;
+  margin-right: 0.85714rem;
   margin-bottom: 0;
   vertical-align: baseline;
 }
@@ -4806,7 +4806,7 @@ input[type="file"] {
 /* We add basic fieldset styling */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003546}}
 fieldset {
-  border: 1px solid #DDDDDD;
+  border: 1px solid #61738a;
   margin: 1.28571rem 0;
   padding: 1.42857rem;
 }
@@ -4826,9 +4826,9 @@ fieldset legend {
   font-size: 0.85714rem;
   font-style: italic;
   font-weight: normal;
-  margin-bottom: 1.14286rem;
+  margin-bottom: 0.85714rem;
   margin-top: -1px;
-  padding: 0.42857rem 0.64286rem 0.64286rem;
+  padding: 0.28571rem 0.64286rem 0.35714rem 0.64286rem;
   background: #f04124;
   color: #ffffff;
 }
@@ -4843,9 +4843,9 @@ span.error, small.error {
   font-size: 0.85714rem;
   font-style: italic;
   font-weight: normal;
-  margin-bottom: 1.14286rem;
+  margin-bottom: 0.85714rem;
   margin-top: -1px;
-  padding: 0.42857rem 0.64286rem 0.64286rem;
+  padding: 0.28571rem 0.64286rem 0.35714rem 0.64286rem;
   background: #f04124;
   color: #ffffff;
 }
@@ -4859,7 +4859,7 @@ span.error, small.error {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003570}}
 .error input[type="checkbox"],
 .error input[type="radio"] {
-  margin-bottom: 1.14286rem;
+  margin-bottom: 0.85714rem;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003575}}
 .error label,
@@ -4872,16 +4872,16 @@ span.error, small.error {
   font-size: 0.85714rem;
   font-style: italic;
   font-weight: normal;
-  margin-bottom: 1.14286rem;
+  margin-bottom: 0.85714rem;
   margin-top: -1px;
-  padding: 0.42857rem 0.64286rem 0.64286rem;
+  padding: 0.28571rem 0.64286rem 0.35714rem 0.64286rem;
   background: #f04124;
   color: #ffffff;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_forms\.scss}line{font-family:\00003585}}
 .error > label > small {
   background: transparent;
-  color: #676767;
+  color: white;
   display: inline;
   font-size: 60%;
   font-style: normal;
@@ -8567,7 +8567,7 @@ blockquote p {
 .vcard {
   display: inline-block;
   margin: 0 0 1.42857rem 0;
-  border: 1px solid #DDDDDD;
+  border: 0px solid #333c48;
   padding: 0.71429rem 0.85714rem;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/bower_components\/foundation\/scss\/foundation\/components\/_type\.scss}line{font-family:\00003431}}
@@ -15925,7 +15925,6 @@ md-input-container label:not(.md-no-float),
 md-input-container .md-placeholder {
   order: 1;
   pointer-events: none;
-  -webkit-font-smoothing: antialiased;
   padding-left: 2px;
   z-index: 1;
   transform: translate3d(0, 28px, 0) scale(1);
@@ -17456,7 +17455,6 @@ md-select:not([disabled]):focus .md-select-value {
   display: flex;
   order: 1;
   pointer-events: none;
-  -webkit-font-smoothing: antialiased;
   padding-left: 2px;
   z-index: 1;
 }
@@ -22418,12 +22416,78 @@ a:not(.button) {
   transition: background 300ms ease-out;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003121}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003123}}
+md-select .md-select-value.md-select-placeholder, md-select .md-select-value, md-select:not([disabled]):focus .md-select-value.md-select-placeholder, md-select:not([disabled]):focus .md-select-value {
+  color: #ffffff !important;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003128}}
+label {
+  color: #ffffff;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003131}}
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
+  margin: 0 0 1.14286rem 0;
+  padding: 0.57143rem;
+  height: 2.57143rem;
+  font-size: 0.92857rem;
+  outline: none;
+  -moz-transition: background 0.15s linear, border 0.15s linear, color 0.15s linear;
+  -o-transition: background 0.15s linear, border 0.15s linear, color 0.15s linear;
+  -webkit-transition: background 0.15s linear, border 0.15s linear, color 0.15s linear;
+  transition: background 0.15s linear, border 0.15s linear, color 0.15s linear;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/2\.0\.0\/gems\/compass-core-1\.0\.1\/stylesheets\/compass\/css3\/_user-interface\.scss}line{font-family:\0000361}}
+input[type="text"]:-moz-placeholder, input[type="password"]:-moz-placeholder, input[type="date"]:-moz-placeholder, input[type="datetime"]:-moz-placeholder, input[type="datetime-local"]:-moz-placeholder, input[type="month"]:-moz-placeholder, input[type="week"]:-moz-placeholder, input[type="email"]:-moz-placeholder, input[type="number"]:-moz-placeholder, input[type="search"]:-moz-placeholder, input[type="tel"]:-moz-placeholder, input[type="time"]:-moz-placeholder, input[type="url"]:-moz-placeholder, input[type="color"]:-moz-placeholder, textarea:-moz-placeholder {
+  color: #333c48;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/2\.0\.0\/gems\/compass-core-1\.0\.1\/stylesheets\/compass\/css3\/_user-interface\.scss}line{font-family:\0000364}}
+input[type="text"]::-moz-placeholder, input[type="password"]::-moz-placeholder, input[type="date"]::-moz-placeholder, input[type="datetime"]::-moz-placeholder, input[type="datetime-local"]::-moz-placeholder, input[type="month"]::-moz-placeholder, input[type="week"]::-moz-placeholder, input[type="email"]::-moz-placeholder, input[type="number"]::-moz-placeholder, input[type="search"]::-moz-placeholder, input[type="tel"]::-moz-placeholder, input[type="time"]::-moz-placeholder, input[type="url"]::-moz-placeholder, input[type="color"]::-moz-placeholder, textarea::-moz-placeholder {
+  color: #333c48;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/2\.0\.0\/gems\/compass-core-1\.0\.1\/stylesheets\/compass\/css3\/_user-interface\.scss}line{font-family:\0000367}}
+input[type="text"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder, input[type="date"]:-ms-input-placeholder, input[type="datetime"]:-ms-input-placeholder, input[type="datetime-local"]:-ms-input-placeholder, input[type="month"]:-ms-input-placeholder, input[type="week"]:-ms-input-placeholder, input[type="email"]:-ms-input-placeholder, input[type="number"]:-ms-input-placeholder, input[type="search"]:-ms-input-placeholder, input[type="tel"]:-ms-input-placeholder, input[type="time"]:-ms-input-placeholder, input[type="url"]:-ms-input-placeholder, input[type="color"]:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #333c48;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/2\.0\.0\/gems\/compass-core-1\.0\.1\/stylesheets\/compass\/css3\/_user-interface\.scss}line{font-family:\0000356}}
+input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder, input[type="date"]::-webkit-input-placeholder, input[type="datetime"]::-webkit-input-placeholder, input[type="datetime-local"]::-webkit-input-placeholder, input[type="month"]::-webkit-input-placeholder, input[type="week"]::-webkit-input-placeholder, input[type="email"]::-webkit-input-placeholder, input[type="number"]::-webkit-input-placeholder, input[type="search"]::-webkit-input-placeholder, input[type="tel"]::-webkit-input-placeholder, input[type="time"]::-webkit-input-placeholder, input[type="url"]::-webkit-input-placeholder, input[type="color"]::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #333c48;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003140}}
+select {
+  outline: none;
+  background-color: #ffffff;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+  background-position: right;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003145}}
+select:hover, select:focus {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+  border-color: #d6000b;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003149}}
+select[disabled="disabled"]:hover {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+  border-color: #333c48;
+}
+
+@media only screen and (min-width: 45.78571em) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003157}}
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
+    margin: 0 0 0.85714rem 0;
+    padding: 0.42857rem;
+    height: 2.21429rem;
+    font-size: 1rem;
+  }
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003170}}
 .button, button {
   outline: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003128}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003177}}
 .fa {
   -moz-transition: color 300ms ease-out;
   -o-transition: color 300ms ease-out;
@@ -22431,13 +22495,13 @@ a:not(.button) {
   transition: color 300ms ease-out;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003135}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003184}}
 .popup {
   width: 700px;
   height: 500px;
   overflow: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003140}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003189}}
 .popup .nav {
   position: relative;
   z-index: 20;
@@ -22446,7 +22510,7 @@ a:not(.button) {
   height: 100%;
   background: #333c48;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003147}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003196}}
 .popup .nav .element {
   width: 200px;
   height: 60px;
@@ -22455,21 +22519,22 @@ a:not(.button) {
   color: #61738a !important;
   border-right: solid 1px #222830;
   border-bottom: solid 1px #222830;
+  outline: none;
   -moz-transition: margin 350ms ease-out;
   -o-transition: margin 350ms ease-out;
   -webkit-transition: margin 350ms ease-out;
   transition: margin 350ms ease-out;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003156}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003206}}
 .popup .nav .element:hover {
   margin-left: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003158}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003208}}
 .popup .nav .element:hover .icon {
   border-right: solid 5px #d6000b;
   color: #d6000b;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003163}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003213}}
 .popup .nav .element .text {
   float: left;
   width: 139px;
@@ -22478,7 +22543,7 @@ a:not(.button) {
   cursor: pointer;
   color: #ffffff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003171}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003221}}
 .popup .nav .element .icon {
   float: left;
   width: 60px;
@@ -22491,11 +22556,11 @@ a:not(.button) {
   -webkit-transition: color 100ms ease-out, border-color 100ms ease-out;
   transition: color 100ms ease-out, border-color 100ms ease-out;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003181}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003231}}
 .popup .nav .element.selected .icon {
   color: #d6000b;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003184}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003234}}
 .popup .nav .element.logo .icon {
   margin-left: 140px;
   padding-top: 20px;
@@ -22503,11 +22568,11 @@ a:not(.button) {
   font-weight: bold;
   cursor: default;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003191}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003241}}
 .popup .nav .element.logo:hover {
   margin-left: -140px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003198}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003248}}
 .popup .main {
   position: relative;
   z-index: 10;
@@ -22515,7 +22580,7 @@ a:not(.button) {
   width: 640px;
   height: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003205}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003255}}
 .popup .main .header {
   z-index: 10;
   position: relative;
@@ -22527,18 +22592,18 @@ a:not(.button) {
   -webkit-transition: border-color 300ms ease-out;
   transition: border-color 300ms ease-out;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003211}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003261}}
 .popup .main .header.bordered {
   border-bottom-color: #d6000b;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003213}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003263}}
 .popup .main .header h1, .popup .main .header h2, .popup .main .header h3, .popup .main .header h4, .popup .main .header h5, .popup .main .header h6 {
   margin: 0;
   padding: 0;
   color: #ffffff;
   font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003219}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003269}}
 .popup .main .header .action-button {
   z-index: 20;
   position: absolute;
@@ -22549,6 +22614,7 @@ a:not(.button) {
   padding: 5px;
   background: #d6000b;
   color: #ffffff;
+  outline: none;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   border-radius: 20px;
@@ -22557,7 +22623,7 @@ a:not(.button) {
   -webkit-transition: width 300ms ease-out, height 300ms ease-out;
   transition: width 300ms ease-out, height 300ms ease-out;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003232}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003283}}
 .popup .main .header .action-button.expandable .action-icon {
   display: block;
   -moz-transition: display 300ms ease-out;
@@ -22565,7 +22631,7 @@ a:not(.button) {
   -webkit-transition: display 300ms ease-out;
   transition: display 300ms ease-out;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003236}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003287}}
 .popup .main .header .action-button.expandable .action-content {
   display: none;
   -moz-transition: display 300ms ease-out;
@@ -22573,7 +22639,7 @@ a:not(.button) {
   -webkit-transition: display 300ms ease-out;
   transition: display 300ms ease-out;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003239}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003290}}
 .popup .main .header .action-button.expandable .action-content .square {
   height: 95px;
   padding-top: 12px;
@@ -22582,16 +22648,16 @@ a:not(.button) {
   cursor: pointer;
   color: #a30008;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003246}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003297}}
 .popup .main .header .action-button.expandable .action-content .square:hover {
   background: #ff0a17;
   color: #ffffff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003250}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003301}}
 .popup .main .header .action-button.expandable .action-content .square.end {
   border-right-width: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003251}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003302}}
 .popup .main .header .action-button.expandable .action-content .square.top-left {
   -webkit-border-bottom-left-radius: 20px;
   -webkit-border-top-left-radius: 20px;
@@ -22602,7 +22668,7 @@ a:not(.button) {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003255}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003306}}
 .popup .main .header .action-button.expandable .action-content .square.top-right {
   -webkit-border-bottom-right-radius: 20px;
   -webkit-border-top-right-radius: 20px;
@@ -22613,7 +22679,7 @@ a:not(.button) {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003259}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003310}}
 .popup .main .header .action-button.expandable .action-content .square.bottom-left {
   -webkit-border-bottom-left-radius: 20px;
   -webkit-border-top-left-radius: 20px;
@@ -22624,7 +22690,7 @@ a:not(.button) {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003263}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003314}}
 .popup .main .header .action-button.expandable .action-content .square.bottom-right {
   -webkit-border-bottom-right-radius: 20px;
   -webkit-border-top-right-radius: 20px;
@@ -22635,38 +22701,38 @@ a:not(.button) {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003267}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003318}}
 .popup .main .header .action-button.expandable .action-content .square i {
   padding-bottom: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003268}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003319}}
 .popup .main .header .action-button.expandable .action-content .square small {
   -moz-transition: color 300ms ease-out;
   -o-transition: color 300ms ease-out;
   -webkit-transition: color 300ms ease-out;
   transition: color 300ms ease-out;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003271}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003322}}
 .popup .main .header .action-button.expandable:hover {
   width: 300px;
   height: 285px;
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003275}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003326}}
 .popup .main .header .action-button.expandable:hover .action-icon {
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003276}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003327}}
 .popup .main .header .action-button.expandable:hover .action-content {
   display: block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003282}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003333}}
 .popup .main .content {
   z-index: 10;
   height: 440px;
   padding-bottom: 15px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003286}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003337}}
 .popup .main .content .title {
   margin-top: 10px;
   margin-bottom: 5px;
@@ -22674,26 +22740,30 @@ a:not(.button) {
   padding-bottom: 10px;
   background: #171b21;
   color: #ffffff;
+  outline: none;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003295}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003347}}
 .popup .main .content .item {
   padding-top: 5px;
   padding-bottom: 5px;
   color: #61738a;
+  outline: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003299}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003352}}
 .popup .main .content .item:hover {
   color: #ffffff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003300}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003353}}
 .popup .main .content .item.selected {
   color: #ffffff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003301}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003354}}
 .popup .main .content .item.window {
+  padding-top: 5px;
+  padding-bottom: 6px;
   color: #ffffff;
   border-bottom: solid #d6000b 0.14286rem;
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzIyMjgzMCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzMzM2M0OCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
@@ -22703,7 +22773,11 @@ a:not(.button) {
   background-image: -webkit-linear-gradient(#222830, #333c48);
   background-image: linear-gradient(#222830, #333c48);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003305}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003360}}
 .popup .main .content .item.window i {
   color: #d6000b;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003361}}
+.popup .main .content .item.window.collapsed {
+  border-bottom-color: #222830;
 }

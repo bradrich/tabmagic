@@ -115,6 +115,55 @@ a:not(.button) {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - -
+// Forms
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Material design alterations
+md-select, md-select:not([disabled]):focus {
+	.md-select-value.md-select-placeholder, .md-select-value { color: $white !important; }
+}
+
+// Foundation design alterations
+// Labels
+label { color: $white; }
+
+// Inputs
+#{text-inputs(all, 'input')} {
+	margin: 0 0 rem-calc(16) 0;
+	padding: rem-calc(16) / 2;
+	height: (rem-calc(13) + (rem-calc(16) * 1.5) - rem-calc(1));
+	font-size: rem-calc(13);
+	outline: none;
+	@include input-placeholder { color: $input-placeholder-font-color; }
+	@include transition(background 0.15s linear, border 0.15s linear, color 0.15s linear);
+}
+select {
+	outline: none;
+	background-color: $white;
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+	background-position: right;
+	&:hover, &:focus {
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+		border-color: $input-focus-border-color;
+	}
+	&[disabled="disabled"]:hover {
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+		border-color: $gray-light;
+	}
+}
+
+// Inputs media queries
+@media #{$medium-up} {
+	#{text-inputs(all, 'input')} {
+		margin: 0 0 $form-spacing 0;
+		padding: $form-spacing / 2;
+		height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+		font-size: $input-font-size;
+	}
+}
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - -
 // Buttons
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -152,6 +201,7 @@ a:not(.button) {
 			color: $gray-light-3x !important;
 			border-right: solid 1px $gray;
 			border-bottom: solid 1px $gray;
+			outline: none;
 			@include transition(margin 350ms ease-out);
 			&:hover {
 				margin-left: 0;
@@ -226,6 +276,7 @@ a:not(.button) {
 				padding: 5px;
 				background: $primary-color;
 				color: $white;
+				outline: none;
 				@include border-radius(20px);
 				@include transition(width 300ms ease-out, height 300ms ease-out);
 				&.expandable {
@@ -290,19 +341,24 @@ a:not(.button) {
 				padding-bottom: 10px;
 				background: $gray-dark;
 				color: $white;
+				outline: none;
 				@include border-radius($global-radius);
 			}
 			.item {
 				padding-top: 5px;
 				padding-bottom: 5px;
 				color: $gray-light-3x;
+				outline: none;
 				&:hover { color: $white; }
 				&.selected { color: $white; }
 				&.window {
+					padding-top: 5px;
+					padding-bottom: 6px;
 					color: $white;
 					border-bottom: solid $primary-color rem-calc(2);
 					@include background-image(linear-gradient($gray, $gray-light));
 					i { color: $primary-color; }
+					&.collapsed { border-bottom-color: $gray; }
 				}
 			}
 		}

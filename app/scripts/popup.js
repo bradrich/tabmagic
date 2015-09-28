@@ -8,6 +8,46 @@ tabMagicApp.controller('PopUpCtrl', function($tabs, $windows, $sessions, $histor
 	// Remove any previously stored tabs
 	$utils.dataStorage.clearAll();
 
+	// Show requested action button
+	$scope.actionButtonShow = function(button){
+
+		// Catcher
+		var show = false;
+
+		// Recently closed
+		if('recentlyClosed' === button){
+			angular.forEach($scope.sessions.recentlyClosed.data, function(session){
+				if(session.tmSelected){
+					show = true;
+				}
+			});
+		}
+		// Recently visited
+		else if('recentlyVisited' === button){
+			angular.forEach($scope.history.recentlyVisited.data, function(item){
+				if(item.tmSelected){
+					show = true;
+				}
+			});
+		}
+		// Bring to one
+		else if('bringToOne' === button || 'snooze' === button){
+			angular.forEach($scope.windows.data, function(window){
+				angular.forEach(window.tabs, function(tab){
+					if(tab.tmSelected){
+						show = true;
+					}
+				});
+			});
+			if($scope.tabs.current && $scope.tabs.current.tmSelected){
+				show = true;
+			}
+		}
+
+		return show;
+
+	};
+
 	// Sessions
 	$scope.sessions = {
 
@@ -244,46 +284,6 @@ tabMagicApp.controller('PopUpCtrl', function($tabs, $windows, $sessions, $histor
 			});
 
 		}
-
-	};
-
-	// Show requested action button
-	$scope.actionButtonShow = function(button){
-
-		// Catcher
-		var show = false;
-
-		// Recently closed
-		if('recentlyClosed' === button){
-			angular.forEach($scope.sessions.recentlyClosed.data, function(session){
-				if(session.tmSelected){
-					show = true;
-				}
-			});
-		}
-		// Recently visited
-		else if('recentlyVisited' === button){
-			angular.forEach($scope.history.recentlyVisited.data, function(item){
-				if(item.tmSelected){
-					show = true;
-				}
-			});
-		}
-		// Bring to one
-		else if('bringToOne' === button || 'snooze' === button){
-			angular.forEach($scope.windows.data, function(window){
-				angular.forEach(window.tabs, function(tab){
-					if(tab.tmSelected){
-						show = true;
-					}
-				});
-			});
-			if($scope.tabs.current && $scope.tabs.current.tmSelected){
-				show = true;
-			}
-		}
-
-		return show;
 
 	};
 
