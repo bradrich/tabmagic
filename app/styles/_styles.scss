@@ -92,12 +92,12 @@ body { overflow: hidden; }
 // Colors
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-.white-color { color: $white; }
-.primary-color { color: $primary-color; }
-// .success-color { color: $success-color; }
-// .alert-color { color: $alert-color; }
-// .warning-color { color: $warning-color; }
-// .disabled-color { color: $disabled-color; }
+.white { color: $white; }
+.primary { color: $primary-color; }
+.success { color: $success-color; }
+// .alert { color: $alert-color; }
+// .warning { color: $warning-color; }
+// .disabled { color: $disabled-color; }
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -361,6 +361,7 @@ select {
 					&.collapsed { border-bottom-color: $gray; }
 				}
 			}
+			.settings-section-name { margin-top: 4px; }
 		}
 	}
 }

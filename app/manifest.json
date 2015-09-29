@@ -49,6 +49,7 @@
     "history",
     "management",
     "sessions",
+    "storage",
     "http://*/*",
     "https://*/*"
   ],

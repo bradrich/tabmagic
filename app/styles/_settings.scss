@@ -102,6 +102,8 @@ $gray-light-3x: lighten($gray, 30%);
 $primary-color: #d6000b;
 $primary-color-dark: darken($primary-color, 10%);
 $primary-color-light: lighten($primary-color, 10%);
+// Success colors - Green and variations
+$success-color: #4CAF50;
 
 // Global style colors
 $body-bg: $gray;

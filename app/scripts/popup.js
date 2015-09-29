@@ -1,6 +1,6 @@
 'use strict';
 
-tabMagicApp.controller('PopUpCtrl', function($tabs, $windows, $sessions, $history, $scope, $q, $utils, $moment){
+tabMagicApp.controller('PopUpCtrl', function($tabs, $windows, $sessions, $history, $scope, $q, $utils, $moment, $parse, $timeout){
 
 	// Navigation
 	$scope.navigation = 'recentlyClosed';
@@ -290,32 +290,96 @@ tabMagicApp.controller('PopUpCtrl', function($tabs, $windows, $sessions, $histor
 	// Settings
 	$scope.settings = {
 
+		// Initialize
+		init: function(){
+			$scope.settings.snooze.init();
+		},
+
 		// Snooze
 		snooze: {
-			workdayStarts: {
-				model: null,
-				options: ['6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM']
+
+			// Data
+			data: {
+				workdayStarts: {
+					model: '8:00 AM',
+					options: ['6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM'],
+					storageName: 'tmSettingsSnoozeWorkdayStarts'
+				},
+				workdayEnds: {
+					model: '7:00 PM',
+					options: ['3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM'],
+					storageName: 'tmSettingsSnoozeWorkdayEnds'
+				},
+				weekStarts: {
+					model: 'Monday',
+					options: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+					storageName: 'tmSettingsSnoozeWeekStarts'
+				},
+				weekendStarts: {
+					model: 'Saturday',
+					options: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+					storageName: 'tmSettingsSnoozeWeekendStarts'
+				},
+				laterToday: {
+					model: 'in 3 hours',
+					options: ['in 1 hour', 'in 2 hours', 'in 3 hours', 'in 4 hours', 'in 5 hours'],
+					storageName: 'tmSettingsSnoozeLaterToday'
+				},
+				someday: {
+					model: 'in 3 months',
+					options: ['in 1 month', 'in 2 months', 'in 3 months', 'in 4 months', 'in 5 months'],
+					storageName: 'tmSettingsSnoozeSomeday'
+				}
 			},
-			workdayEnds: {
-				model: null,
-				options: ['3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM']
-			},
-			weekStarts: {
-				model: null,
-				options: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-			},
-			weekendStarts: {
-				model: null,
-				options: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-			},
-			laterToday: {
-				model: null,
-				options: ['in 1 hour', 'in 2 hours', 'in 3 hours', 'in 4 hours', 'in 5 hours']
-			},
-			someday: {
-				model: null,
-				options: ['in 1 month', 'in 2 months', 'in 3 months', 'in 4 months', 'in 5 months']
+
+			// Initialize
+			init: function(){
+
+				// Loop through all of the form data objects of snooze
+				angular.forEach($scope.settings.snooze.data, function(setting){
+
+					// Get the setting value from chrome storage
+					chrome.storage.sync.get(setting.storageName, function(items){
+						if(!angular.equals({}, items)){
+							setting.model = items[setting.storageName];
+						}
+					});
+
+					// Add pending and saved state to each setting
+					setting.saved = false;
+					setting.savedTimer = null;
+
+				});
+
 			}
+
+		},
+
+		// Save setting change
+		save: function(model){
+
+			// Parse requested model
+			var pModel = $parse(model)($scope);
+
+			// Create object to send to storage service
+			var item = {};
+			item[pModel.storageName] = pModel.model;
+
+			// Send to service
+			chrome.storage.sync.set(item, function(){
+
+				// Set input to saved
+				$timeout.cancel(pModel.savedTimer);
+				pModel.saved = true;
+				$scope.$apply();
+
+				// Wait a bit and turn it off
+				pModel.savedTimer = $timeout(function(){
+					pModel.saved = false;
+				}, 5000);
+
+			});
+
 		}
 
 	};

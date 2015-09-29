@@ -11,6 +11,9 @@ function suspendTab(suspendedTabUrl){
 // Listen for events from background
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 
+	console.log(sender);
+	console.log(sendResponse);
+
 	// Switch between events
 	switch(request.action){
 		case 'confirmSuspendTab':
