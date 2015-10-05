@@ -294,6 +294,7 @@ select {
 							border-bottom: solid 1px $primary-color-dark;
 							cursor: pointer;
 							color: $primary-color-dark;
+							outline: none;
 							&:hover {
 								background: $primary-color-light;
 								color: $white;

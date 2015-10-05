@@ -14,6 +14,15 @@ tabMagicApp.factory('$sessions', function($q){
 			return deferred.promise;
 		},
 
+		// Get synced devices
+		getDevices: function(){
+			var deferred = $q.defer();
+			chrome.sessions.getDevices(function(devices){
+				deferred.resolve(devices);
+			});
+			return deferred.promise;
+		},
+
 		// Session url filter
 		removeSessionsBasedOnUrl: function(session){
 			if(session && session.tab && session.tab.url){

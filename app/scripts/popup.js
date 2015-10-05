@@ -30,6 +30,18 @@ tabMagicApp.controller('PopUpCtrl', function($tabs, $windows, $sessions, $histor
 				}
 			});
 		}
+		// Synces devices
+		else if('devices' === button){
+			angular.forEach($scope.sessions.devices.data, function(device){
+				angular.forEach(device.sessions, function(session){
+					angular.forEach(session.window.tabs, function(tab){
+						if(tab.tmSelected){
+							show = true;
+						}
+					});
+				});
+			});
+		}
 		// Bring to one
 		else if('bringToOne' === button || 'snooze' === button){
 			angular.forEach($scope.windows.data, function(window){
@@ -108,6 +120,62 @@ tabMagicApp.controller('PopUpCtrl', function($tabs, $windows, $sessions, $histor
 
 				// Empty selected tabs
 				$scope.sessions.recentlyClosed.selectedTabs.length = 0;
+
+			}
+
+		},
+
+		// Devices
+		devices: {
+
+			// Data
+			data: null,
+
+			// Selected session tabs
+			selectedTabs: [],
+
+			// Get
+			get: function(){
+
+				// Call get devices from sessions service
+				$sessions.getDevices().then(function(devices){
+
+					// Set recently closed sessions
+					$scope.sessions.devices.data = devices;
+
+				});
+
+			},
+
+			// Open tab
+			openTab: function(){
+
+				// Loop through all of the devices to find the sessions with selected tabs
+				angular.forEach($scope.sessions.devices.data, function(device){
+					angular.forEach(device.sessions, function(session){
+						angular.forEach(session.window.tabs, function(tab){
+							if(tab.tmSelected){
+								$scope.sessions.devices.selectedTabs.push(tab);
+							}
+						});
+					});
+				});
+
+				// If there are any selected tabs
+				if($scope.sessions.devices.selectedTabs.length > 0){
+
+					// Loop through selected tabs
+					angular.forEach($scope.sessions.devices.selectedTabs, function(tab){
+
+						// Call create from tab service
+						$tabs.create(tab.url);
+
+					});
+
+				}
+
+				// Empty selected tabs
+				$scope.sessions.devices.selectedTabs.length = 0;
 
 			}
 
@@ -282,6 +350,27 @@ tabMagicApp.controller('PopUpCtrl', function($tabs, $windows, $sessions, $histor
 			angular.forEach($scope.windows.data, function(window){
 				window.tmCollapsed = false;
 			});
+
+		}
+
+	};
+
+	// Snooze
+	$scope.snooze = {
+
+		// Periodically
+		periodically: {
+
+			// Form
+			form: {
+				wakeUpThisTab: {
+					model: null,
+					options: ['Every day', 'Every week', 'Every month', 'Every year']
+				},
+				atThisTime: {
+					model: null
+				}
+			}
 
 		}
 

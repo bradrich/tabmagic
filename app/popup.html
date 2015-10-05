@@ -30,6 +30,10 @@
 				<div class="text">Recent History</div>
 				<div class="icon"><i class="fa icon-history fa-2x"></i></div>
 			</div>
+			<div class="element" ng-class="{ selected: navigation === 'devices' }" ng-click="navigation = 'devices'; sessions.devices.get()">
+				<div class="text">Synced Devices</div>
+				<div class="icon"><i class="fa icon-devices fa-2x"></i></div>
+			</div>
 			<div class="element" ng-class="{ selected: navigation === 'bringToOne' }" ng-click="navigation = 'bringToOne'; windows.getAll(); windows.removeSelections()">
 				<div class="text">Bring to One</div>
 				<div class="icon"><i class="fa icon-filter-list fa-2x"></i></div>
@@ -59,47 +63,62 @@
 				<div class="action-button text-center clickable fx-fade-normal" title="Restore selected" ng-show="actionButtonShow('recentlyVisited') && navigation === 'recentlyVisited'" ng-click="history.recentlyVisited.reopen()">
 					<i class="fa icon-refresh fa-2x"></i>
 				</div>
+				<div class="action-button text-center clickable fx-fade-normal" title="Open selected" ng-show="actionButtonShow('devices') && navigation === 'devices'" ng-click="sessions.devices.openTab()">
+					<i class="fa icon-refresh fa-2x"></i>
+				</div>
 				<div class="action-button text-center clickable fx-fade-normal" title="Bring selected to one" ng-show="actionButtonShow('bringToOne') && navigation === 'bringToOne'" ng-click="tabs.bringToOne(false)">
 					<i class="fa icon-filter-list fa-2x"></i>
 				</div>
 				<div class="action-button text-center clickable expandable overflow-hidden fx-fade-normal" ng-show="actionButtonShow('snooze') && navigation === 'snooze'">
 					<i class="fa icon-pause fa-2x action-icon"></i>
-					<div class="row no-margin-side action-content">
-						<div class="small-4 columns square no-padding-side top-left">
-							<i class="fa icon-redo fa-3x"></i><br />
-							<small>Later Today</small>
+					<div class="action-content full-width">
+						<div class="row no-margin-side fx-fade-up" ng-show="!tmSnoozePeriodicallySelected && !tmSnoozePickADateSelected">
+							<div class="small-4 columns square no-padding-side top-left">
+								<i class="fa icon-redo fa-3x"></i><br />
+								<small>Later Today</small>
+							</div>
+							<div class="small-4 columns square no-padding-side">
+								<i class="fa icon-brightness-4 fa-3x"></i><br />
+								<small>This Evening</small>
+							</div>
+							<div class="small-4 columns square no-padding-side end top-right">
+								<i class="fa icon-brightness-5 fa-3x"></i><br />
+								<small>Tomorrow</small>
+							</div>
+							<div class="small-4 columns square no-padding-side">
+								<i class="fa icon-whatshot fa-3x"></i><br />
+								<small>This Weekend</small>
+							</div>
+							<div class="small-4 columns square no-padding-side">
+								<i class="fa icon-work fa-3x"></i><br />
+								<small>Next Week</small>
+							</div>
+							<div class="small-4 columns square no-padding-side end">
+								<i class="fa icon-bookmark-outline fa-3x"></i><br />
+								<small>In a Month</small>
+							</div>
+							<div class="small-4 columns square no-padding-side bottom-left">
+								<i class="fa icon-check-box fa-3x"></i><br />
+								<small>Someday</small>
+							</div>
+							<div class="small-4 columns square no-padding-side" ng-click="tmSnoozePeriodicallySelected = !tmSnoozePeriodicallySelected">
+								<i class="fa icon-loop fa-3x"></i><br />
+								<small>Periodically</small>
+							</div>
+							<div class="small-4 columns square no-padding-side end bottom-right" ng-click="tmSnoozePickADateSelected = !tmSnoozePickADateSelected">
+								<i class="fa icon-event fa-3x"></i><br />
+								<small>Pick a Date</small>
+							</div>
 						</div>
-						<div class="small-4 columns square no-padding-side">
-							<i class="fa icon-brightness-4 fa-3x"></i><br />
-							<small>This Evening</small>
+						<div class="row fx-fade-up" ng-show="tmSnoozePeriodicallySelected">
+							<div class="small-12 columns text-center medium-margin-top">
+								Periodically
+							</div>
 						</div>
-						<div class="small-4 columns square no-padding-side end top-right">
-							<i class="fa icon-brightness-5 fa-3x"></i><br />
-							<small>Tomorrow</small>
-						</div>
-						<div class="small-4 columns square no-padding-side">
-							<i class="fa icon-whatshot fa-3x"></i><br />
-							<small>This Weekend</small>
-						</div>
-						<div class="small-4 columns square no-padding-side">
-							<i class="fa icon-work fa-3x"></i><br />
-							<small>Next Week</small>
-						</div>
-						<div class="small-4 columns square no-padding-side end">
-							<i class="fa icon-bookmark-outline fa-3x"></i><br />
-							<small>In a Month</small>
-						</div>
-						<div class="small-4 columns square no-padding-side bottom-left">
-							<i class="fa icon-check-box fa-3x"></i><br />
-							<small>Someday</small>
-						</div>
-						<div class="small-4 columns square no-padding-side">
-							<i class="fa icon-loop fa-3x"></i><br />
-							<small>Periodically</small>
-						</div>
-						<div class="small-4 columns square no-padding-side end bottom-right">
-							<i class="fa icon-event fa-3x"></i><br />
-							<small>Pick a Date</small>
+						<div class="row fx-fade-up" ng-show="tmSnoozePickADateSelected">
+							<div class="small-12 columns text-center medium-margin-top">
+								Pick a Date
+							</div>
 						</div>
 					</div>
 				</div>
@@ -139,6 +158,37 @@
 						</div>
 					</div>
 					<!-- End Recent History -->
+
+					<!-- Synced Devices -->
+					<div class="row fx-fade-up" ng-show="navigation === 'devices'">
+						<div class="small-12 columns">
+							<div class="row title no-margin-top">
+								<div class="small-12 columns">Synced Devices</div>
+							</div>
+							<div class="row" ng-repeat="device in sessions.devices.data">
+								<div class="small-12 columns">
+									<div class="row item window clickable" ng-class="{ collapsed: device.tmCollapsed }" ng-click="device.tmCollapsed = !device.tmCollapsed">
+										<div class="small-10 columns" ng-bind="device.deviceName"></div>
+										<div class="small-2 columns text-right">
+											<i class="fa icon-expand-more fa-lg" ng-show="!device.tmCollapsed" disable-animate></i>
+											<i class="fa icon-chevron-right fa-lg" ng-show="device.tmCollapsed" disable-animate></i>
+										</div>
+									</div>
+									<div class="row overflow-hidden" collapse="device.tmCollapsed">
+										<div class="small-12 columns" ng-repeat="session in device.sessions">
+											<div class="row item clickable" ng-repeat="tab in session.window.tabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
+												<div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
+													<img ng-src="{{tab.favIconUrl}}" width="16" />
+												</div>
+												<div class="columns" ng-class="{ 'small-11': '' !== tab.favIconUrl && tab.favIconUrl, 'small-12': '' === tab.favIconUrl || !tab.favIconUrl }" ng-bind="tab.title"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Synced Devices -->
 
 					<!-- Bring to One -->
 					<div class="row fx-fade-up" ng-show="navigation === 'bringToOne'">
@@ -277,7 +327,7 @@
 												<div class="small-6 columns">
 													<label for="workdayStarts" class="inline">
 														Workday Starts&nbsp;&nbsp;
-														<i class="fa fa-check-circle success fx-fade" ng-show="settings.snooze.data.workdayStarts.saved"></i>
+														<i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.workdayStarts.saved"></i>
 													</label>
 												</div>
 												<div class="small-6 columns">
@@ -288,7 +338,7 @@
 												<div class="small-6 columns">
 													<label for="workdayEnds" class="inline">
 														Workday Ends&nbsp;&nbsp;
-														<i class="fa fa-check-circle success fx-fade" ng-show="settings.snooze.data.workdayEnds.saved"></i>
+														<i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.workdayEnds.saved"></i>
 													</label>
 												</div>
 												<div class="small-6 columns">
@@ -299,7 +349,7 @@
 												<div class="small-6 columns">
 													<label for="weekStarts" class="inline">
 														Week Starts&nbsp;&nbsp;
-														<i class="fa fa-check-circle success fx-fade" ng-show="settings.snooze.data.weekStarts.saved"></i>
+														<i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.weekStarts.saved"></i>
 													</label>
 												</div>
 												<div class="small-6 columns">
@@ -310,7 +360,7 @@
 												<div class="small-6 columns">
 													<label for="weekendStarts" class="inline">
 														Weekend Starts&nbsp;&nbsp;
-														<i class="fa fa-check-circle success fx-fade" ng-show="settings.snooze.data.weekendStarts.saved"></i>
+														<i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.weekendStarts.saved"></i>
 													</label>
 												</div>
 												<div class="small-6 columns">
@@ -321,7 +371,7 @@
 												<div class="small-6 columns">
 													<label for="laterToday" class="inline">
 														Later Today&nbsp;&nbsp;
-														<i class="fa fa-check-circle success fx-fade" ng-show="settings.snooze.data.laterToday.saved"></i>
+														<i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.laterToday.saved"></i>
 													</label>
 												</div>
 												<div class="small-6 columns">
@@ -332,7 +382,7 @@
 												<div class="small-6 columns">
 													<label for="someday" class="inline">
 														Someday&nbsp;&nbsp;
-														<i class="fa fa-check-circle success fx-fade" ng-show="settings.snooze.data.someday.saved"></i>
+														<i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.someday.saved"></i>
 													</label>
 												</div>
 												<div class="small-6 columns">

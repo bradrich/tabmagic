@@ -13608,17 +13608,18 @@ select[disabled="disabled"]:hover {
   border-bottom: solid 1px #a30008;
   cursor: pointer;
   color: #a30008;
+  outline: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003297}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003298}}
 .popup .main .header .action-button.expandable .action-content .square:hover {
   background: #ff0a17;
   color: #ffffff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003301}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003302}}
 .popup .main .header .action-button.expandable .action-content .square.end {
   border-right-width: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003302}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003303}}
 .popup .main .header .action-button.expandable .action-content .square.top-left {
   -webkit-border-bottom-left-radius: 20px;
   -webkit-border-top-left-radius: 20px;
@@ -13629,7 +13630,7 @@ select[disabled="disabled"]:hover {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003306}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003307}}
 .popup .main .header .action-button.expandable .action-content .square.top-right {
   -webkit-border-bottom-right-radius: 20px;
   -webkit-border-top-right-radius: 20px;
@@ -13640,7 +13641,7 @@ select[disabled="disabled"]:hover {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003310}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003311}}
 .popup .main .header .action-button.expandable .action-content .square.bottom-left {
   -webkit-border-bottom-left-radius: 20px;
   -webkit-border-top-left-radius: 20px;
@@ -13651,7 +13652,7 @@ select[disabled="disabled"]:hover {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003315}}
 .popup .main .header .action-button.expandable .action-content .square.bottom-right {
   -webkit-border-bottom-right-radius: 20px;
   -webkit-border-top-right-radius: 20px;
@@ -13662,38 +13663,38 @@ select[disabled="disabled"]:hover {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003319}}
 .popup .main .header .action-button.expandable .action-content .square i {
   padding-bottom: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003319}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003320}}
 .popup .main .header .action-button.expandable .action-content .square small {
   -moz-transition: color 300ms ease-out;
   -o-transition: color 300ms ease-out;
   -webkit-transition: color 300ms ease-out;
   transition: color 300ms ease-out;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003323}}
 .popup .main .header .action-button.expandable:hover {
   width: 300px;
   height: 285px;
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003327}}
 .popup .main .header .action-button.expandable:hover .action-icon {
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003327}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003328}}
 .popup .main .header .action-button.expandable:hover .action-content {
   display: block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003334}}
 .popup .main .content {
   z-index: 10;
   height: 440px;
   padding-bottom: 15px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003338}}
 .popup .main .content .title {
   margin-top: 10px;
   margin-bottom: 5px;
@@ -13706,22 +13707,22 @@ select[disabled="disabled"]:hover {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003348}}
 .popup .main .content .item {
   padding-top: 5px;
   padding-bottom: 5px;
   color: #61738a;
   outline: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003353}}
 .popup .main .content .item:hover {
   color: #ffffff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003353}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003354}}
 .popup .main .content .item.selected {
   color: #ffffff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003355}}
 .popup .main .content .item.window {
   padding-top: 5px;
   padding-bottom: 6px;
@@ -13734,15 +13735,15 @@ select[disabled="disabled"]:hover {
   background-image: -webkit-linear-gradient(#222830, #333c48);
   background-image: linear-gradient(#222830, #333c48);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003361}}
 .popup .main .content .item.window i {
   color: #d6000b;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003362}}
 .popup .main .content .item.window.collapsed {
   border-bottom-color: #222830;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003364}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brichardson\/Sites\/TabMagic\/app\/styles\/_styles\.scss}line{font-family:\00003365}}
 .popup .main .content .settings-section-name {
   margin-top: 4px;
 }
