@@ -1,50 +1,50 @@
 'use strict';
 
-tabMagicApp.factory('$alarms', function($q){
+angular.module('TabMagicApp').factory('$alarms', function ($q) {
 
 	// API of factory
 	var factory = {
 
 		// Create alarm
-		create: function(name){
+		create: function create(name) {
 			var deferred = $q.defer();
-			chrome.alarms.create(name, function(){
+			chrome.alarms.create(name, function () {
 				deferred.resolve();
 			});
 			return deferred.promise;
 		},
 
 		// Get
-		get: function(name){
+		get: function get(name) {
 			var deferred = $q.defer();
-			chrome.alarms.get(name, function(alarm){
+			chrome.alarms.get(name, function (alarm) {
 				deferred.resolve(alarm);
 			});
 			return deferred.promise;
 		},
 
 		// Get all
-		getAll: function(){
+		getAll: function getAll() {
 			var deferred = $q.defer();
-			chrome.alarms.getAll(function(alarms){
+			chrome.alarms.getAll(function (alarms) {
 				deferred.resolve(alarms);
 			});
 			return deferred.promise;
 		},
 
 		// Clear
-		clear: function(name){
+		clear: function clear(name) {
 			var deferred = $q.defer();
-			chrome.alarms.clear(name, function(wasCleared){
+			chrome.alarms.clear(name, function (wasCleared) {
 				deferred.resolve(wasCleared);
 			});
 			return deferred.promise;
 		},
 
 		// Clear all
-		clearAll: function(){
+		clearAll: function clearAll() {
 			var deferred = $q.defer();
-			chrome.alarms.clearAll(function(wasCleared){
+			chrome.alarms.clearAll(function (wasCleared) {
 				deferred.resolve(wasCleared);
 			});
 			return deferred.promise;
@@ -53,5 +53,5 @@ tabMagicApp.factory('$alarms', function($q){
 	};
 
 	return factory;
-
 });
+//# sourceMappingURL=alarms.js.map

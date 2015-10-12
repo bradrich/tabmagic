@@ -1,6 +1,8 @@
 'use strict';
 
-tabMagicApp.factory('$tabs', function($q){
+angular.module('TabMagicApp')
+
+.factory('$tabs', function($q){
 
 	// API of factory
 	var factory = {
@@ -30,11 +32,6 @@ tabMagicApp.factory('$tabs', function($q){
 				tab.url.indexOf('chrome-devtools:') > -1 ||
 				tab.url.indexOf('file:') > -1 ||
 				tab.url.indexOf('chrome.google.com/webstore') > -1);
-		},
-
-		// Is suspended
-		isSuspended: function(tab){
-			return tab.url.indexOf('suspended.html') > -1;
 		}
 
 	};

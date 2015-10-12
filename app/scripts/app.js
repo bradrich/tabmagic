@@ -1,25 +1,16 @@
 'use strict';
-/* exported tabMagicApp */
 
-var tabMagicApp = angular.module('TabMagicApp', [
-	'ngAnimate',
-	'ngFx',
-	'LocalStorageModule',
-	'angular-momentjs',
-	'ui.bootstrap',
-	'ngMaterial'
-])
+angular.module('TabMagicApp', ['ngAnimate', 'ngFx', 'LocalStorageModule', 'angular-momentjs', 'ui.bootstrap', 'ngMaterial', 'ui.bootstrap.tooltip'])
 
 // Material design configuration
-.config(function($mdThemingProvider){
-	$mdThemingProvider.theme('default')
-		.primaryPalette('red');
+.config(function ($mdThemingProvider) {
+	$mdThemingProvider.theme('default').primaryPalette('red');
 })
 
 // Runs
-.run(['$document', function($document){
+.run(['$document', function ($document) {
 
 	// Initialize Foundation
 	$document.foundation();
-
 }]);
+//# sourceMappingURL=app.js.map

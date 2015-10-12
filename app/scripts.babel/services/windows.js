@@ -1,6 +1,8 @@
 'use strict';
 
-tabMagicApp.factory('$windows', function($q){
+angular.module('TabMagicApp')
+
+.factory('$windows', function($q){
 
 	// API of factory
 	var factory = {

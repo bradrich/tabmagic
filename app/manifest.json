@@ -1,18 +1,15 @@
 {
-  "name": "TabMagic",
-  "version": "0.0.2",
+  "name": "__MSG_appName__",
+  "version": "0.0.1",
   "manifest_version": 2,
-  "description": "Automagically have full control over your Chrome tabs.",
+  "description": "__MSG_appDescription__",
   "icons": {
     "16": "images/icon-16.png",
     "128": "images/icon-128.png"
   },
-  "web_accessible_resources": ["suspended.html"],
   "default_locale": "en",
   "background": {
     "scripts": [
-      "bower_components/angular/angular.js",
-      "bower_components/jquery/dist/jquery.js",
       "scripts/chromereload.js",
       "scripts/background.js"
     ]
@@ -26,6 +23,10 @@
     "default_popup": "popup.html"
   },
   "options_page": "options.html",
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
   "omnibox": {
     "keyword": "TabMagic"
   },
@@ -36,8 +37,6 @@
         "https://*/*"
       ],
       "js": [
-        "bower_components/angular/angular.js",
-        "bower_components/jquery/dist/jquery.js",
         "scripts/contentscript.js"
       ],
       "run_at": "document_end",

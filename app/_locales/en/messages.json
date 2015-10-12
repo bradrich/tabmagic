@@ -4,7 +4,7 @@
     "description": "The name of the application"
   },
   "appDescription": {
-    "message": "Automagically handle all of your Chrome tab needs.",
+    "message": "Automagically control your Chrome tabs.",
     "description": "The description of the application"
   }
 }

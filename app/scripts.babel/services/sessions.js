@@ -1,6 +1,8 @@
 'use strict';
 
-tabMagicApp.factory('$sessions', function($q){
+angular.module('TabMagicApp')
+
+.factory('$sessions', function($q){
 
 	// API of factory
 	var factory = {

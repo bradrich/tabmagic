@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css styles/main.css -->
+        <link href="styles/main.css" rel="stylesheet">
+        <link rel="stylesheet" href="bower_components/icomoon/styles/style.css">
+        <!-- endbuild -->
+    </head>
+    <body id="ng-app" ng-app="TabMagicApp">
+
+        <!-- Full Screen -->
+        <div class="full-screen" ng-controller="OneTabCtrl">
+
+            <!-- Navigation -->
+            <div class="nav">
+                <div class="element logo">
+                    <div class="icon">
+                        <span class="primary">T</span><span class="white">M</span>
+                    </div>
+                </div>
+                <div class="element" ng-class="{ selected: navigation === 'bringToOne' }" ng-click="navigation = 'bringToOne'">
+                    <div class="text">Bring to One</div>
+                    <div class="icon"><i class="fa icon-filter-list fa-2x"></i></div>
+                </div>
+                <div class="element" ng-class="{ selected: navigation === 'settings' }" ng-click="navigation = 'settings'">
+                    <div class="text">Settings</div>
+                    <div class="icon"><i class="fa icon-settings fa-2x"></i></div>
+                </div>
+            </div>
+            <!-- End Navigation -->
+
+            <!-- Main -->
+            <div class="main-section">
+
+                <!-- Header -->
+                <div class="row header no-margin-side overflow-visible" add-border="content">
+                    <div class="small-12 columns">
+                        <h5><span class="primary">TAB</span>MAGIC</h5>
+                    </div>
+                    <div class="action-button text-center clickable fx-fade-normal" title="Restore selected" ng-show="actionButtonShow('bringToOne') && navigation === 'bringToOne'" ng-click="oneTab.reopen()">
+                        <i class="fa icon-refresh fa-2x"></i>
+                    </div>
+                </div>
+                <!-- End Header -->
+
+                <!-- Content -->
+                <div id="content" class="row content no-margin-side" custom-scrollbar="#5d6166">
+                    <div class="small-12 columns overflow-hidden">
+
+                        <!-- Bring to One -->
+                        <div class="row fx-fade-up" ng-show="navigation === 'bringToOne'">
+                            <div class="small-12 columns">
+                                <div class="row title no-margin-top">
+                                    <div class="small-11 columns">Bring to One</div>
+                                    <div class="small-1 columns text-right no-padding-left">
+                                        <i class="fa fa-close clickable" tooltip="Close all" tooltip-placement="left" ng-click="oneTab.removeAll()" ng-hide="oneTab.data.tmOneTabSelectedTabs.length === 0"></i>
+                                    </div>
+                                </div>
+                                <div class="row item clickable" ng-repeat="tab in oneTab.data.tmOneTabSelectedTabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
+                                    <div class="small-1 columns text-center no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
+                                        <img ng-src="{{tab.favIconUrl}}" width="16" />
+                                    </div>
+                                    <div class="columns" ng-class="{ 'small-10': '' !== tab.favIconUrl && tab.favIconUrl, 'small-11': '' === tab.favIconUrl || !tab.favIconUrl }" ng-bind="tab.title"></div>
+                                    <div class="small-1 columns text-right no-padding-left">
+                                        <i class="fa fa-close" ng-click="oneTab.remove($index)"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Bring to One -->
+
+                    </div>
+                </div>
+                <!-- End Content -->
+
+            </div>
+            <!-- End Main -->
+
+        </div>
+        <!-- End Full Screen -->
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+        <script src="bower_components/angular-material/angular-material.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
+        <script src="bower_components/angular-momentjs/angular-momentjs.js"></script>
+        <script src="bower_components/fastclick/lib/fastclick.js"></script>
+        <script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+        <script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
+        <script src="bower_components/foundation/js/foundation.js"></script>
+        <script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
+        <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+        <script src="bower_components/ngFx/dist/ngFx.js"></script>
+        <script src="bower_components/jquery.nicescroll/jquery.nicescroll.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js scripts/popup.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/one-tab.js"></script>
+        <script src="scripts/directives/add-border.js"></script>
+        <script src="scripts/directives/custom-scrollbar.js"></script>
+        <script src="scripts/directives/disable-animate.js"></script>
+        <script src="scripts/directives/main-section.js"></script>
+        <script src="scripts/services/history.js"></script>
+        <script src="scripts/services/sessions.js"></script>
+        <script src="scripts/services/tabs.js"></script>
+        <script src="scripts/services/utilities.js"></script>
+        <script src="scripts/services/windows.js"></script>
+        <!-- endbuild -->
+
+    </body>
+</html>

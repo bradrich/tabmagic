@@ -1,444 +1,448 @@
 <!doctype html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<!-- build:css styles/main.css -->
-	<link rel="stylesheet" href="styles/main.css">
-	<!-- endbuild -->
-	<!-- build:css styles/vendor.css -->
-	<link rel="stylesheet" href="bower_components/icomoon/styles/style.css">
-	<!-- bower:css -->
-	<!-- endbower -->
-	<!-- endbuild -->
-</head>
-<body id="ng-app" ng-app="TabMagicApp">
+    <head>
+        <meta charset="utf-8">
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css styles/main.css -->
+        <link href="styles/main.css" rel="stylesheet">
+        <link rel="stylesheet" href="bower_components/icomoon/styles/style.css">
+        <!-- endbuild -->
+    </head>
+    <body id="ng-app" ng-app="TabMagicApp" class="in-popup">
 
-	<div class="popup" ng-controller="PopUpCtrl">
+        <div class="popup" ng-controller="PopUpCtrl">
 
-		<!-- Navigation -->
-		<div class="nav">
-			<div class="element logo">
-				<div class="icon">
-					<span class="primary">T</span><span class="white">M</span>
-				</div>
-			</div>
-			<div class="element" ng-class="{ selected: navigation === 'recentlyClosed' }" ng-click="navigation = 'recentlyClosed'; sessions.recentlyClosed.removeSelections()">
-				<div class="text">Recent Closed</div>
-				<div class="icon"><i class="fa icon-close fa-2x"></i></div>
-			</div>
-			<div class="element" ng-class="{ selected: navigation === 'recentlyVisited' }" ng-click="navigation = 'recentlyVisited'; history.recentlyVisited.get('', 30); history.recentlyVisited.removeSelections()">
-				<div class="text">Recent History</div>
-				<div class="icon"><i class="fa icon-history fa-2x"></i></div>
-			</div>
-			<div class="element" ng-class="{ selected: navigation === 'devices' }" ng-click="navigation = 'devices'; sessions.devices.get()">
-				<div class="text">Synced Devices</div>
-				<div class="icon"><i class="fa icon-devices fa-2x"></i></div>
-			</div>
-			<div class="element" ng-class="{ selected: navigation === 'bringToOne' }" ng-click="navigation = 'bringToOne'; windows.getAll(); windows.removeSelections()">
-				<div class="text">Bring to One</div>
-				<div class="icon"><i class="fa icon-filter-list fa-2x"></i></div>
-			</div>
-			<div class="element" ng-class="{ selected: navigation === 'snooze' }" ng-click="navigation = 'snooze'; tabs.query(true, true); windows.getAll()">
-				<div class="text">Snooze</div>
-				<div class="icon"><i class="fa icon-timer fa-2x"></i></div>
-			</div>
-			<div class="element" ng-class="{ selected: navigation === 'settings' }" ng-click="navigation = 'settings'; settings.init()">
-				<div class="text">Settings</div>
-				<div class="icon"><i class="fa icon-settings fa-2x"></i></div>
-			</div>
-		</div>
-		<!-- End Navigation -->
+            <!-- Navigation -->
+            <div class="nav">
+                <div class="element logo">
+                    <div class="icon">
+                        <span class="primary">T</span><span class="white">M</span>
+                    </div>
+                </div>
+                <div class="element" ng-class="{ selected: navigation === 'recentlyClosed' }" ng-click="navigation = 'recentlyClosed'; sessions.recentlyClosed.removeSelections()">
+                    <div class="text">Recent Closed</div>
+                    <div class="icon"><i class="fa icon-close fa-2x"></i></div>
+                </div>
+                <div class="element" ng-class="{ selected: navigation === 'recentlyVisited' }" ng-click="navigation = 'recentlyVisited'; history.recentlyVisited.get('', 30); history.recentlyVisited.removeSelections()">
+                    <div class="text">Recent History</div>
+                    <div class="icon"><i class="fa icon-history fa-2x"></i></div>
+                </div>
+                <div class="element" ng-class="{ selected: navigation === 'devices' }" ng-click="navigation = 'devices'; sessions.devices.get()">
+                    <div class="text">Synced Devices</div>
+                    <div class="icon"><i class="fa icon-devices fa-2x"></i></div>
+                </div>
+                <div class="element" ng-class="{ selected: navigation === 'bringToOne' }" ng-click="navigation = 'bringToOne'; windows.getAll(); windows.removeSelections()">
+                    <div class="text">Bring to One</div>
+                    <div class="icon"><i class="fa icon-filter-list fa-2x"></i></div>
+                </div>
+                <div class="element" ng-class="{ selected: navigation === 'snooze' }" ng-click="navigation = 'snooze'; tabs.query(true, true); windows.getAll()">
+                    <div class="text">Snooze</div>
+                    <div class="icon"><i class="fa icon-timer fa-2x"></i></div>
+                </div>
+                <div class="element" ng-class="{ selected: navigation === 'settings' }" ng-click="navigation = 'settings'; settings.init()">
+                    <div class="text">Settings</div>
+                    <div class="icon"><i class="fa icon-settings fa-2x"></i></div>
+                </div>
+            </div>
+            <!-- End Navigation -->
 
-		<!-- Main -->
-		<div class="main">
+            <!-- Main -->
+            <div class="main-section">
 
-			<!-- Header -->
-			<div class="row header no-margin-side overflow-visible" add-border="content">
-				<div class="small-12 columns">
-					<h5><span class="primary">TAB</span>MAGIC</h5>
-				</div>
-				<div class="action-button text-center clickable fx-fade-normal" title="Restore selected" ng-show="actionButtonShow('recentlyClosed') && navigation === 'recentlyClosed'" ng-click="sessions.recentlyClosed.reopen()">
-					<i class="fa icon-refresh fa-2x"></i>
-				</div>
-				<div class="action-button text-center clickable fx-fade-normal" title="Restore selected" ng-show="actionButtonShow('recentlyVisited') && navigation === 'recentlyVisited'" ng-click="history.recentlyVisited.reopen()">
-					<i class="fa icon-refresh fa-2x"></i>
-				</div>
-				<div class="action-button text-center clickable fx-fade-normal" title="Open selected" ng-show="actionButtonShow('devices') && navigation === 'devices'" ng-click="sessions.devices.openTab()">
-					<i class="fa icon-refresh fa-2x"></i>
-				</div>
-				<div class="action-button text-center clickable fx-fade-normal" title="Bring selected to one" ng-show="actionButtonShow('bringToOne') && navigation === 'bringToOne'" ng-click="tabs.bringToOne(false)">
-					<i class="fa icon-filter-list fa-2x"></i>
-				</div>
-				<div class="action-button text-center clickable expandable overflow-hidden fx-fade-normal" ng-show="actionButtonShow('snooze') && navigation === 'snooze'">
-					<i class="fa icon-pause fa-2x action-icon"></i>
-					<div class="action-content full-width">
-						<div class="row no-margin-side fx-fade-up" ng-show="!tmSnoozePeriodicallySelected && !tmSnoozePickADateSelected">
-							<div class="small-4 columns square no-padding-side top-left">
-								<i class="fa icon-redo fa-3x"></i><br />
-								<small>Later Today</small>
-							</div>
-							<div class="small-4 columns square no-padding-side">
-								<i class="fa icon-brightness-4 fa-3x"></i><br />
-								<small>This Evening</small>
-							</div>
-							<div class="small-4 columns square no-padding-side end top-right">
-								<i class="fa icon-brightness-5 fa-3x"></i><br />
-								<small>Tomorrow</small>
-							</div>
-							<div class="small-4 columns square no-padding-side">
-								<i class="fa icon-whatshot fa-3x"></i><br />
-								<small>This Weekend</small>
-							</div>
-							<div class="small-4 columns square no-padding-side">
-								<i class="fa icon-work fa-3x"></i><br />
-								<small>Next Week</small>
-							</div>
-							<div class="small-4 columns square no-padding-side end">
-								<i class="fa icon-bookmark-outline fa-3x"></i><br />
-								<small>In a Month</small>
-							</div>
-							<div class="small-4 columns square no-padding-side bottom-left">
-								<i class="fa icon-check-box fa-3x"></i><br />
-								<small>Someday</small>
-							</div>
-							<div class="small-4 columns square no-padding-side" ng-click="tmSnoozePeriodicallySelected = !tmSnoozePeriodicallySelected">
-								<i class="fa icon-loop fa-3x"></i><br />
-								<small>Periodically</small>
-							</div>
-							<div class="small-4 columns square no-padding-side end bottom-right" ng-click="tmSnoozePickADateSelected = !tmSnoozePickADateSelected">
-								<i class="fa icon-event fa-3x"></i><br />
-								<small>Pick a Date</small>
-							</div>
-						</div>
-						<div class="row fx-fade-up" ng-show="tmSnoozePeriodicallySelected">
-							<div class="small-12 columns text-center medium-margin-top">
-								Periodically
-							</div>
-						</div>
-						<div class="row fx-fade-up" ng-show="tmSnoozePickADateSelected">
-							<div class="small-12 columns text-center medium-margin-top">
-								Pick a Date
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Header -->
+                <!-- Header -->
+                <div class="row header no-margin-side overflow-visible" add-border="content">
+                    <div class="small-12 columns">
+                        <h5><span class="primary">TAB</span>MAGIC</h5>
+                    </div>
+                    <div class="action-button text-center clickable fx-fade-normal" title="Restore selected" ng-show="actionButtonShow('recentlyClosed') && navigation === 'recentlyClosed'" ng-click="sessions.recentlyClosed.reopen()">
+                        <i class="fa icon-refresh fa-2x"></i>
+                    </div>
+                    <div class="action-button text-center clickable fx-fade-normal" title="Restore selected" ng-show="actionButtonShow('recentlyVisited') && navigation === 'recentlyVisited'" ng-click="history.recentlyVisited.reopen()">
+                        <i class="fa icon-refresh fa-2x"></i>
+                    </div>
+                    <div class="action-button text-center clickable fx-fade-normal" title="Open selected" ng-show="actionButtonShow('devices') && navigation === 'devices'" ng-click="sessions.devices.openTab()">
+                        <i class="fa icon-refresh fa-2x"></i>
+                    </div>
+                    <div class="action-button text-center clickable fx-fade-normal" title="Bring selected to one" ng-show="actionButtonShow('bringToOne') && navigation === 'bringToOne'" ng-click="tabs.bringToOne(false)">
+                        <i class="fa icon-filter-list fa-2x"></i>
+                    </div>
+                    <div class="action-button text-center clickable expandable overflow-hidden fx-fade-normal" ng-show="actionButtonShow('snooze') && navigation === 'snooze'">
+                        <i class="fa icon-pause fa-2x action-icon"></i>
+                        <div class="action-content full-width">
+                            <div class="row no-margin-side fx-fade-up" ng-show="!tmSnoozePeriodicallySelected && !tmSnoozePickADateSelected">
+                                <div class="small-4 columns square no-padding-side top-left">
+                                    <i class="fa icon-redo fa-3x"></i><br />
+                                    <small>Later Today</small>
+                                </div>
+                                <div class="small-4 columns square no-padding-side">
+                                    <i class="fa icon-brightness-4 fa-3x"></i><br />
+                                    <small>This Evening</small>
+                                </div>
+                                <div class="small-4 columns square no-padding-side end top-right">
+                                    <i class="fa icon-brightness-5 fa-3x"></i><br />
+                                    <small>Tomorrow</small>
+                                </div>
+                                <div class="small-4 columns square no-padding-side">
+                                    <i class="fa icon-whatshot fa-3x"></i><br />
+                                    <small>This Weekend</small>
+                                </div>
+                                <div class="small-4 columns square no-padding-side">
+                                    <i class="fa icon-work fa-3x"></i><br />
+                                    <small>Next Week</small>
+                                </div>
+                                <div class="small-4 columns square no-padding-side end">
+                                    <i class="fa icon-bookmark-outline fa-3x"></i><br />
+                                    <small>In a Month</small>
+                                </div>
+                                <div class="small-4 columns square no-padding-side bottom-left">
+                                    <i class="fa icon-check-box fa-3x"></i><br />
+                                    <small>Someday</small>
+                                </div>
+                                <div class="small-4 columns square no-padding-side" ng-click="tmSnoozePeriodicallySelected = !tmSnoozePeriodicallySelected">
+                                    <i class="fa icon-loop fa-3x"></i><br />
+                                    <small>Periodically</small>
+                                </div>
+                                <div class="small-4 columns square no-padding-side end bottom-right" ng-click="tmSnoozePickADateSelected = !tmSnoozePickADateSelected">
+                                    <i class="fa icon-event fa-3x"></i><br />
+                                    <small>Pick a Date</small>
+                                </div>
+                            </div>
+                            <div class="row fx-fade-up" ng-show="tmSnoozePeriodicallySelected">
+                                <div class="small-12 columns text-center medium-margin-top">
+                                    Periodically
+                                </div>
+                            </div>
+                            <div class="row fx-fade-up" ng-show="tmSnoozePickADateSelected">
+                                <div class="small-12 columns text-center medium-margin-top">
+                                    Pick a Date
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Header -->
 
-			<!-- Content -->
-			<div id="content" class="row content no-margin-side" custom-scrollbar="#5d6166" max-height="640">
-				<div class="small-12 columns overflow-hidden">
+                <!-- Content -->
+                <div id="content" class="row content no-margin-side" custom-scrollbar="#5d6166" max-height="640">
+                    <div class="small-12 columns overflow-hidden">
 
-					<!-- Recent Closed -->
-					<div class="row fx-fade-up" ng-show="navigation === 'recentlyClosed'">
-						<div class="small-12 columns">
-							<div class="row title no-margin-top">
-								<div class="small-12 columns">Recent Closed Tabs</div>
-							</div>
-							<div class="row item clickable" ng-repeat="session in sessions.recentlyClosed.data" ng-class="{ even: $even, selected: session.tmSelected }" ng-click="session.tmSelected = !session.tmSelected">
-								<div class="small-1 columns no-padding-right" ng-show="'' !== session.tab.favIconUrl && session.tab.favIconUrl">
-									<img ng-src="{{session.tab.favIconUrl}}" width="16" />
-								</div>
-								<div class="columns" ng-class="{ 'small-11': '' !== session.tab.favIconUrl && session.tab.favIconUrl, 'small-12': '' === session.tab.favIconUrl || !session.tab.favIconUrl }" ng-bind="session.tab.title"></div>
-							</div>
-						</div>
-					</div>
-					<!-- End Recent Closed -->
+                        <!-- Recent Closed -->
+                        <div class="row fx-fade-up" ng-show="navigation === 'recentlyClosed'">
+                            <div class="small-12 columns">
+                                <div class="row title no-margin-top">
+                                    <div class="small-12 columns">Recent Closed Tabs</div>
+                                </div>
+                                <div class="row item clickable" ng-repeat="session in sessions.recentlyClosed.data" ng-class="{ even: $even, selected: session.tmSelected }" ng-click="session.tmSelected = !session.tmSelected">
+                                    <div class="small-1 columns no-padding-right" ng-show="'' !== session.tab.favIconUrl && session.tab.favIconUrl">
+                                        <img ng-src="{{session.tab.favIconUrl}}" width="16" />
+                                    </div>
+                                    <div class="columns" ng-class="{ 'small-11': '' !== session.tab.favIconUrl && session.tab.favIconUrl, 'small-12': '' === session.tab.favIconUrl || !session.tab.favIconUrl }" ng-bind="session.tab.title"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Recent Closed -->
 
-					<!-- Recent History -->
-					<div class="row fx-fade-up" ng-show="navigation === 'recentlyVisited'">
-						<div class="small-12 columns">
-							<div class="row title no-margin-top">
-								<div class="small-12 columns">Recent History</div>
-							</div>
-							<div class="row item clickable" ng-repeat="item in history.recentlyVisited.data" ng-class="{ even: $even, selected: item.tmSelected }" ng-click="item.tmSelected = !item.tmSelected">
-								<div class="small-12 columns" ng-show="item.title" ng-bind="item.title"></div>
-								<div class="small-12 columns" ng-show="!item.title" ng-bind="item.url"></div>
-							</div>
-						</div>
-					</div>
-					<!-- End Recent History -->
+                        <!-- Recent History -->
+                        <div class="row fx-fade-up" ng-show="navigation === 'recentlyVisited'">
+                            <div class="small-12 columns">
+                                <div class="row title no-margin-top">
+                                    <div class="small-12 columns">Recent History</div>
+                                </div>
+                                <div class="row item clickable" ng-repeat="item in history.recentlyVisited.data" ng-class="{ even: $even, selected: item.tmSelected }" ng-click="item.tmSelected = !item.tmSelected">
+                                    <div class="small-12 columns" ng-show="item.title" ng-bind="item.title"></div>
+                                    <div class="small-12 columns" ng-show="!item.title" ng-bind="item.url"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Recent History -->
 
-					<!-- Synced Devices -->
-					<div class="row fx-fade-up" ng-show="navigation === 'devices'">
-						<div class="small-12 columns">
-							<div class="row title no-margin-top">
-								<div class="small-12 columns">Synced Devices</div>
-							</div>
-							<div class="row" ng-repeat="device in sessions.devices.data">
-								<div class="small-12 columns">
-									<div class="row item window clickable" ng-class="{ collapsed: device.tmCollapsed }" ng-click="device.tmCollapsed = !device.tmCollapsed">
-										<div class="small-10 columns" ng-bind="device.deviceName"></div>
-										<div class="small-2 columns text-right">
-											<i class="fa icon-expand-more fa-lg" ng-show="!device.tmCollapsed" disable-animate></i>
-											<i class="fa icon-chevron-right fa-lg" ng-show="device.tmCollapsed" disable-animate></i>
-										</div>
-									</div>
-									<div class="row overflow-hidden" collapse="device.tmCollapsed">
-										<div class="small-12 columns" ng-repeat="session in device.sessions">
-											<div class="row item clickable" ng-repeat="tab in session.window.tabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
-												<div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
-													<img ng-src="{{tab.favIconUrl}}" width="16" />
-												</div>
-												<div class="columns" ng-class="{ 'small-11': '' !== tab.favIconUrl && tab.favIconUrl, 'small-12': '' === tab.favIconUrl || !tab.favIconUrl }" ng-bind="tab.title"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- End Synced Devices -->
+                        <!-- Synced Devices -->
+                        <div class="row fx-fade-up" ng-show="navigation === 'devices'">
+                            <div class="small-12 columns">
+                                <div class="row title no-margin-top">
+                                    <div class="small-12 columns">Synced Devices</div>
+                                </div>
+                                <div class="row" ng-repeat="device in sessions.devices.data">
+                                    <div class="small-12 columns">
+                                        <div class="row item window clickable" ng-class="{ collapsed: device.tmCollapsed }" ng-click="device.tmCollapsed = !device.tmCollapsed">
+                                            <div class="small-10 columns" ng-bind="device.deviceName"></div>
+                                            <div class="small-2 columns text-right">
+                                                <i class="fa icon-expand-more fa-lg" ng-show="!device.tmCollapsed" disable-animate></i>
+                                                <i class="fa icon-chevron-right fa-lg" ng-show="device.tmCollapsed" disable-animate></i>
+                                            </div>
+                                        </div>
+                                        <div class="row overflow-hidden" collapse="device.tmCollapsed">
+                                            <div class="small-12 columns" ng-repeat="session in device.sessions">
+                                                <div class="row item clickable" ng-repeat="tab in session.window.tabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
+                                                    <div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
+                                                        <img ng-src="{{tab.favIconUrl}}" width="16" />
+                                                    </div>
+                                                    <div class="columns" ng-class="{ 'small-11': '' !== tab.favIconUrl && tab.favIconUrl, 'small-12': '' === tab.favIconUrl || !tab.favIconUrl }" ng-bind="tab.title"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Synced Devices -->
 
-					<!-- Bring to One -->
-					<div class="row fx-fade-up" ng-show="navigation === 'bringToOne'">
-						<div class="small-12 columns">
-							<div class="row title no-margin-top">
-								<div class="small-12 columns">Bring to One</div>
-							</div>
-							<div class="row" ng-repeat="window in windows.data">
-								<div class="small-12 columns">
-									<div class="row item window clickable" ng-class="{ collapsed: window.tmCollapsed }" ng-click="window.tmCollapsed = !window.tmCollapsed">
-										<div class="small-10 columns">
-											<span ng-show="window.focused">Window #{{$index + 1}} (Current)</span>
-											<span ng-show="!window.focused">Window #{{$index + 1}}</span>
-										</div>
-										<div class="small-2 columns text-right">
-											<i class="fa icon-expand-more fa-lg" ng-show="!window.tmCollapsed" disable-animate></i>
-											<i class="fa icon-chevron-right fa-lg" ng-show="window.tmCollapsed" disable-animate></i>
-										</div>
-									</div>
-									<div class="row overflow-hidden" collapse="window.tmCollapsed">
-										<div class="small-12 columns">
-											<div class="row item clickable" ng-repeat="tab in window.tabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
-												<div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
-													<img ng-src="{{tab.favIconUrl}}" width="16" />
-												</div>
-												<div class="columns" ng-class="{ 'small-11': '' !== tab.favIconUrl && tab.favIconUrl, 'small-12': '' === tab.favIconUrl || !tab.favIconUrl }" ng-bind="tab.title"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- End Bring to One -->
+                        <!-- Bring to One -->
+                        <div class="row fx-fade-up" ng-show="navigation === 'bringToOne'">
+                            <div class="small-12 columns">
+                                <div class="row title no-margin-top">
+                                    <div class="small-12 columns">Bring to One</div>
+                                </div>
+                                <div class="row" ng-repeat="window in windows.data">
+                                    <div class="small-12 columns">
+                                        <div class="row item window clickable" ng-class="{ collapsed: window.tmCollapsed }" ng-click="window.tmCollapsed = !window.tmCollapsed">
+                                            <div class="small-10 columns">
+                                                <span ng-show="window.focused">Window #{{$index + 1}} (Current)</span>
+                                                <span ng-show="!window.focused">Window #{{$index + 1}}</span>
+                                            </div>
+                                            <div class="small-2 columns text-right">
+                                                <i class="fa icon-expand-more fa-lg" ng-show="!window.tmCollapsed" disable-animate></i>
+                                                <i class="fa icon-chevron-right fa-lg" ng-show="window.tmCollapsed" disable-animate></i>
+                                            </div>
+                                        </div>
+                                        <div class="row overflow-hidden" collapse="window.tmCollapsed">
+                                            <div class="small-12 columns">
+                                                <div class="row item clickable" ng-repeat="tab in window.tabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
+                                                    <div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
+                                                        <img ng-src="{{tab.favIconUrl}}" width="16" />
+                                                    </div>
+                                                    <div class="columns" ng-class="{ 'small-11': '' !== tab.favIconUrl && tab.favIconUrl, 'small-12': '' === tab.favIconUrl || !tab.favIconUrl }" ng-bind="tab.title"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Bring to One -->
 
-					<!-- Snooze -->
-					<div class="row fx-fade-up" ng-show="navigation === 'snooze'">
-						<div class="small-12 columns">
+                        <!-- Snooze -->
+                        <div class="row fx-fade-up" ng-show="navigation === 'snooze'">
+                            <div class="small-12 columns">
 
-							<!-- This Tab -->
-							<!-- <div class="row item" ng-show="currentTabIsSuspended()">
-								<div class="small-12 columns">Tab is currently suspended</div>
-							</div>
-							<div class="row item clickable" ng-show="currentTabIsSuspended()">
-								<div class="small-1 columns no-padding-right"><i class="fa icon-play-circle-outline fa-lg primary"></i></div>
-								<div class="small-11 columns">Unsuspend this tab</div>
-							</div>
-							<div class="row item clickable" ng-show="!currentTabIsSuspended()" ng-click="suspendCurrentTab()">
-								<div class="small-1 columns no-padding-right"><i class="fa icon-pause-circle-outline fa-lg primary"></i></div>
-								<div class="small-11 columns">Suspend this tab</div>
-							</div> -->
-							<!-- End This Tab -->
+                                <!-- This Tab -->
+                                <!-- <div class="row item" ng-show="currentTabIsSuspended()">
+                                    <div class="small-12 columns">Tab is currently suspended</div>
+                                </div>
+                                <div class="row item clickable" ng-show="currentTabIsSuspended()">
+                                    <div class="small-1 columns no-padding-right"><i class="fa icon-play-circle-outline fa-lg primary"></i></div>
+                                    <div class="small-11 columns">Unsuspend this tab</div>
+                                </div>
+                                <div class="row item clickable" ng-show="!currentTabIsSuspended()" ng-click="suspendCurrentTab()">
+                                    <div class="small-1 columns no-padding-right"><i class="fa icon-pause-circle-outline fa-lg primary"></i></div>
+                                    <div class="small-11 columns">Suspend this tab</div>
+                                </div> -->
+                                <!-- End This Tab -->
 
-							<!-- Other Tabs -->
-							<!-- <div class="row item clickable">
-								<div class="small-1 columns no-padding-right"><i class="fa icon-pause-circle-fill fa-lg primary"></i></div>
-								<div class="small-11 columns">Suspend all tabs</div>
-							</div>
-							<div class="row item clickable">
-								<div class="small-1 columns no-padding-right"><i class="fa icon-play-circle-fill fa-lg primary"></i></div>
-								<div class="small-11 columns">Unsuspend all tabs</div>
-							</div> -->
-							<!-- End Other Tabs -->
+                                <!-- Other Tabs -->
+                                <!-- <div class="row item clickable">
+                                    <div class="small-1 columns no-padding-right"><i class="fa icon-pause-circle-fill fa-lg primary"></i></div>
+                                    <div class="small-11 columns">Suspend all tabs</div>
+                                </div>
+                                <div class="row item clickable">
+                                    <div class="small-1 columns no-padding-right"><i class="fa icon-play-circle-fill fa-lg primary"></i></div>
+                                    <div class="small-11 columns">Unsuspend all tabs</div>
+                                </div> -->
+                                <!-- End Other Tabs -->
 
-							<!-- This Tab -->
-							<div class="row title no-margin-top">
-								<div class="small-12 columns">Snooze this tab</div>
-							</div>
-							<div class="row item clickable" ng-class="{ selected: tabs.current.tmSelected }" ng-click="tabs.current.tmSelected = !tabs.current.tmSelected">
-								<div class="small-1 columns no-padding-right" ng-show="'' !== tabs.current.favIconUrl && tabs.current.favIconUrl">
-									<img ng-src="{{tabs.current.favIconUrl}}" width="16" />
-								</div>
-								<div class="columns" ng-class="{ 'small-11': '' !== tabs.current.favIconUrl && tabs.current.favIconUrl, 'small-12': '' === tabs.current.favIconUrl || !tabs.current.favIconUrl }" ng-bind="tabs.current.title"></div>
-							</div>
-							<!-- End This Tab -->
+                                <!-- This Tab -->
+                                <div class="row title no-margin-top">
+                                    <div class="small-12 columns">Snooze this tab</div>
+                                </div>
+                                <div class="row item clickable" ng-class="{ selected: tabs.current.tmSelected }" ng-click="tabs.current.tmSelected = !tabs.current.tmSelected">
+                                    <div class="small-1 columns no-padding-right" ng-show="'' !== tabs.current.favIconUrl && tabs.current.favIconUrl">
+                                        <img ng-src="{{tabs.current.favIconUrl}}" width="16" />
+                                    </div>
+                                    <div class="columns" ng-class="{ 'small-11': '' !== tabs.current.favIconUrl && tabs.current.favIconUrl, 'small-12': '' === tabs.current.favIconUrl || !tabs.current.favIconUrl }" ng-bind="tabs.current.title"></div>
+                                </div>
+                                <!-- End This Tab -->
 
-							<!-- Select Tabs -->
-							<div class="row title">
-								<div class="small-12 columns">Snooze select tabs</div>
-							</div>
-							<div class="row" ng-repeat="window in windows.data">
-								<div class="small-12 columns">
-									<div class="row item window clickable" ng-class="{ collapsed: window.tmCollapsed }" ng-click="window.tmCollapsed = !window.tmCollapsed">
-										<div class="small-10 columns">
-											<span ng-show="window.focused">Window #{{$index + 1}} (Current)</span>
-											<span ng-show="!window.focused">Window #{{$index + 1}}</span>
-										</div>
-										<div class="small-2 columns text-right">
-											<i class="fa icon-expand-more fa-lg" ng-show="!window.tmCollapsed" disable-animate></i>
-											<i class="fa icon-chevron-right fa-lg" ng-show="window.tmCollapsed" disable-animate></i>
-										</div>
-									</div>
-									<div class="row overflow-hidden" collapse="window.tmCollapsed">
-										<div class="small-12 columns">
-											<div class="row item clickable" ng-repeat="tab in window.tabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
-												<div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
-													<img ng-src="{{tab.favIconUrl}}" width="16" />
-												</div>
-												<div class="columns" ng-class="{ 'small-11': '' !== tab.favIconUrl && tab.favIconUrl, 'small-12': '' === tab.favIconUrl || !tab.favIconUrl }" ng-bind="tab.title"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- End Select Tabs -->
+                                <!-- Select Tabs -->
+                                <div class="row title">
+                                    <div class="small-12 columns">Snooze select tabs</div>
+                                </div>
+                                <div class="row" ng-repeat="window in windows.data">
+                                    <div class="small-12 columns">
+                                        <div class="row item window clickable" ng-class="{ collapsed: window.tmCollapsed }" ng-click="window.tmCollapsed = !window.tmCollapsed">
+                                            <div class="small-10 columns">
+                                                <span ng-show="window.focused">Window #{{$index + 1}} (Current)</span>
+                                                <span ng-show="!window.focused">Window #{{$index + 1}}</span>
+                                            </div>
+                                            <div class="small-2 columns text-right">
+                                                <i class="fa icon-expand-more fa-lg" ng-show="!window.tmCollapsed" disable-animate></i>
+                                                <i class="fa icon-chevron-right fa-lg" ng-show="window.tmCollapsed" disable-animate></i>
+                                            </div>
+                                        </div>
+                                        <div class="row overflow-hidden" collapse="window.tmCollapsed">
+                                            <div class="small-12 columns">
+                                                <div class="row item clickable" ng-repeat="tab in window.tabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
+                                                    <div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
+                                                        <img ng-src="{{tab.favIconUrl}}" width="16" />
+                                                    </div>
+                                                    <div class="columns" ng-class="{ 'small-11': '' !== tab.favIconUrl && tab.favIconUrl, 'small-12': '' === tab.favIconUrl || !tab.favIconUrl }" ng-bind="tab.title"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Select Tabs -->
 
-						</div>
-					</div>
-					<!-- End Snooze -->
+                            </div>
+                        </div>
+                        <!-- End Snooze -->
 
-					<!-- Settings -->
-					<div class="row fx-fade-up" ng-show="navigation === 'settings'">
-						<div class="small-12 columns">
+                        <!-- Settings -->
+                        <div class="row fx-fade-up" ng-show="navigation === 'settings'">
+                            <div class="small-12 columns">
 
-							<!-- Snooze -->
-							<div class="row title">
-								<div class="small-12 columns">Settings</div>
-							</div>
-							<div class="row">
-								<div class="small-12 columns">
-									<div class="row item window clickable small-margin-bottom" ng-class="{ collapsed: settings.snooze.tmCollapsed }" ng-click="settings.snooze.tmCollapsed = !settings.snooze.tmCollapsed">
-										<div class="small-10 columns">Snooze</div>
-										<div class="small-2 columns text-right">
-											<i class="fa icon-expand-more fa-lg" ng-show="!settings.snooze.tmCollapsed" disable-animate></i>
-											<i class="fa icon-chevron-right fa-lg" ng-show="settings.snooze.tmCollapsed" disable-animate></i>
-										</div>
-									</div>
-									<div class="row overflow-hidden" collapse="settings.snooze.tmCollapsed">
-										<div class="small-4 columns">
-											<p class="settings-section-name">
-												<strong>Snooze Times</strong>
-											</p>
-										</div>
-										<div class="small-8 columns">
-											<div class="row">
-												<div class="small-6 columns">
-													<label for="workdayStarts" class="inline">
-														Workday Starts&nbsp;&nbsp;
-														<i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.workdayStarts.saved"></i>
-													</label>
-												</div>
-												<div class="small-6 columns">
-													<select id="workdayStarts" class="radius" ng-model="settings.snooze.data.workdayStarts.model" ng-required="true" ng-options="option for option in settings.snooze.data.workdayStarts.options" ng-change="settings.save('settings.snooze.data.workdayStarts')"></select>
-												</div>
-											</div>
-											<div class="row">
-												<div class="small-6 columns">
-													<label for="workdayEnds" class="inline">
-														Workday Ends&nbsp;&nbsp;
-														<i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.workdayEnds.saved"></i>
-													</label>
-												</div>
-												<div class="small-6 columns">
-													<select id="workdayEnds" class="radius" ng-model="settings.snooze.data.workdayEnds.model" ng-required="true" ng-options="option for option in settings.snooze.data.workdayEnds.options" ng-change="settings.save('settings.snooze.data.workdayEnds')"></select>
-												</div>
-											</div>
-											<div class="row">
-												<div class="small-6 columns">
-													<label for="weekStarts" class="inline">
-														Week Starts&nbsp;&nbsp;
-														<i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.weekStarts.saved"></i>
-													</label>
-												</div>
-												<div class="small-6 columns">
-													<select id="weekStarts" class="radius" ng-model="settings.snooze.data.weekStarts.model" ng-required="true" ng-options="option for option in settings.snooze.data.weekStarts.options" ng-change="settings.save('settings.snooze.data.weekStarts')"></select>
-												</div>
-											</div>
-											<div class="row">
-												<div class="small-6 columns">
-													<label for="weekendStarts" class="inline">
-														Weekend Starts&nbsp;&nbsp;
-														<i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.weekendStarts.saved"></i>
-													</label>
-												</div>
-												<div class="small-6 columns">
-													<select id="weekendStarts" class="radius" ng-model="settings.snooze.data.weekendStarts.model" ng-required="true" ng-options="option for option in settings.snooze.data.weekendStarts.options" ng-change="settings.save('settings.snooze.data.weekendStarts')"></select>
-												</div>
-											</div>
-											<div class="row">
-												<div class="small-6 columns">
-													<label for="laterToday" class="inline">
-														Later Today&nbsp;&nbsp;
-														<i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.laterToday.saved"></i>
-													</label>
-												</div>
-												<div class="small-6 columns">
-													<select id="laterToday" class="radius" ng-model="settings.snooze.data.laterToday.model" ng-required="true" ng-options="option for option in settings.snooze.data.laterToday.options" ng-change="settings.save('settings.snooze.data.laterToday')"></select>
-												</div>
-											</div>
-											<div class="row">
-												<div class="small-6 columns">
-													<label for="someday" class="inline">
-														Someday&nbsp;&nbsp;
-														<i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.someday.saved"></i>
-													</label>
-												</div>
-												<div class="small-6 columns">
-													<select id="someday" class="radius" ng-model="settings.snooze.data.someday.model" ng-required="true" ng-options="option for option in settings.snooze.data.someday.options" ng-change="settings.save('settings.snooze.data.someday')"></select>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- End Snooze -->
+                                <!-- Snooze -->
+                                <div class="row title">
+                                    <div class="small-12 columns">Settings</div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-12 columns">
+                                        <div class="row item window clickable small-margin-bottom" ng-class="{ collapsed: settings.snooze.tmCollapsed }" ng-click="settings.snooze.tmCollapsed = !settings.snooze.tmCollapsed">
+                                            <div class="small-10 columns">Snooze</div>
+                                            <div class="small-2 columns text-right">
+                                                <i class="fa icon-expand-more fa-lg" ng-show="!settings.snooze.tmCollapsed" disable-animate></i>
+                                                <i class="fa icon-chevron-right fa-lg" ng-show="settings.snooze.tmCollapsed" disable-animate></i>
+                                            </div>
+                                        </div>
+                                        <div class="row overflow-hidden" collapse="settings.snooze.tmCollapsed">
+                                            <div class="small-4 columns">
+                                                <p class="settings-section-name">
+                                                    <strong>Snooze Times</strong>
+                                                </p>
+                                            </div>
+                                            <div class="small-8 columns">
+                                                <div class="row">
+                                                    <div class="small-6 columns">
+                                                        <label for="workdayStarts" class="inline">
+                                                            Workday Starts&nbsp;&nbsp;
+                                                            <i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.workdayStarts.saved"></i>
+                                                        </label>
+                                                    </div>
+                                                    <div class="small-6 columns">
+                                                        <select id="workdayStarts" class="radius" ng-model="settings.snooze.data.workdayStarts.model" ng-required="true" ng-options="option for option in settings.snooze.data.workdayStarts.options" ng-change="settings.save('settings.snooze.data.workdayStarts')"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="small-6 columns">
+                                                        <label for="workdayEnds" class="inline">
+                                                            Workday Ends&nbsp;&nbsp;
+                                                            <i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.workdayEnds.saved"></i>
+                                                        </label>
+                                                    </div>
+                                                    <div class="small-6 columns">
+                                                        <select id="workdayEnds" class="radius" ng-model="settings.snooze.data.workdayEnds.model" ng-required="true" ng-options="option for option in settings.snooze.data.workdayEnds.options" ng-change="settings.save('settings.snooze.data.workdayEnds')"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="small-6 columns">
+                                                        <label for="weekStarts" class="inline">
+                                                            Week Starts&nbsp;&nbsp;
+                                                            <i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.weekStarts.saved"></i>
+                                                        </label>
+                                                    </div>
+                                                    <div class="small-6 columns">
+                                                        <select id="weekStarts" class="radius" ng-model="settings.snooze.data.weekStarts.model" ng-required="true" ng-options="option for option in settings.snooze.data.weekStarts.options" ng-change="settings.save('settings.snooze.data.weekStarts')"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="small-6 columns">
+                                                        <label for="weekendStarts" class="inline">
+                                                            Weekend Starts&nbsp;&nbsp;
+                                                            <i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.weekendStarts.saved"></i>
+                                                        </label>
+                                                    </div>
+                                                    <div class="small-6 columns">
+                                                        <select id="weekendStarts" class="radius" ng-model="settings.snooze.data.weekendStarts.model" ng-required="true" ng-options="option for option in settings.snooze.data.weekendStarts.options" ng-change="settings.save('settings.snooze.data.weekendStarts')"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="small-6 columns">
+                                                        <label for="laterToday" class="inline">
+                                                            Later Today&nbsp;&nbsp;
+                                                            <i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.laterToday.saved"></i>
+                                                        </label>
+                                                    </div>
+                                                    <div class="small-6 columns">
+                                                        <select id="laterToday" class="radius" ng-model="settings.snooze.data.laterToday.model" ng-required="true" ng-options="option for option in settings.snooze.data.laterToday.options" ng-change="settings.save('settings.snooze.data.laterToday')"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="small-6 columns">
+                                                        <label for="someday" class="inline">
+                                                            Someday&nbsp;&nbsp;
+                                                            <i class="fa fa-check-circle success fx-fade-normal" ng-show="settings.snooze.data.someday.saved"></i>
+                                                        </label>
+                                                    </div>
+                                                    <div class="small-6 columns">
+                                                        <select id="someday" class="radius" ng-model="settings.snooze.data.someday.model" ng-required="true" ng-options="option for option in settings.snooze.data.someday.options" ng-change="settings.save('settings.snooze.data.someday')"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Snooze -->
 
-						</div>
-					</div>
-					<!-- End Settings -->
+                            </div>
+                        </div>
+                        <!-- End Settings -->
 
-				</div>
-			</div>
-			<!-- End Content -->
+                    </div>
+                </div>
+                <!-- End Content -->
 
-		</div>
-		<!-- End Main -->
+            </div>
+            <!-- End Main -->
 
-	</div>
+        </div>
 
-	<!-- build:js scripts/vendor.js -->
-	<!-- bower:js -->
-	<script src="bower_components/jquery/dist/jquery.js"></script>
-	<script src="bower_components/angular/angular.js"></script>
-	<script src="bower_components/angular-animate/angular-animate.js"></script>
-	<script src="bower_components/angular-aria/angular-aria.js"></script>
-	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-	<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-	<script src="bower_components/angular-material/angular-material.js"></script>
-	<script src="bower_components/moment/moment.js"></script>
-	<script src="bower_components/angular-momentjs/angular-momentjs.js"></script>
-	<script src="bower_components/fastclick/lib/fastclick.js"></script>
-	<script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
-	<script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
-	<script src="bower_components/foundation/js/foundation.js"></script>
-	<script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
-	<script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
-	<script src="bower_components/ngFx/dist/ngFx.js"></script>
-	<script src="bower_components/jquery.nicescroll/jquery.nicescroll.js"></script>
-	<!-- endbower -->
-	<!-- endbuild -->
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+        <script src="bower_components/angular-material/angular-material.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
+        <script src="bower_components/angular-momentjs/angular-momentjs.js"></script>
+        <script src="bower_components/fastclick/lib/fastclick.js"></script>
+        <script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+        <script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
+        <script src="bower_components/foundation/js/foundation.js"></script>
+        <script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
+        <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+        <script src="bower_components/ngFx/dist/ngFx.js"></script>
+        <script src="bower_components/jquery.nicescroll/jquery.nicescroll.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
 
-	<!-- build:js scripts/scripts.js -->
-	<script src="scripts/app.js"></script>
-	<script src="scripts/tabs.js"></script>
-	<script src="scripts/windows.js"></script>
-	<script src="scripts/sessions.js"></script>
-	<script src="scripts/history.js"></script>
-	<script src="scripts/popup.js"></script>
-	<script src="scripts/utils.js"></script>
-	<!-- endbuild -->
+        <!-- build:js scripts/popup.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/popup.js"></script>
+        <script src="scripts/directives/add-border.js"></script>
+        <script src="scripts/directives/custom-scrollbar.js"></script>
+        <script src="scripts/directives/disable-animate.js"></script>
+        <script src="scripts/directives/main-section.js"></script>
+        <script src="scripts/services/history.js"></script>
+        <script src="scripts/services/sessions.js"></script>
+        <script src="scripts/services/tabs.js"></script>
+        <script src="scripts/services/utilities.js"></script>
+        <script src="scripts/services/windows.js"></script>
+        <!-- endbuild -->
 
-</body>
+    </body>
 </html>
