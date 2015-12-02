@@ -8,7 +8,7 @@
         <!-- endbuild -->
         <!-- build:css styles/main.css -->
         <link href="styles/main.css" rel="stylesheet">
-        <link rel="stylesheet" href="bower_components/icomoon/styles/style.css">
+        <link rel="stylesheet" href="bower_components/icomoon/style.css">
         <!-- endbuild -->
     </head>
     <body id="ng-app" ng-app="TabMagicApp" class="in-popup">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="element" ng-class="{ selected: navigation === 'bringToOne' }" ng-click="navigation = 'bringToOne'; windows.getAll(); windows.removeSelections()">
                     <div class="text">Bring to One</div>
-                    <div class="icon"><i class="fa icon-filter-list fa-2x"></i></div>
+                    <div class="icon"><i class="fa icon-filter_list fa-2x"></i></div>
                 </div>
                 <div class="element" ng-class="{ selected: navigation === 'snooze' }" ng-click="navigation = 'snooze'; tabs.query(true, true); windows.getAll()">
                     <div class="text">Snooze</div>
@@ -67,7 +67,7 @@
                         <i class="fa icon-refresh fa-2x"></i>
                     </div>
                     <div class="action-button text-center clickable fx-fade-normal" title="Bring selected to one" ng-show="actionButtonShow('bringToOne') && navigation === 'bringToOne'" ng-click="tabs.bringToOne(false)">
-                        <i class="fa icon-filter-list fa-2x"></i>
+                        <i class="fa icon-filter_list fa-2x"></i>
                     </div>
                     <div class="action-button text-center clickable expandable overflow-hidden fx-fade-normal" ng-show="actionButtonShow('snooze') && navigation === 'snooze'">
                         <i class="fa icon-pause fa-2x action-icon"></i>
@@ -78,11 +78,11 @@
                                     <small>Later Today</small>
                                 </div>
                                 <div class="small-4 columns square no-padding-side">
-                                    <i class="fa icon-brightness-4 fa-3x"></i><br />
+                                    <i class="fa icon-brightness_4 fa-3x"></i><br />
                                     <small>This Evening</small>
                                 </div>
                                 <div class="small-4 columns square no-padding-side end top-right">
-                                    <i class="fa icon-brightness-5 fa-3x"></i><br />
+                                    <i class="fa icon-brightness_5 fa-3x"></i><br />
                                     <small>Tomorrow</small>
                                 </div>
                                 <div class="small-4 columns square no-padding-side">
@@ -94,11 +94,11 @@
                                     <small>Next Week</small>
                                 </div>
                                 <div class="small-4 columns square no-padding-side end">
-                                    <i class="fa icon-bookmark-outline fa-3x"></i><br />
+                                    <i class="fa icon-bookmark_outline fa-3x"></i><br />
                                     <small>In a Month</small>
                                 </div>
                                 <div class="small-4 columns square no-padding-side bottom-left">
-                                    <i class="fa icon-check-box fa-3x"></i><br />
+                                    <i class="fa icon-check_box fa-3x"></i><br />
                                     <small>Someday</small>
                                 </div>
                                 <div class="small-4 columns square no-padding-side" ng-click="tmSnoozePeriodicallySelected = !tmSnoozePeriodicallySelected">
@@ -170,8 +170,8 @@
                                         <div class="row item window clickable" ng-class="{ collapsed: device.tmCollapsed }" ng-click="device.tmCollapsed = !device.tmCollapsed">
                                             <div class="small-10 columns" ng-bind="device.deviceName"></div>
                                             <div class="small-2 columns text-right">
-                                                <i class="fa icon-expand-more fa-lg" ng-show="!device.tmCollapsed" disable-animate></i>
-                                                <i class="fa icon-chevron-right fa-lg" ng-show="device.tmCollapsed" disable-animate></i>
+                                                <i class="fa icon-expand_more fa-lg" ng-show="!device.tmCollapsed" disable-animate></i>
+                                                <i class="fa icon-chevron_right fa-lg" ng-show="device.tmCollapsed" disable-animate></i>
                                             </div>
                                         </div>
                                         <div class="row overflow-hidden" collapse="device.tmCollapsed">
@@ -204,8 +204,8 @@
                                                 <span ng-show="!window.focused">Window #{{$index + 1}}</span>
                                             </div>
                                             <div class="small-2 columns text-right">
-                                                <i class="fa icon-expand-more fa-lg" ng-show="!window.tmCollapsed" disable-animate></i>
-                                                <i class="fa icon-chevron-right fa-lg" ng-show="window.tmCollapsed" disable-animate></i>
+                                                <i class="fa icon-expand_more fa-lg" ng-show="!window.tmCollapsed" disable-animate></i>
+                                                <i class="fa icon-chevron_right fa-lg" ng-show="window.tmCollapsed" disable-animate></i>
                                             </div>
                                         </div>
                                         <div class="row overflow-hidden" collapse="window.tmCollapsed">
@@ -233,22 +233,22 @@
                                     <div class="small-12 columns">Tab is currently suspended</div>
                                 </div>
                                 <div class="row item clickable" ng-show="currentTabIsSuspended()">
-                                    <div class="small-1 columns no-padding-right"><i class="fa icon-play-circle-outline fa-lg primary"></i></div>
+                                    <div class="small-1 columns no-padding-right"><i class="fa icon-play_circle_outline fa-lg primary"></i></div>
                                     <div class="small-11 columns">Unsuspend this tab</div>
                                 </div>
                                 <div class="row item clickable" ng-show="!currentTabIsSuspended()" ng-click="suspendCurrentTab()">
-                                    <div class="small-1 columns no-padding-right"><i class="fa icon-pause-circle-outline fa-lg primary"></i></div>
+                                    <div class="small-1 columns no-padding-right"><i class="fa icon-pause_circle_outline fa-lg primary"></i></div>
                                     <div class="small-11 columns">Suspend this tab</div>
                                 </div> -->
                                 <!-- End This Tab -->
 
                                 <!-- Other Tabs -->
                                 <!-- <div class="row item clickable">
-                                    <div class="small-1 columns no-padding-right"><i class="fa icon-pause-circle-fill fa-lg primary"></i></div>
+                                    <div class="small-1 columns no-padding-right"><i class="fa icon-pause_circle_fill fa-lg primary"></i></div>
                                     <div class="small-11 columns">Suspend all tabs</div>
                                 </div>
                                 <div class="row item clickable">
-                                    <div class="small-1 columns no-padding-right"><i class="fa icon-play-circle-fill fa-lg primary"></i></div>
+                                    <div class="small-1 columns no-padding-right"><i class="fa icon-play_circle_fill fa-lg primary"></i></div>
                                     <div class="small-11 columns">Unsuspend all tabs</div>
                                 </div> -->
                                 <!-- End Other Tabs -->
@@ -277,8 +277,8 @@
                                                 <span ng-show="!window.focused">Window #{{$index + 1}}</span>
                                             </div>
                                             <div class="small-2 columns text-right">
-                                                <i class="fa icon-expand-more fa-lg" ng-show="!window.tmCollapsed" disable-animate></i>
-                                                <i class="fa icon-chevron-right fa-lg" ng-show="window.tmCollapsed" disable-animate></i>
+                                                <i class="fa icon-expand_more fa-lg" ng-show="!window.tmCollapsed" disable-animate></i>
+                                                <i class="fa icon-chevron_right fa-lg" ng-show="window.tmCollapsed" disable-animate></i>
                                             </div>
                                         </div>
                                         <div class="row overflow-hidden" collapse="window.tmCollapsed">
@@ -312,8 +312,8 @@
                                         <div class="row item window clickable small-margin-bottom" ng-class="{ collapsed: settings.snooze.tmCollapsed }" ng-click="settings.snooze.tmCollapsed = !settings.snooze.tmCollapsed">
                                             <div class="small-10 columns">Snooze</div>
                                             <div class="small-2 columns text-right">
-                                                <i class="fa icon-expand-more fa-lg" ng-show="!settings.snooze.tmCollapsed" disable-animate></i>
-                                                <i class="fa icon-chevron-right fa-lg" ng-show="settings.snooze.tmCollapsed" disable-animate></i>
+                                                <i class="fa icon-expand_more fa-lg" ng-show="!settings.snooze.tmCollapsed" disable-animate></i>
+                                                <i class="fa icon-chevron_right fa-lg" ng-show="settings.snooze.tmCollapsed" disable-animate></i>
                                             </div>
                                         </div>
                                         <div class="row overflow-hidden" collapse="settings.snooze.tmCollapsed">
