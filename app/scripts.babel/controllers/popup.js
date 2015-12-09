@@ -325,8 +325,16 @@ angular.module('TabMagicApp')
 			// Call get all from windows service
 			$windows.getAll().then(function(windows){
 
+				// Catcher
+				var windowsTemp = [];
+
+				// Loop through the windows data to only grab the "normal" windows
+				angular.forEach(windows, function(win){
+					if('normal' === win.type){ windowsTemp.push(win); }
+				});
+
 				// Set windows
-				$scope.windows.data = windows;
+				$scope.windows.data = windowsTemp;
 
 			});
 

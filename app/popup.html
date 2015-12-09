@@ -69,45 +69,45 @@
                     <div class="action-button text-center clickable fx-fade-normal" title="Bring selected to one" ng-show="actionButtonShow('bringToOne') && navigation === 'bringToOne'" ng-click="tabs.bringToOne(false)">
                         <i class="fa icon-filter_list fa-2x"></i>
                     </div>
-                    <div class="action-button text-center clickable expandable overflow-hidden fx-fade-normal" ng-show="actionButtonShow('snooze') && navigation === 'snooze'">
+                    <div class="action-button text-right clickable expandable overflow-hidden fx-fade-normal" ng-show="actionButtonShow('snooze') && navigation === 'snooze'">
                         <i class="fa icon-pause fa-2x action-icon"></i>
                         <div class="action-content full-width">
                             <div class="row no-margin-side fx-fade-up" ng-show="!tmSnoozePeriodicallySelected && !tmSnoozePickADateSelected">
-                                <div class="small-4 columns square no-padding-side top-left">
+                                <div class="small-4 columns square text-center no-padding-side top-left">
                                     <i class="fa icon-redo fa-3x"></i><br />
-                                    <small>Later Today</small>
+                                    <strong><small>Later Today</small></strong>
                                 </div>
-                                <div class="small-4 columns square no-padding-side">
+                                <div class="small-4 columns square text-center no-padding-side">
                                     <i class="fa icon-brightness_4 fa-3x"></i><br />
-                                    <small>This Evening</small>
+                                    <strong><small>This Evening</small></strong>
                                 </div>
-                                <div class="small-4 columns square no-padding-side end top-right">
+                                <div class="small-4 columns square text-center no-padding-side end top-right">
                                     <i class="fa icon-brightness_5 fa-3x"></i><br />
-                                    <small>Tomorrow</small>
+                                    <strong><small>Tomorrow</small></strong>
                                 </div>
-                                <div class="small-4 columns square no-padding-side">
+                                <div class="small-4 columns square text-center no-padding-side">
                                     <i class="fa icon-whatshot fa-3x"></i><br />
-                                    <small>This Weekend</small>
+                                    <strong><small>This Weekend</small></strong>
                                 </div>
-                                <div class="small-4 columns square no-padding-side">
+                                <div class="small-4 columns square text-center no-padding-side">
                                     <i class="fa icon-work fa-3x"></i><br />
-                                    <small>Next Week</small>
+                                    <strong><small>Next Week</small></strong>
                                 </div>
-                                <div class="small-4 columns square no-padding-side end">
+                                <div class="small-4 columns square text-center no-padding-side end">
                                     <i class="fa icon-bookmark_outline fa-3x"></i><br />
-                                    <small>In a Month</small>
+                                    <strong><small>In a Month</small></strong>
                                 </div>
-                                <div class="small-4 columns square no-padding-side bottom-left">
+                                <div class="small-4 columns square text-center no-padding-side bottom-left">
                                     <i class="fa icon-check_box fa-3x"></i><br />
-                                    <small>Someday</small>
+                                    <strong><small>Someday</small></strong>
                                 </div>
-                                <div class="small-4 columns square no-padding-side" ng-click="tmSnoozePeriodicallySelected = !tmSnoozePeriodicallySelected">
+                                <div class="small-4 columns square text-center no-padding-side" ng-click="tmSnoozePeriodicallySelected = !tmSnoozePeriodicallySelected">
                                     <i class="fa icon-loop fa-3x"></i><br />
-                                    <small>Periodically</small>
+                                    <strong><small>Periodically</small></strong>
                                 </div>
-                                <div class="small-4 columns square no-padding-side end bottom-right" ng-click="tmSnoozePickADateSelected = !tmSnoozePickADateSelected">
+                                <div class="small-4 columns square text-center no-padding-side end bottom-right" ng-click="tmSnoozePickADateSelected = !tmSnoozePickADateSelected">
                                     <i class="fa icon-event fa-3x"></i><br />
-                                    <small>Pick a Date</small>
+                                    <strong><small>Pick a Date</small></strong>
                                 </div>
                             </div>
                             <div class="row fx-fade-up" ng-show="tmSnoozePeriodicallySelected">

@@ -412,6 +412,7 @@ i { outline: none; }
 			&.expandable {
 				.action-icon {
 					display: block;
+					padding-right: 3px;
 					@include transition(display 300ms ease-out);
 				}
 				.action-content {
