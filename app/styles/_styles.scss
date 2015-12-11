@@ -119,6 +119,24 @@ a:not(.button) {
 // Forms
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
+// Timepicker
+.timepicker {
+	display: inline-block;
+	margin-bottom: 0;
+	background: transparent;
+	border: solid 0px;
+	tr.even, tr.alt, tr:nth-of-type(even) {
+		background: transparent;
+	}
+	td {
+		padding: 4px;
+	}
+	button.small {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+}
+
 // Material design alterations
 md-select, md-select:not([disabled]):focus {
 	.md-select-value.md-select-placeholder, .md-select-value { color: $white !important; }
@@ -409,6 +427,7 @@ i { outline: none; }
 			outline: none;
 			@include border-radius(20px);
 			@include transition(width 300ms ease-out, height 300ms ease-out);
+			@include box-shadow(-2px 2px 5px 0 $gray-dark);
 			&.expandable {
 				.action-icon {
 					display: block;
@@ -417,6 +436,7 @@ i { outline: none; }
 				}
 				.action-content {
 					display: none;
+					cursor: default;
 					@include transition(display 300ms ease-out);
 					.square {
 						height: 95px;
@@ -449,6 +469,16 @@ i { outline: none; }
 						}
 						i { padding-bottom: 5px; }
 						small { @include transition(color 300ms ease-out); }
+					}
+					.checkbox {
+						display: inline-block;
+						margin: 0 4px;
+						.c-input {
+							display: block;
+						}
+						.c-label {
+							display: block;
+						}
 					}
 				}
 				&:hover {

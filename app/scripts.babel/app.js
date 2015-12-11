@@ -7,7 +7,9 @@ angular.module('TabMagicApp', [
 	'angular-momentjs',
 	'ui.bootstrap',
 	'ngMaterial',
-	'ui.bootstrap.tooltip'
+	'ui.bootstrap.collapse',
+	'ui.bootstrap.tooltip',
+	'ui.bootstrap.timepicker'
 ])
 
 // Material design configuration

@@ -6933,6 +6933,77 @@ th.hide-for-touch {
 
   th.show-for-print {
     display: table-cell !important; } }
+.icon-bar.two-up .item {
+  width: 50%; }
+.icon-bar.two-up.vertical .item, .icon-bar.two-up.small-vertical .item {
+  width: auto; }
+@media only screen and (min-width: 45.78571em) {
+  .icon-bar.two-up.medium-vertical .item {
+    width: auto; } }
+@media only screen and (min-width: 73.21429em) {
+  .icon-bar.two-up.large-vertical .item {
+    width: auto; } }
+.icon-bar.three-up .item {
+  width: 33.3333%; }
+.icon-bar.three-up.vertical .item, .icon-bar.three-up.small-vertical .item {
+  width: auto; }
+@media only screen and (min-width: 45.78571em) {
+  .icon-bar.three-up.medium-vertical .item {
+    width: auto; } }
+@media only screen and (min-width: 73.21429em) {
+  .icon-bar.three-up.large-vertical .item {
+    width: auto; } }
+.icon-bar.four-up .item {
+  width: 25%; }
+.icon-bar.four-up.vertical .item, .icon-bar.four-up.small-vertical .item {
+  width: auto; }
+@media only screen and (min-width: 45.78571em) {
+  .icon-bar.four-up.medium-vertical .item {
+    width: auto; } }
+@media only screen and (min-width: 73.21429em) {
+  .icon-bar.four-up.large-vertical .item {
+    width: auto; } }
+.icon-bar.five-up .item {
+  width: 20%; }
+.icon-bar.five-up.vertical .item, .icon-bar.five-up.small-vertical .item {
+  width: auto; }
+@media only screen and (min-width: 45.78571em) {
+  .icon-bar.five-up.medium-vertical .item {
+    width: auto; } }
+@media only screen and (min-width: 73.21429em) {
+  .icon-bar.five-up.large-vertical .item {
+    width: auto; } }
+.icon-bar.six-up .item {
+  width: 16.66667%; }
+.icon-bar.six-up.vertical .item, .icon-bar.six-up.small-vertical .item {
+  width: auto; }
+@media only screen and (min-width: 45.78571em) {
+  .icon-bar.six-up.medium-vertical .item {
+    width: auto; } }
+@media only screen and (min-width: 73.21429em) {
+  .icon-bar.six-up.large-vertical .item {
+    width: auto; } }
+.icon-bar.seven-up .item {
+  width: 14.28571%; }
+.icon-bar.seven-up.vertical .item, .icon-bar.seven-up.small-vertical .item {
+  width: auto; }
+@media only screen and (min-width: 45.78571em) {
+  .icon-bar.seven-up.medium-vertical .item {
+    width: auto; } }
+@media only screen and (min-width: 73.21429em) {
+  .icon-bar.seven-up.large-vertical .item {
+    width: auto; } }
+.icon-bar.eight-up .item {
+  width: 12.5%; }
+.icon-bar.eight-up.vertical .item, .icon-bar.eight-up.small-vertical .item {
+  width: auto; }
+@media only screen and (min-width: 45.78571em) {
+  .icon-bar.eight-up.medium-vertical .item {
+    width: auto; } }
+@media only screen and (min-width: 73.21429em) {
+  .icon-bar.eight-up.large-vertical .item {
+    width: auto; } }
+
 /*!
  *  Font Awesome 4.4.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -9104,6 +9175,19 @@ a:not(.button) {
   -webkit-transition: background 300ms ease-out;
   transition: background 300ms ease-out; }
 
+.timepicker {
+  display: inline-block;
+  margin-bottom: 0;
+  background: transparent;
+  border: solid 0px; }
+  .timepicker tr.even, .timepicker tr.alt, .timepicker tr:nth-of-type(even) {
+    background: transparent; }
+  .timepicker td {
+    padding: 4px; }
+  .timepicker button.small {
+    padding-top: 10px;
+    padding-bottom: 10px; }
+
 md-select .md-select-value.md-select-placeholder, md-select .md-select-value, md-select:not([disabled]):focus .md-select-value.md-select-placeholder, md-select:not([disabled]):focus .md-select-value {
   color: #ffffff !important; }
 
@@ -9342,7 +9426,10 @@ i {
       -moz-transition: width 300ms ease-out, height 300ms ease-out;
       -o-transition: width 300ms ease-out, height 300ms ease-out;
       -webkit-transition: width 300ms ease-out, height 300ms ease-out;
-      transition: width 300ms ease-out, height 300ms ease-out; }
+      transition: width 300ms ease-out, height 300ms ease-out;
+      -moz-box-shadow: -2px 2px 5px 0 #171b21;
+      -webkit-box-shadow: -2px 2px 5px 0 #171b21;
+      box-shadow: -2px 2px 5px 0 #171b21; }
       .main-section .header .action-button.expandable .action-icon {
         display: block;
         padding-right: 3px;
@@ -9352,6 +9439,7 @@ i {
         transition: display 300ms ease-out; }
       .main-section .header .action-button.expandable .action-content {
         display: none;
+        cursor: default;
         -moz-transition: display 300ms ease-out;
         -o-transition: display 300ms ease-out;
         -webkit-transition: display 300ms ease-out;
@@ -9412,6 +9500,13 @@ i {
             -o-transition: color 300ms ease-out;
             -webkit-transition: color 300ms ease-out;
             transition: color 300ms ease-out; }
+        .main-section .header .action-button.expandable .action-content .checkbox {
+          display: inline-block;
+          margin: 0 4px; }
+          .main-section .header .action-button.expandable .action-content .checkbox .c-input {
+            display: block; }
+          .main-section .header .action-button.expandable .action-content .checkbox .c-label {
+            display: block; }
       .main-section .header .action-button.expandable:hover {
         width: 300px;
         height: 285px;

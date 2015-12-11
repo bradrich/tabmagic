@@ -361,11 +361,61 @@ angular.module('TabMagicApp')
 			// Form
 			form: {
 				wakeUpThisTab: {
-					model: null,
+					model: 'Every week',
 					options: ['Every day', 'Every week', 'Every month', 'Every year']
 				},
-				atThisTime: {
+				onTheseDays: {
+					model: null,
+					options: [
+						{
+							model: null,
+							label: 'S',
+							value: 'Sunday'
+						},
+						{
+							model: null,
+							label: 'M',
+							value: 'Monday'
+						},
+						{
+							model: null,
+							label: 'T',
+							value: 'Tuesday'
+						},
+						{
+							model: null,
+							label: 'W',
+							value: 'Wednesday'
+						},
+						{
+							model: null,
+							label: 'T',
+							value: 'Thursday'
+						},
+						{
+							model: null,
+							label: 'F',
+							value: 'Friday'
+						},
+						{
+							model: null,
+							label: 'S',
+							value: 'Saturday'
+						}
+					]
+				},
+				onThisDay: {
 					model: null
+				},
+				onThisDate: {
+					model: null
+				},
+				atThisTime: {
+					model: $moment().toDate(),
+					hourStep: 1,
+					minuteStep: 15,
+					isMeridian: true,
+					showSpinners: false
 				}
 			}
 

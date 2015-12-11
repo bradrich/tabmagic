@@ -110,12 +110,57 @@
                                     <strong><small>Pick a Date</small></strong>
                                 </div>
                             </div>
-                            <div class="row fx-fade-up" ng-show="tmSnoozePeriodicallySelected">
-                                <div class="small-12 columns text-center medium-margin-top">
-                                    Periodically
+                            <div class="row fx-fade-up fx-easing-elastic" ng-show="tmSnoozePeriodicallySelected">
+                                <!-- <div class="small-12 columns text-right">
+                                    <button class="radius tiny text-center">
+                                        <i class="fa icon-undo fa-2x"></i>
+                                    </button>
+                                    <button class="radius tiny text-center" ng-click="tmSnoozePeriodicallySelected = !tmSnoozePeriodicallySelected">
+                                        <i class="fa icon-close fa-2x"></i>
+                                    </button>
+                                </div> -->
+                                <div class="small-12 columns">
+                                    <form name="snooze.periodically.form.data" novalidate>
+                                        <div class="row small-margin-top medium-margin-right medium-margin-left">
+                                            <div class="small-12 columns text-center tiny-margin-top">
+                                                <label>
+                                                    Wake up this tab
+                                                    <select class="radius" name="wakeUpThisTab" ng-model="snooze.periodically.form.wakeUpThisTab.model" ng-required="true" ng-options="option for option in snooze.periodically.form.wakeUpThisTab.options"></select>
+                                                </label>
+                                            </div>
+                                            <div class="small-12 columns text-center small-margin-bottom">
+                                                <label class="no-margin-bottom">on these days</label>
+                                                <div class="checkbox" ng-repeat="option in snooze.periodically.form.onTheseDays.options">
+                                                    <div class="c-input">
+                                                        <input class="no-margin-bottom" name="option.data" type="checkbox" ng-model="option.model" value="option.value" />
+                                                    </div>
+                                                    <div class="c-label" ng-bind="option.label"></div>
+                                                </div>
+                                            </div>
+                                            <div class="small-12 columns text-center">
+                                                <label>at this time</label>
+                                                <uib-timepicker class="timepicker" ng-model="snooze.periodically.form.atThisTime.model" hour-step="snooze.periodically.form.atThisTime.hourStep" minute-step="snooze.periodically.form.atThisTime.minuteStep" show-meridian="snooze.periodically.form.atThisTime.isMeridian" show-spinners="snooze.periodically.form.atThisTime.showSpinners"></uib-timepicker>
+                                            </div>
+                                            <div class="small-4 columns">
+                                                <button class="expand radius" ng-click="tmSnoozePeriodicallySelected = !tmSnoozePeriodicallySelected">
+                                                    <i class="fa icon-close"></i>
+                                                </button>
+                                            </div>
+                                            <div class="small-4 columns">
+                                                <button class="expand radius" ng-disabled="snooze.periodically.form.data.$pristine">
+                                                    <i class="fa icon-undo"></i>
+                                                </button>
+                                            </div>
+                                            <div class="small-4 columns">
+                                                <button class="expand radius" ng-disabled="snooze.periodically.form.data.$pristine || snooze.periodically.form.data.$invalid">
+                                                    <i class="fa icon-check"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="row fx-fade-up" ng-show="tmSnoozePickADateSelected">
+                            <div class="row fx-fade-up fx-easing-elastic" ng-show="tmSnoozePickADateSelected">
                                 <div class="small-12 columns text-center medium-margin-top">
                                     Pick a Date
                                 </div>
@@ -174,7 +219,7 @@
                                                 <i class="fa icon-chevron_right fa-lg" ng-show="device.tmCollapsed" disable-animate></i>
                                             </div>
                                         </div>
-                                        <div class="row overflow-hidden" collapse="device.tmCollapsed">
+                                        <div class="row overflow-hidden" uib-collapse="device.tmCollapsed">
                                             <div class="small-12 columns" ng-repeat="session in device.sessions">
                                                 <div class="row item clickable" ng-repeat="tab in session.window.tabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
                                                     <div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
@@ -208,7 +253,7 @@
                                                 <i class="fa icon-chevron_right fa-lg" ng-show="window.tmCollapsed" disable-animate></i>
                                             </div>
                                         </div>
-                                        <div class="row overflow-hidden" collapse="window.tmCollapsed">
+                                        <div class="row overflow-hidden" uib-collapse="window.tmCollapsed">
                                             <div class="small-12 columns">
                                                 <div class="row item clickable" ng-repeat="tab in window.tabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
                                                     <div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
@@ -227,31 +272,6 @@
                         <!-- Snooze -->
                         <div class="row fx-fade-up" ng-show="navigation === 'snooze'">
                             <div class="small-12 columns">
-
-                                <!-- This Tab -->
-                                <!-- <div class="row item" ng-show="currentTabIsSuspended()">
-                                    <div class="small-12 columns">Tab is currently suspended</div>
-                                </div>
-                                <div class="row item clickable" ng-show="currentTabIsSuspended()">
-                                    <div class="small-1 columns no-padding-right"><i class="fa icon-play_circle_outline fa-lg primary"></i></div>
-                                    <div class="small-11 columns">Unsuspend this tab</div>
-                                </div>
-                                <div class="row item clickable" ng-show="!currentTabIsSuspended()" ng-click="suspendCurrentTab()">
-                                    <div class="small-1 columns no-padding-right"><i class="fa icon-pause_circle_outline fa-lg primary"></i></div>
-                                    <div class="small-11 columns">Suspend this tab</div>
-                                </div> -->
-                                <!-- End This Tab -->
-
-                                <!-- Other Tabs -->
-                                <!-- <div class="row item clickable">
-                                    <div class="small-1 columns no-padding-right"><i class="fa icon-pause_circle_fill fa-lg primary"></i></div>
-                                    <div class="small-11 columns">Suspend all tabs</div>
-                                </div>
-                                <div class="row item clickable">
-                                    <div class="small-1 columns no-padding-right"><i class="fa icon-play_circle_fill fa-lg primary"></i></div>
-                                    <div class="small-11 columns">Unsuspend all tabs</div>
-                                </div> -->
-                                <!-- End Other Tabs -->
 
                                 <!-- This Tab -->
                                 <div class="row title no-margin-top">
@@ -281,7 +301,7 @@
                                                 <i class="fa icon-chevron_right fa-lg" ng-show="window.tmCollapsed" disable-animate></i>
                                             </div>
                                         </div>
-                                        <div class="row overflow-hidden" collapse="window.tmCollapsed">
+                                        <div class="row overflow-hidden" uib-collapse="window.tmCollapsed">
                                             <div class="small-12 columns">
                                                 <div class="row item clickable" ng-repeat="tab in window.tabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
                                                     <div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
@@ -316,7 +336,7 @@
                                                 <i class="fa icon-chevron_right fa-lg" ng-show="settings.snooze.tmCollapsed" disable-animate></i>
                                             </div>
                                         </div>
-                                        <div class="row overflow-hidden" collapse="settings.snooze.tmCollapsed">
+                                        <div class="row overflow-hidden" uib-collapse="settings.snooze.tmCollapsed">
                                             <div class="small-4 columns">
                                                 <p class="settings-section-name">
                                                     <strong>Snooze Times</strong>
@@ -414,8 +434,6 @@
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-animate/angular-animate.js"></script>
         <script src="bower_components/angular-aria/angular-aria.js"></script>
-        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-        <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
         <script src="bower_components/angular-material/angular-material.js"></script>
         <script src="bower_components/moment/moment.js"></script>
         <script src="bower_components/angular-momentjs/angular-momentjs.js"></script>
@@ -423,10 +441,12 @@
         <script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
         <script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
         <script src="bower_components/foundation/js/foundation.js"></script>
+        <script src="bower_components/jquery.nicescroll/jquery.nicescroll.js"></script>
         <script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
+        <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
         <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
         <script src="bower_components/ngFx/dist/ngFx.js"></script>
-        <script src="bower_components/jquery.nicescroll/jquery.nicescroll.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
