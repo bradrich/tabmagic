@@ -9156,6 +9156,9 @@ body {
 .overflow-hidden {
   overflow: hidden; }
 
+div {
+  outline: none; }
+
 .white {
   color: #ffffff; }
 
@@ -9233,6 +9236,8 @@ select {
     font-size: 1rem; } }
 .button, button {
   outline: none; }
+  .button .bordered, button .bordered {
+    border: solid 2px #a30008; }
 
 i {
   outline: none; }
@@ -9341,6 +9346,7 @@ i {
   height: 100%;
   background: #333c48; }
   .nav .element {
+    position: relative;
     width: 200px;
     height: 60px;
     margin-left: -140px;
@@ -9375,6 +9381,18 @@ i {
       -o-transition: color 100ms ease-out, border-color 100ms ease-out;
       -webkit-transition: color 100ms ease-out, border-color 100ms ease-out;
       transition: color 100ms ease-out, border-color 100ms ease-out; }
+      .nav .element .icon .num {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        padding: 2px 5px;
+        color: #ffffff;
+        font-size: 9px;
+        line-height: 10px;
+        background: #4CAF50;
+        -moz-border-radius: 100px;
+        -webkit-border-radius: 100px;
+        border-radius: 100px; }
     .nav .element.selected .icon {
       color: #d6000b; }
     .nav .element.logo .icon {

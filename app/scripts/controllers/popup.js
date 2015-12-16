@@ -39,7 +39,7 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 						});
 					});
 				}
-				// Bring to one
+				// Bring to one and snooze
 				else if ('bringToOne' === button || 'snooze' === button) {
 						angular.forEach($scope.windows.data, function (window) {
 							angular.forEach(window.tabs, function (tab) {
@@ -52,6 +52,14 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 							show = true;
 						}
 					}
+					// Snooze open
+					else if ('snoozeOpen' === button) {
+							angular.forEach($scope.tabs.snooze.current.data, function (tab) {
+								if (tab.tmSelected) {
+									show = true;
+								}
+							});
+						}
 
 		return show;
 	};
@@ -237,6 +245,50 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 		// Current
 		current: null,
 
+		// Click to select
+		select: function select(current, tabId) {
+
+			// Is this the current tab?
+			if (current) {
+
+				// Loop through all windows and tabs to mark the active tab
+				angular.forEach($scope.windows.data, function (window) {
+					angular.forEach(window.tabs, function (tab) {
+						if (tabId === tab.id) {
+							tab.tmSelected = !tab.tmSelected;
+						}
+					});
+				});
+			}
+			// NOT the current tab
+			else {
+
+					// Mark the current tab if ids match
+					if (tabId === $scope.tabs.current.id) {
+						$scope.tabs.current.tmSelected = !$scope.tabs.current.tmSelected;
+					}
+				}
+
+			// Mark the current snoozed tabs
+			angular.forEach($scope.tabs.snooze.current.data, function (snooze) {
+				snooze.tmSelected = false;
+			});
+		},
+
+		// Unselect
+		unselect: function unselect() {
+
+			// Loop through all windows and tabs to unselect all tabs
+			angular.forEach($scope.windows.data, function (window) {
+				angular.forEach(window.tabs, function (tab) {
+					tab.tmSelected = false;
+				});
+			});
+
+			// Unselect current tab also
+			$scope.tabs.current.tmSelected = false;
+		},
+
 		// One tab
 		oneTab: {
 			tmOneTabSelectedTabs: [],
@@ -279,7 +331,7 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 				$scope.tabs.oneTab.tmOneTabCreateDate = $moment().toDate();
 				chrome.storage.sync.set($scope.tabs.oneTab);
 
-				// Create
+				// Create new one-tab tab
 				$tabs.create('one-tab.html').then(function () {
 					console.log('TM: New tab created');
 				}, function () {
@@ -289,9 +341,205 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 
 			// Empty tabs.selected
 			$scope.tabs.oneTab.tmOneTabSelectedTabs.length = 0;
+		},
+
+		// Snooze
+		snooze: {
+
+			// Currently snoozed
+			current: {
+
+				// Necessities
+				data: [],
+				tmCollapsed: false,
+
+				// Remove from current array
+				remove: function remove(index) {
+
+					// Remove item
+					if (index > -1) {
+						$scope.tabs.snooze.current.data.splice(index, 1);
+					}
+
+					// Resync array
+					var store = { tmSnoozeCurrentTabs: $scope.tabs.snooze.current.data };
+					chrome.storage.sync.set(store);
+				},
+
+				// Reopen
+				reopen: function reopen() {}
+
+			},
+
+			// Initialize
+			init: function init() {
+
+				// Get the currently snoozed tabs from chrome storage
+				chrome.storage.sync.get('tmSnoozeCurrentTabs', function (data) {
+					if (data.tmSnoozeCurrentTabs.length > 0) {
+						$scope.tabs.snooze.current.data = angular.copy(data.tmSnoozeCurrentTabs);
+					}
+				});
+			},
+
+			// Add to snoozed
+			add: function add(sendAll, request) {
+
+				// Loop through all windows and tabs to find selected tabs
+				angular.forEach($scope.windows.data, function (window) {
+					angular.forEach(window.tabs, function (tab) {
+
+						// Create snooze tab
+						var snoozedTab = {
+							dateCreated: $moment().format(),
+							tab: tab,
+							type: request,
+							snoozeToDates: [],
+							removedBySnooze: false,
+							tmSelected: false
+						};
+
+						// Set snoozeToDates
+						if ('laterToday' === request) {
+							var hourToAdd = parseInt($scope.settings.snooze.data.laterToday.model.replace('in ', '').replace(' hour', '').replace('s', ''));
+							var date = $moment().add(hourToAdd, 'hours').format;
+							snoozedTab.snoozeToDates.push(date);
+						}
+
+						// Is this for all tabs?
+						if (sendAll) {
+							$scope.tabs.snooze.current.data.push(snoozedTab);
+						}
+						// Not all tabs, is tab selected?
+						else if (tab.tmSelected) {
+								$scope.tabs.snooze.current.data.push(snoozedTab);
+							}
+					});
+				});
+
+				// If there are any current snoozed tabs
+				if ($scope.tabs.snooze.current.data.length > 0) {
+
+					// Store snoozed tabs
+					var store = { tmSnoozeCurrentTabs: $scope.tabs.snooze.current.data };
+					chrome.storage.sync.set(store);
+
+					// Loop through current snoozed tabs to see if any need to be removed from window
+					angular.forEach($scope.tabs.snooze.current.data, function (tab) {
+						if (!tab.removedBySnooze) {
+							chrome.tabs.remove(tab.tab.id);
+							tab.removedBySnooze = true;
+						}
+					});
+				}
+			},
+
+			// Periodically
+			periodically: {
+
+				// Form
+				form: {
+					wakeUpThisTab: {
+						models: {
+							master: 'Every week',
+							edit: 'Every week'
+						},
+						options: ['Every day', 'Every week', 'Every month', 'Every year']
+					},
+					onTheseDays: {
+						options: [{
+							model: null,
+							label: 'S',
+							value: 'Sunday'
+						}, {
+							model: null,
+							label: 'M',
+							value: 'Monday'
+						}, {
+							model: null,
+							label: 'T',
+							value: 'Tuesday'
+						}, {
+							model: null,
+							label: 'W',
+							value: 'Wednesday'
+						}, {
+							model: null,
+							label: 'T',
+							value: 'Thursday'
+						}, {
+							model: null,
+							label: 'F',
+							value: 'Friday'
+						}, {
+							model: null,
+							label: 'S',
+							value: 'Saturday'
+						}],
+						showInput: function showInput() {
+							return 'Every week' === $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit;
+						}
+					},
+					onThisDay: {
+						models: {
+							master: '1st',
+							edit: '1st'
+						},
+						options: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st'],
+						showInput: function showInput() {
+							return 'Every month' === $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit;
+						}
+					},
+					onThisDate: {
+						monthModels: {
+							master: 'Jan',
+							edit: 'Jan'
+						},
+						monthOptions: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+						dayModels: {
+							master: '1st',
+							edit: '1st'
+						},
+						dayOptions: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st'],
+						showInput: function showInput() {
+							return 'Every year' === $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit;
+						}
+					},
+					atThisTime: {
+						models: {
+							master: $moment().toDate(),
+							edit: $moment().toDate()
+						},
+						hourStep: 1,
+						minuteStep: 15,
+						isMeridian: true,
+						showSpinners: false
+					},
+					reset: function reset() {
+
+						// Reset each of the inputs back to their master model
+						$scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit = angular.copy($scope.tabs.snooze.periodically.form.wakeUpThisTab.models.master);
+						$scope.tabs.snooze.periodically.form.onThisDay.models.edit = angular.copy($scope.tabs.snooze.periodically.form.onThisDay.models.master);
+						$scope.tabs.snooze.periodically.form.onThisDate.monthModels.edit = angular.copy($scope.tabs.snooze.periodically.form.onThisDate.monthModels.master);
+						$scope.tabs.snooze.periodically.form.onThisDate.dayModels.edit = angular.copy($scope.tabs.snooze.periodically.form.onThisDate.dayModels.master);
+						$scope.tabs.snooze.periodically.form.atThisTime.models.edit = angular.copy($scope.tabs.snooze.periodically.form.atThisTime.models.master);
+
+						// Loop through onTheseDays options and set them back to null
+						angular.forEach($scope.tabs.snooze.periodically.form.onTheseDays.options, function (option) {
+							option.model = null;
+						});
+					}
+				}
+
+			}
+
 		}
 
 	};
+
+	// Initialize tabs snooze
+	$scope.tabs.snooze.init();
+	// chrome.storage.sync.remove('tmSnoozeCurrentTabs');
 
 	// Windows
 	$scope.windows = {
@@ -327,69 +575,6 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 			angular.forEach($scope.windows.data, function (window) {
 				window.tmCollapsed = false;
 			});
-		}
-
-	};
-
-	// Snooze
-	$scope.snooze = {
-
-		// Periodically
-		periodically: {
-
-			// Form
-			form: {
-				wakeUpThisTab: {
-					model: 'Every week',
-					options: ['Every day', 'Every week', 'Every month', 'Every year']
-				},
-				onTheseDays: {
-					model: null,
-					options: [{
-						model: null,
-						label: 'S',
-						value: 'Sunday'
-					}, {
-						model: null,
-						label: 'M',
-						value: 'Monday'
-					}, {
-						model: null,
-						label: 'T',
-						value: 'Tuesday'
-					}, {
-						model: null,
-						label: 'W',
-						value: 'Wednesday'
-					}, {
-						model: null,
-						label: 'T',
-						value: 'Thursday'
-					}, {
-						model: null,
-						label: 'F',
-						value: 'Friday'
-					}, {
-						model: null,
-						label: 'S',
-						value: 'Saturday'
-					}]
-				},
-				onThisDay: {
-					model: null
-				},
-				onThisDate: {
-					model: null
-				},
-				atThisTime: {
-					model: $moment().toDate(),
-					hourStep: 1,
-					minuteStep: 15,
-					isMeridian: true,
-					showSpinners: false
-				}
-			}
-
 		}
 
 	};

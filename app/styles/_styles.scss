@@ -87,6 +87,7 @@ body { overflow: hidden; }
 }
 .overflow-visible { overflow: visible; }
 .overflow-hidden { overflow: hidden; }
+div { outline: none; }
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -186,7 +187,12 @@ select {
 // Buttons
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-.button, button { outline: none; }
+.button, button {
+	outline: none;
+	.bordered {
+		border: solid 2px $primary-color-dark;
+	}
+}
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -338,6 +344,7 @@ i { outline: none; }
 	height: 100%;
 	background: $gray-light;
 	.element {
+		position: relative;
 		width: 200px;
 		height: 60px;
 		margin-left: -140px;
@@ -369,6 +376,17 @@ i { outline: none; }
 			border-right: solid 5px $gray-light;
 			cursor: pointer;
 			@include transition(color 100ms ease-out, border-color 100ms ease-out);
+			.num {
+				position: absolute;
+				top: 4px;
+				right: 4px;
+				padding: 2px 5px;
+				color: $white;
+				font-size: 9px;
+				line-height: 10px;
+				background: $success-color;
+				@include border-radius(100px);
+			}
 		}
 		&.selected {
 			.icon { color: $primary-color; }
