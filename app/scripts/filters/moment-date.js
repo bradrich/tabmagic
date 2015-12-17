@@ -7,6 +7,7 @@ angular.module('TabMagicApp').filter('momentDate', function ($moment) {
         }
 
         console.log($moment(date));
+        console.log($moment(date).fromNow());
         console.log(format);
     };
 });

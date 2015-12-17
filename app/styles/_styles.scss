@@ -204,6 +204,37 @@ i { outline: none; }
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - -
+// Tables
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+table.datepicker {
+	outline: none;
+	width: 100%;
+	margin-top: 5px;
+	margin-bottom: 0;
+	padding-left: 3px;
+	background: transparent;
+	border-width: 0;
+	thead {
+		background: transparent;
+		th {
+			padding: rem-calc(2) rem-calc(5);
+			color: $primary-color-dark;
+		}
+	}
+	tr.even, tr.alt, tr:nth-of-type(even) { background: transparent; }
+	tbody tr td {
+		padding: rem-calc(2) rem-calc(5);
+		font-size: 95% !important;
+	}
+	button.small, .button.small {
+		padding: rem-calc(6) rem-calc(9);
+		margin-bottom: 0;
+	}
+}
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - -
 // Tooltips
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -497,6 +528,10 @@ i { outline: none; }
 						.c-label {
 							display: block;
 						}
+					}
+					.top {
+						height: 241px;
+						border-bottom: solid 1px $primary-color-dark;
 					}
 				}
 				&:hover {

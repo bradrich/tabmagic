@@ -1,0 +1,28 @@
+<table role="grid" aria-labelledby="{{::uniqueId}}-title" aria-activedescendant="{{activeDateId}}" class="datepicker">
+    <thead>
+        <tr>
+            <th width="33%">
+                <button type="button" class="expand radius small" ng-click="move(-1)" tabindex="-1">
+                    <i class="fa icon-chevron_left"></i>
+                </button>
+            </th>
+            <th width="33%">
+                <button id="{{::uniqueId}}-title" role="heading" aria-live="assertive" aria-atomic="true" type="button" class="expand radius small" ng-click="toggleMode()" ng-disabled="datepickerMode === maxMode" tabindex="-1" ng-bind="title"></button>
+            </th>
+            <th width="33%">
+                <button type="button" class="expand radius small" ng-click="move(1)" tabindex="-1">
+                    <i class="fa icon-chevron_right"></i>
+                </button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="row in rows track by $index">
+            <td ng-repeat="dt in row track by dt.date" class="text-center" role="gridcell" id="{{::dt.uid}}" ng-class="::dt.customClass">
+                <button type="button" class="expand radius small" ng-class="{ info: dt.selected, active: isActive(dt) }" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1">
+                    <span ng-class="{ 'text-muted': dt.secondary, 'text-info': dt.current }" ng-bind="dt.label"></span>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

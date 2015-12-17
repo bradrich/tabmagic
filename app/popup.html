@@ -80,27 +80,27 @@
                                     <i class="fa icon-redo fa-3x"></i><br />
                                     <strong><small>Later Today</small></strong>
                                 </div>
-                                <div class="small-4 columns square text-center no-padding-side">
+                                <div class="small-4 columns square text-center no-padding-side" ng-click="tabs.snooze.add(false, 'thisEvening')">
                                     <i class="fa icon-brightness_4 fa-3x"></i><br />
                                     <strong><small>This Evening</small></strong>
                                 </div>
-                                <div class="small-4 columns square text-center no-padding-side end top-right">
+                                <div class="small-4 columns square text-center no-padding-side end top-right" ng-click="tabs.snooze.add(false, 'tomorrow')">
                                     <i class="fa icon-brightness_5 fa-3x"></i><br />
                                     <strong><small>Tomorrow</small></strong>
                                 </div>
-                                <div class="small-4 columns square text-center no-padding-side">
+                                <div class="small-4 columns square text-center no-padding-side" ng-click="tabs.snooze.add(false, 'thisWeekend')">
                                     <i class="fa icon-whatshot fa-3x"></i><br />
                                     <strong><small>This Weekend</small></strong>
                                 </div>
-                                <div class="small-4 columns square text-center no-padding-side">
+                                <div class="small-4 columns square text-center no-padding-side" ng-click="tabs.snooze.add(false, 'nextWeek')">
                                     <i class="fa icon-work fa-3x"></i><br />
                                     <strong><small>Next Week</small></strong>
                                 </div>
-                                <div class="small-4 columns square text-center no-padding-side end">
+                                <div class="small-4 columns square text-center no-padding-side end" ng-click="tabs.snooze.add(false, 'inAMonth')">
                                     <i class="fa icon-bookmark_outline fa-3x"></i><br />
                                     <strong><small>In a Month</small></strong>
                                 </div>
-                                <div class="small-4 columns square text-center no-padding-side bottom-left">
+                                <div class="small-4 columns square text-center no-padding-side bottom-left" ng-click="tabs.snooze.add(false, 'someday')">
                                     <i class="fa icon-check_box fa-3x"></i><br />
                                     <strong><small>Someday</small></strong>
                                 </div>
@@ -114,7 +114,7 @@
                                 </div>
                             </div>
                             <div class="row fx-fade-up fx-easing-elastic" ng-show="tmSnoozePeriodicallySelected">
-                                <div class="small-12 columns">
+                                <div class="small-12 columns top">
                                     <form name="tabs.snooze.periodically.form.data" novalidate>
                                         <div class="row small-margin-top medium-margin-right medium-margin-left">
 
@@ -122,7 +122,7 @@
                                             <div class="small-12 columns text-center tiny-margin-top">
                                                 <label>
                                                     Wake up this tab
-                                                    <select class="radius" name="wakeUpThisTab" ng-model="tabs.snooze.periodically.form.wakeUpThisTab.models.edit" ng-required="true" ng-options="option for option in tabs.snooze.periodically.form.wakeUpThisTab.options"></select>
+                                                    <select class="radius" name="wakeUpThisTab" ng-model="tabs.snooze.periodically.form.wakeUpThisTab.models.edit" ng-required="true" ng-options="option for option in tabs.snooze.periodically.form.wakeUpThisTab.options" ng-change="tabs.snooze.periodically.form.reset(true)"></select>
                                                 </label>
                                             </div>
                                             <!-- End Wake Up This Tab -->
@@ -171,36 +171,55 @@
                                             </div>
                                             <!-- End At This Time -->
 
-                                            <!-- Buttons -->
-                                            <div class="small-4 columns">
-                                                <button class="expand radius" ng-click="tmSnoozePeriodicallySelected = !tmSnoozePeriodicallySelected">
-                                                    <i class="fa icon-close"></i>
-                                                </button>
-                                            </div>
-                                            <div class="small-4 columns">
-                                                <button class="expand radius" ng-disabled="tabs.snooze.periodically.form.data.$pristine" ng-click="tabs.snooze.periodically.form.reset()">
-                                                    <i class="fa icon-undo"></i>
-                                                </button>
-                                            </div>
-                                            <div class="small-4 columns">
-                                                <button class="expand radius" ng-disabled="tabs.snooze.periodically.form.data.$pristine || tabs.snooze.periodically.form.data.$invalid">
-                                                    <i class="fa icon-check"></i>
-                                                </button>
-                                            </div>
-                                            <!-- End Buttons -->
-
                                         </div>
                                     </form>
                                 </div>
+                                <div class="small-12 columns">
+                                    <div class="row collapse">
+
+                                        <!-- Buttons -->
+                                        <div class="small-4 columns">
+                                            <button class="expand radius small" ng-click="tmSnoozePeriodicallySelected = !tmSnoozePeriodicallySelected">
+                                                <i class="fa icon-close"></i>
+                                            </button>
+                                        </div>
+                                        <div class="small-4 columns">
+                                            <button class="expand radius small" ng-disabled="tabs.snooze.periodically.form.data.$pristine" ng-click="tabs.snooze.periodically.form.reset()">
+                                                <i class="fa icon-undo"></i>
+                                            </button>
+                                        </div>
+                                        <div class="small-4 columns">
+                                            <button class="expand radius small" ng-disabled="tabs.snooze.periodically.form.disableSubmit()" ng-click="tabs.snooze.add(false, 'periodically')">
+                                                <i class="fa icon-check"></i>
+                                            </button>
+                                        </div>
+                                        <!-- End Buttons -->
+
+                                    </div>
+                                </div>
                             </div>
                             <div class="row fx-fade-up fx-easing-elastic" ng-show="tmSnoozePickADateSelected">
-                                <div class="small-12 columns text-center medium-margin-top">
-                                    Pick a Date
+                                <div class="small-12 columns top">
+                                    <uib-datepicker ng-model="tabs.snooze.pickADate.model" min-date="tabs.snooze.pickADate.minDate" show-weeks="tabs.snooze.pickADate.showWeeks" template-url="templates/datepicker/datepicker.html"></uib-datepicker>
+                                </div>
+                                <div class="small-12 columns">
+                                    <div class="row collapse">
+                                        <div class="small-6 columns">
+                                            <button class="expand radius small" ng-click="tmSnoozePickADateSelected = !tmSnoozePickADateSelected">
+                                                <i class="fa icon-close"></i>
+                                            </button>
+                                        </div>
+                                        <div class="small-6 columns">
+                                            <button class="expand radius small" ng-disabled="!tabs.snooze.pickADate.model" ng-click="tabs.snooze.add(false, 'pickADate')">
+                                                <i class="fa icon-check"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="action-button text-center clickable fx-fade-normal" title="Open selected" ng-show="actionButtonShow('snoozeOpen') && navigation === 'snooze'">
+                    <div class="action-button text-center clickable fx-fade-normal" title="Open selected" ng-show="actionButtonShow('snoozeOpen') && navigation === 'snooze'" ng-click="tabs.snooze.reopen()">
                         <i class="fa icon-refresh fa-2x"></i>
                     </div>
                 </div>
@@ -313,8 +332,8 @@
                                 <div class="row title clickable no-margin-top" ng-show="tabs.snooze.current.data.length > 0" ng-click="tabs.snooze.current.tmCollapsed = !tabs.snooze.current.tmCollapsed">
                                     <div class="small-10 columns">Snoozed Tabs</div>
                                     <div class="small-2 columns text-right">
-                                        <i class="fa icon-expand_more fa-lg" ng-show="!tabs.snooze.current.tmCollapsed" disable-animate></i>
-                                        <i class="fa icon-chevron_right fa-lg" ng-show="tabs.snooze.current.tmCollapsed" disable-animate></i>
+                                        <i class="fa icon-expand_more fa-lg primary" ng-show="!tabs.snooze.current.tmCollapsed" disable-animate></i>
+                                        <i class="fa icon-chevron_right fa-lg primary" ng-show="tabs.snooze.current.tmCollapsed" disable-animate></i>
                                     </div>
                                 </div>
                                 <div class="row" ng-show="tabs.snooze.current.data.length > 0">
@@ -327,9 +346,12 @@
                                                     </div>
                                                     <div class="columns" ng-class="{ 'small-10': '' !== snooze.tab.favIconUrl && snooze.tab.favIconUrl, 'small-11': '' === snooze.tab.favIconUrl || !snooze.tab.favIconUrl }" ng-click="snooze.tmSelected = !snooze.tmSelected; tabs.unselect()">
                                                         <span ng-bind="snooze.tab.title"></span><br />
-                                                        <span ng-bind="snooze.dateCreated | momentDate: 'MM-dd-yyyy'"></span>
+                                                        <small>
+                                                            Snoozed <strong ng-bind="snooze.dateCreated | momentFromNow"></strong>
+                                                            <span ng-show="'periodically' !== snooze.type">until <strong ng-bind="snooze.snoozeToDates[0] | date: 'medium'"></strong></span>
+                                                        </small>
                                                     </div>
-                                                    <div class="small-1 columns" ng-click="tabs.snooze.current.remove($index)">
+                                                    <div class="small-1 columns" ng-click="tabs.snooze.remove($index)">
                                                         <i class="fa icon-close primary fa-lg"></i>
                                                     </div>
                                                 </div>
@@ -516,14 +538,15 @@
         <!-- endbower -->
         <!-- endbuild -->
 
-        <!-- build:js scripts/popup.js -->
+        <!-- build:js({.tmp,app}) scripts/popup.js -->
         <script src="scripts/app.js"></script>
+        <script src="templates.js"></script>
         <script src="scripts/controllers/popup.js"></script>
         <script src="scripts/directives/add-border.js"></script>
         <script src="scripts/directives/custom-scrollbar.js"></script>
         <script src="scripts/directives/disable-animate.js"></script>
         <script src="scripts/directives/main-section.js"></script>
-        <script src="scripts/filters/moment-date.js"></script>
+        <script src="scripts/filters/moment-from-now.js"></script>
         <script src="scripts/services/history.js"></script>
         <script src="scripts/services/sessions.js"></script>
         <script src="scripts/services/tabs.js"></script>

@@ -2014,10 +2014,6 @@ button, .button {
     padding: 0.71429rem 1.42857rem 0.78571rem 1.42857rem;
     font-size: 0.78571rem; }
   button.expand, .button.expand {
-    padding: 1.14286rem 2.28571rem 1.21429rem 2.28571rem;
-    font-size: 1.14286rem;
-    padding-bottom: 1.21429rem;
-    padding-top: 1.14286rem;
     padding-left: 1.14286rem;
     padding-right: 1.14286rem;
     width: 100%; }
@@ -9248,6 +9244,28 @@ i {
   -webkit-transition: color 300ms ease-out;
   transition: color 300ms ease-out; }
 
+table.datepicker {
+  outline: none;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 0;
+  padding-left: 3px;
+  background: transparent;
+  border-width: 0; }
+  table.datepicker thead {
+    background: transparent; }
+    table.datepicker thead th {
+      padding: 0.14286rem 0.35714rem;
+      color: #a30008; }
+  table.datepicker tr.even, table.datepicker tr.alt, table.datepicker tr:nth-of-type(even) {
+    background: transparent; }
+  table.datepicker tbody tr td {
+    padding: 0.14286rem 0.35714rem;
+    font-size: 95% !important; }
+  table.datepicker button.small, table.datepicker .button.small {
+    padding: 0.42857rem 0.64286rem;
+    margin-bottom: 0; }
+
 .tooltip {
   z-index: 1030;
   visibility: visible;
@@ -9525,6 +9543,9 @@ i {
             display: block; }
           .main-section .header .action-button.expandable .action-content .checkbox .c-label {
             display: block; }
+        .main-section .header .action-button.expandable .action-content .top {
+          height: 241px;
+          border-bottom: solid 1px #a30008; }
       .main-section .header .action-button.expandable:hover {
         width: 300px;
         height: 285px;

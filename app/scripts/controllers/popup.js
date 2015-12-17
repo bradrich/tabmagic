@@ -348,27 +348,9 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 
 			// Currently snoozed
 			current: {
-
-				// Necessities
 				data: [],
 				tmCollapsed: false,
-
-				// Remove from current array
-				remove: function remove(index) {
-
-					// Remove item
-					if (index > -1) {
-						$scope.tabs.snooze.current.data.splice(index, 1);
-					}
-
-					// Resync array
-					var store = { tmSnoozeCurrentTabs: $scope.tabs.snooze.current.data };
-					chrome.storage.sync.set(store);
-				},
-
-				// Reopen
-				reopen: function reopen() {}
-
+				selectedTabs: []
 			},
 
 			// Initialize
@@ -382,7 +364,7 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 				});
 			},
 
-			// Add to snoozed
+			// Add to snoozed current array and then close the tab
 			add: function add(sendAll, request) {
 
 				// Loop through all windows and tabs to find selected tabs
@@ -399,11 +381,56 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 							tmSelected: false
 						};
 
+						// Necessities
+						var month,
+						    currentDayIndex,
+						    dayIndex,
+						    hour,
+						    date = null;
+						var maxPushes = 12;
+
 						// Set snoozeToDates
 						if ('laterToday' === request) {
-							var hourToAdd = parseInt($scope.settings.snooze.data.laterToday.model.replace('in ', '').replace(' hour', '').replace('s', ''));
-							var date = $moment().add(hourToAdd, 'hours').format;
+							hour = parseInt($scope.settings.snooze.data.laterToday.model.replace('in ', '').replace(' hour', '').replace('s', ''));
+							date = $moment().add(hour, 'hours').format();
 							snoozedTab.snoozeToDates.push(date);
+						} else if ('thisEvening' === request) {
+							hour = parseInt($scope.settings.snooze.data.workdayEnds.model.replace(':00 PM', '')) + 12;
+							date = $moment().hour(hour).minutes(0).seconds(0).format();
+							snoozedTab.snoozeToDates.push(date);
+						} else if ('tomorrow' === request) {
+							hour = parseInt($scope.settings.snooze.data.workdayStarts.model.replace(':00 AM', ''));
+							date = $moment().add(1, 'days').hour(hour).minutes(0).seconds(0).format();
+							snoozedTab.snoozeToDates.push(date);
+						} else if ('thisWeekend' === request) {
+							dayIndex = $scope.settings.snooze.data.weekStarts.options.indexOf($scope.settings.snooze.data.weekStarts.model);
+							hour = parseInt($scope.settings.snooze.data.workdayStarts.model.replace(':00 AM', ''));
+							date = $moment().day(dayIndex).hour(hour).minutes(0).seconds(0).format();
+							snoozedTab.snoozeToDates.push(date);
+						} else if ('nextWeek' === request) {
+							currentDayIndex = $moment().day();
+							dayIndex = $scope.settings.snooze.data.weekStarts.options.indexOf($scope.settings.snooze.data.weekStarts.model);
+							if (dayIndex < currentDayIndex) {
+								dayIndex += 7;
+							}
+							hour = parseInt($scope.settings.snooze.data.workdayStarts.model.replace(':00 AM', ''));
+							date = $moment().day(dayIndex).hour(hour).minutes(0).seconds(0).format();
+							snoozedTab.snoozeToDates.push(date);
+						} else if ('inAMonth' === request) {
+							hour = parseInt($scope.settings.snooze.data.workdayStarts.model.replace(':00 AM', ''));
+							date = $moment().add(1, 'months').hour(hour).minutes(0).seconds(0).format();
+							snoozedTab.snoozeToDates.push(date);
+						} else if ('someday' === request) {
+							month = parseInt($scope.settings.snooze.data.someday.model.replace('in ', '').replace(' month', '').replace('s', ''));
+							hour = parseInt($scope.settings.snooze.data.workdayStarts.model.replace(':00 AM', ''));
+							date = $moment().add(month, 'months').hour(hour).minutes(0).seconds(0).format();
+							snoozedTab.snoozeToDates.push(date);
+						} else if ('pickADate' === request) {
+							hour = parseInt($scope.settings.snooze.data.workdayStarts.model.replace(':00 AM', ''));
+							date = $moment($scope.tabs.snooze.pickADate.model).hour(hour).minutes(0).seconds(0).format();
+							snoozedTab.snoozeToDates.push(date);
+						} else if ('periodically' === request) {
+							maxPushes = maxPushes;
 						}
 
 						// Is this for all tabs?
@@ -434,11 +461,72 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 				}
 			},
 
+			// Remove from current array
+			remove: function remove(index, tabId) {
+
+				// Remove item when index is given
+				if (index || 0 === index) {
+					$scope.tabs.snooze.current.data.splice(index, 1);
+				}
+				// Remove item when tabId is given
+				else if (tabId) {
+
+						// Index of tab with matching id
+						var tabIndex;
+
+						// Loop through the snooze current tabs to find the matching id
+						angular.forEach($scope.tabs.snooze.current.data, function (snooze) {
+							if (tabId === snooze.tab.id) {
+								tabIndex = $scope.tabs.snooze.current.data.indexOf(snooze);
+							}
+						});
+
+						// Remove item with tabIndex
+						$scope.tabs.snooze.current.data.splice(tabIndex, 1);
+					}
+
+				// Resync array
+				var store = { tmSnoozeCurrentTabs: $scope.tabs.snooze.current.data };
+				chrome.storage.sync.set(store);
+			},
+
+			// Reopen
+			reopen: function reopen() {
+
+				// Loop through all of the snooze current tabs
+				angular.forEach($scope.tabs.snooze.current.data, function (snooze) {
+					if (snooze.tmSelected) {
+						$scope.tabs.snooze.current.selectedTabs.push(snooze);
+					}
+				});
+
+				// If there are any selected snooze current tabs
+				if ($scope.tabs.snooze.current.selectedTabs.length > 0) {
+
+					// Loop through the selected snooze current tabs
+					angular.forEach($scope.tabs.snooze.current.selectedTabs, function (snooze) {
+
+						// Call create from the tabs service
+						$tabs.create(snooze.tab.url);
+
+						// If the snooze type is not periodically, then remove it from the snooze current tabs list as well
+						if ('periodically' !== snooze.type) {
+							$scope.tabs.snooze.remove(null, snooze.tab.id);
+						}
+					});
+				}
+
+				// Clear selected snooze current tabs
+				$scope.tabs.snooze.current.selectedTabs.length = 0;
+			},
+
 			// Periodically
 			periodically: {
 
 				// Form
 				form: {
+
+					// Inputs
 					wakeUpThisTab: {
 						models: {
 							master: 'Every week',
@@ -515,10 +603,14 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 						isMeridian: true,
 						showSpinners: false
 					},
-					reset: function reset() {
+
+					// Reset the form, or reset wakeUpThisTab's accompanying inputs
+					reset: function reset(notWakeUpThisTab) {
 
 						// Reset each of the inputs back to their master model
-						$scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit = angular.copy($scope.tabs.snooze.periodically.form.wakeUpThisTab.models.master);
+						if (!notWakeUpThisTab) {
+							$scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit = angular.copy($scope.tabs.snooze.periodically.form.wakeUpThisTab.models.master);
+						}
 						$scope.tabs.snooze.periodically.form.onThisDay.models.edit = angular.copy($scope.tabs.snooze.periodically.form.onThisDay.models.master);
 						$scope.tabs.snooze.periodically.form.onThisDate.monthModels.edit = angular.copy($scope.tabs.snooze.periodically.form.onThisDate.monthModels.master);
 						$scope.tabs.snooze.periodically.form.onThisDate.dayModels.edit = angular.copy($scope.tabs.snooze.periodically.form.onThisDate.dayModels.master);
@@ -528,8 +620,41 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 						angular.forEach($scope.tabs.snooze.periodically.form.onTheseDays.options, function (option) {
 							option.model = null;
 						});
+
+						// Set the form to pristine
+						if (!notWakeUpThisTab) {
+							$scope.tabs.snooze.periodically.form.data.$setPristine();
+						}
+					},
+
+					// Disable submit when everything is not there
+					disableSubmit: function disableSubmit() {
+
+						// Catcher
+						var disable = true;
+
+						console.log($scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit);
+						console.log($scope.tabs.snooze.periodically.form.onThisDay.models.edit);
+						console.log($scope.tabs.snooze.periodically.form.onThisDate.monthModels.edit);
+						console.log($scope.tabs.snooze.periodically.form.onThisDate.dayModels.edit);
+						console.log($scope.tabs.snooze.periodically.form.atThisTime.models.edit);
+
+						// If wakeUpThisTab is 'Every day'
+
+						return disable;
 					}
+
 				}
+
+			},
+
+			// Pick a date
+			pickADate: {
+
+				// Necessities
+				model: null,
+				minDate: $moment().add(1, 'days'),
+				showWeeks: false
 
 			}
 

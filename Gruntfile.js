@@ -14,7 +14,8 @@ module.exports = function (grunt) {
 
   // Automatically load required Grunt tasks
   require('jit-grunt')(grunt, {
-    useminPrepare: 'grunt-usemin'
+    useminPrepare: 'grunt-usemin',
+    ngtemplates: 'grunt-angular-templates'
   });
 
   // Configurable paths
@@ -58,6 +59,13 @@ module.exports = function (grunt) {
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
+      },
+      html: {
+          files: ['<%= config.app %>/templates/**/*.html'],
+          tasks: ['ngtemplates'],
+          options: {
+              livereload: '<%= connect.options.livereload %>'
+          }
       },
       livereload: {
         options: {
@@ -189,6 +197,19 @@ module.exports = function (grunt) {
       }
     },
 
+    // Package all of the html partials into a single javascript payload
+    ngtemplates: {
+        options: {
+            // This should be the name of your app's angular module
+            module: 'TabMagicApp'
+        },
+        main: {
+            cwd: '<%= config.app %>',
+            src: 'templates/**/*.html',
+            dest: '.tmp/templates.js'
+        }
+    },
+
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
@@ -316,15 +337,18 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up build process
     concurrent: {
       chrome: [
-        'sass'
+        'sass',
+        'ngtemplates'
       ],
       dist: [
         'sass',
+        'ngtemplates',
         'imagemin',
         'svgmin'
       ],
       test: [
-        'sass'
+        'sass',
+        'ngtemplates'
       ]
     },
 
