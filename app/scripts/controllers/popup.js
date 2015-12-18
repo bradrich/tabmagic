@@ -376,6 +376,9 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 							dateCreated: $moment().format(),
 							tab: tab,
 							type: request,
+							periodicallySetting: {
+								type: null
+							},
 							snoozeToDates: [],
 							removedBySnooze: false,
 							tmSelected: false
@@ -386,8 +389,9 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 						    currentDayIndex,
 						    dayIndex,
 						    hour,
-						    date = null;
-						var maxPushes = 12;
+						    date,
+						    rightNow,
+						    startingDate = null;
 
 						// Set snoozeToDates
 						if ('laterToday' === request) {
@@ -430,7 +434,45 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 							date = $moment($scope.tabs.snooze.pickADate.model).hour(hour).minutes(0).seconds(0).format();
 							snoozedTab.snoozeToDates.push(date);
 						} else if ('periodically' === request) {
-							maxPushes = maxPushes;
+
+							// Set periodicallySetting.type
+							snoozedTab.periodicallySetting.type = $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit.replace('Every ', '');
+							if ('day' === snoozedTab.periodicallySetting.type) {
+								snoozedTab.periodicallySetting.type = 'daily';
+							} else if ('week' === snoozedTab.periodicallySetting.type) {
+								snoozedTab.periodicallySetting.type = 'weekly';
+							} else if ('month' === snoozedTab.periodicallySetting.type) {
+								snoozedTab.periodicallySetting.type = 'monthly';
+							} else if ('year' === snoozedTab.periodicallySetting.type) {
+								snoozedTab.periodicallySetting.type = 'yearly';
+							}
+
+							// If wakeUpThisTab is 'Every day'
+							if ('Every day' === $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit) {
+
+								// Set starting day
+								rightNow = $moment();
+								startingDate = $moment($scope.tabs.snooze.periodically.form.atThisTime.models.edit);
+
+								// If rightNow is AFTER startingDate, then add 1 day to startingDate
+								if (rightNow.diff(startingDate) > 0) {
+									startingDate.add(1, 'days');
+								}
+
+								// Push date
+								date = startingDate.format();
+								snoozedTab.snoozeToDates.push(date);
+							}
+							// If wakeUpThisTab is 'Every week'
+							else if ('Every week' === $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit) {
+
+									// Loop through onTheseDays to get the selected days
+									angular.forEach($scope.tabs.snooze.periodically.form.onTheseDays.options, function (option) {
+										if (option.model) {
+											console.log(option.value);
+										}
+									});
+								}
 						}
 
 						// Is this for all tabs?
@@ -438,7 +480,7 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 							$scope.tabs.snooze.current.data.push(snoozedTab);
 						}
 						// Not all tabs, is tab selected?
-						else if (tab.tmSelected) {
+						else if (tab.tmSelected && 'weekly' !== snoozedTab.periodicallySetting.type) {
 								$scope.tabs.snooze.current.data.push(snoozedTab);
 							}
 					});
@@ -538,31 +580,31 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 						options: [{
 							model: null,
 							label: 'S',
-							value: 'Sunday'
+							value: 0
 						}, {
 							model: null,
 							label: 'M',
-							value: 'Monday'
+							value: 1
 						}, {
 							model: null,
 							label: 'T',
-							value: 'Tuesday'
+							value: 2
 						}, {
 							model: null,
 							label: 'W',
-							value: 'Wednesday'
+							value: 3
 						}, {
 							model: null,
 							label: 'T',
-							value: 'Thursday'
+							value: 4
 						}, {
 							model: null,
 							label: 'F',
-							value: 'Friday'
+							value: 5
 						}, {
 							model: null,
 							label: 'S',
-							value: 'Saturday'
+							value: 6
 						}],
 						showInput: function showInput() {
 							return 'Every week' === $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit;
@@ -580,28 +622,52 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 					},
 					onThisDate: {
 						monthModels: {
-							master: 'Jan',
-							edit: 'Jan'
+							master: $moment().format('MMM'),
+							edit: $moment().format('MMM')
 						},
 						monthOptions: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 						dayModels: {
-							master: '1st',
-							edit: '1st'
+							master: null,
+							edit: null
 						},
-						dayOptions: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st'],
+						dayOptions: null,
 						showInput: function showInput() {
 							return 'Every year' === $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit;
+						},
+						// Calculate the number of days based off of the month chosen
+						calcDays: function calcDays() {
+
+							// Necessities
+							var maxDays = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st'];
+							var monthsAndDays = {
+								'Jan': maxDays,
+								'Feb': maxDays.slice(0, 28),
+								'Mar': maxDays,
+								'Apr': maxDays.slice(0, 30),
+								'May': maxDays,
+								'Jun': maxDays.slice(0, 30),
+								'Jul': maxDays,
+								'Aug': maxDays,
+								'Sep': maxDays.slice(0, 30),
+								'Oct': maxDays,
+								'Nov': maxDays.slice(0, 30),
+								'Dec': maxDays
+							};
+
+							// Grab correct month from monthsAndDays object
+							$scope.tabs.snooze.periodically.form.onThisDate.dayOptions = monthsAndDays[$scope.tabs.snooze.periodically.form.onThisDate.monthModels.edit];
+
+							// Reset the dayModels.edit to null if outside of the array range
+							if ($scope.tabs.snooze.periodically.form.onThisDate.dayOptions.indexOf($scope.tabs.snooze.periodically.form.onThisDate.dayModels.edit) < 0 && $scope.tabs.snooze.periodically.form.onThisDate.dayModels.edit) {
+								$scope.tabs.snooze.periodically.form.onThisDate.dayModels.edit = $scope.tabs.snooze.periodically.form.onThisDate.dayOptions[$scope.tabs.snooze.periodically.form.onThisDate.dayOptions.length - 1];
+							}
 						}
 					},
 					atThisTime: {
 						models: {
-							master: $moment().toDate(),
-							edit: $moment().toDate()
-						},
-						hourStep: 1,
-						minuteStep: 15,
-						isMeridian: true,
-						showSpinners: false
+							master: $moment().seconds(0).millisecond(0).toDate(),
+							edit: $moment().seconds(0).millisecond(0).toDate()
+						}
 					},
 
 					// Reset the form, or reset wakeUpThisTab's accompanying inputs
@@ -625,21 +691,59 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 						if (!notWakeUpThisTab) {
 							$scope.tabs.snooze.periodically.form.data.$setPristine();
 						}
+
+						// Initialize dayOptions on onThisDate if wakeUpThisTab is 'Every year'
+						if ('Every year' === $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit && !$scope.tabs.snooze.periodically.form.onThisDate.daysOptions) {
+							$scope.tabs.snooze.periodically.form.onThisDate.calcDays();
+							$scope.tabs.snooze.periodically.form.onThisDate.dayModels.master = $moment().format('Do');
+							$scope.tabs.snooze.periodically.form.onThisDate.dayModels.edit = angular.copy($scope.tabs.snooze.periodically.form.onThisDate.dayModels.master);
+						}
 					},
 
 					// Disable submit when everything is not there
 					disableSubmit: function disableSubmit() {
 
 						// Catcher
-						var disable = true;
+						var disable = false;
 
-						console.log($scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit);
-						console.log($scope.tabs.snooze.periodically.form.onThisDay.models.edit);
-						console.log($scope.tabs.snooze.periodically.form.onThisDate.monthModels.edit);
-						console.log($scope.tabs.snooze.periodically.form.onThisDate.dayModels.edit);
-						console.log($scope.tabs.snooze.periodically.form.atThisTime.models.edit);
+						// If wakeUpThisTab is 'Every week'
+						if ('Every week' === $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit) {
 
-						// If wakeUpThisTab is 'Every day'
+							// Disable if none of onTheseDays options are selected
+							var selected = false;
+							angular.forEach($scope.tabs.snooze.periodically.form.onTheseDays.options, function (option) {
+								if (option.model) {
+									selected = true;
+								}
+							});
+							if (!selected) {
+								disable = true;
+							}
+						}
+						// If wakeUpThisTab is 'Every month'
+						else if ('Every month' === $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit) {
+
+								// Disable if onThisDay is not set
+								if (!$scope.tabs.snooze.periodically.form.onThisDay.models.edit) {
+									disable = true;
+								}
+							}
+							// If wakeUpThisTab is 'Every year'
+							else if ('Every year' === $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit) {
+
+									// Disable if onThisDate month is not set
+									if (!$scope.tabs.snooze.periodically.form.onThisDate.monthModels.edit) {
+										disable = true;
+									}
+									// Disable if onThisDate day is not set
+									if (!$scope.tabs.snooze.periodically.form.onThisDate.dayModels.edit) {
+										disable = true;
+									}
+								}
+								// Disable if atThisTime is undefined
+								else if (angular.isUndefined($scope.tabs.snooze.periodically.form.atThisTime.models.edit)) {
+										disable = true;
+									}
 
 						return disable;
 					}

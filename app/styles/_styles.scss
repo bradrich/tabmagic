@@ -162,6 +162,7 @@ select {
 	background-color: $white;
 	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
 	background-position: right;
+	font-size: rem-calc(13);
 	&:hover, &:focus {
 		background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
 		border-color: $input-focus-border-color;
@@ -192,6 +193,10 @@ select {
 	.bordered {
 		border: solid 2px $primary-color-dark;
 	}
+}
+.prefix, .postfix {
+	height: (rem-calc(13) + (rem-calc(16) * 1.5));
+	line-height: (rem-calc(13) + (rem-calc(16) * 1.5));
 }
 
 
@@ -585,6 +590,13 @@ table.datepicker {
 				&.collapsed { border-bottom-color: $gray; }
 			}
 			.fa-close { display: none; }
+			.special-highlight {
+				padding: 0 5px;
+				background: $gray-light-2x;
+				border: solid 1px $gray-light-3x;
+				color: $white;
+				@include border-radius(3px);
+			}
 		}
 		.settings-section-name { margin-top: 4px; }
 	}

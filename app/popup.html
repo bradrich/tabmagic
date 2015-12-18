@@ -154,7 +154,7 @@
                                                     on this date
                                                     <div class="row">
                                                         <div class="small-6 columns">
-                                                            <select class="radius" name="onThisDateMonth" ng-model="tabs.snooze.periodically.form.onThisDate.monthModels.edit" ng-options="option for option in tabs.snooze.periodically.form.onThisDate.monthOptions"></select>
+                                                            <select class="radius" name="onThisDateMonth" ng-model="tabs.snooze.periodically.form.onThisDate.monthModels.edit" ng-options="option for option in tabs.snooze.periodically.form.onThisDate.monthOptions" ng-change="tabs.snooze.periodically.form.onThisDate.calcDays()"></select>
                                                         </div>
                                                         <div class="small-6 columns">
                                                             <select class="radius" name="onThisDateDay" ng-model="tabs.snooze.periodically.form.onThisDate.dayModels.edit" ng-options="option for option in tabs.snooze.periodically.form.onThisDate.dayOptions"></select>
@@ -167,7 +167,7 @@
                                             <!-- At This Time -->
                                             <div class="small-12 columns text-center">
                                                 <label>at this time</label>
-                                                <uib-timepicker class="timepicker" ng-model="tabs.snooze.periodically.form.atThisTime.models.edit" ng-required="true" hour-step="tabs.snooze.periodically.form.atThisTime.hourStep" minute-step="tabs.snooze.periodically.form.atThisTime.minuteStep" show-meridian="tabs.snooze.periodically.form.atThisTime.isMeridian" show-spinners="tabs.snooze.periodically.form.atThisTime.showSpinners"></uib-timepicker>
+                                                <input type="time" class="radius" ng-model="tabs.snooze.periodically.form.atThisTime.models.edit" ng-required="true" />
                                             </div>
                                             <!-- End At This Time -->
 
@@ -189,7 +189,7 @@
                                             </button>
                                         </div>
                                         <div class="small-4 columns">
-                                            <button class="expand radius small" ng-disabled="tabs.snooze.periodically.form.disableSubmit()" ng-click="tabs.snooze.add(false, 'periodically')">
+                                            <button class="expand radius small" ng-disabled="tabs.snooze.periodically.form.disableSubmit() || tabs.snooze.periodically.form.data.$pristine" ng-click="tabs.snooze.add(false, 'periodically')">
                                                 <i class="fa icon-check"></i>
                                             </button>
                                         </div>
@@ -347,8 +347,8 @@
                                                     <div class="columns" ng-class="{ 'small-10': '' !== snooze.tab.favIconUrl && snooze.tab.favIconUrl, 'small-11': '' === snooze.tab.favIconUrl || !snooze.tab.favIconUrl }" ng-click="snooze.tmSelected = !snooze.tmSelected; tabs.unselect()">
                                                         <span ng-bind="snooze.tab.title"></span><br />
                                                         <small>
-                                                            Snoozed <strong ng-bind="snooze.dateCreated | momentFromNow"></strong>
-                                                            <span ng-show="'periodically' !== snooze.type">until <strong ng-bind="snooze.snoozeToDates[0] | date: 'medium'"></strong></span>
+                                                            <span class="special-highlight" ng-show="'periodically' === snooze.type"><i class="fa icon-refresh fa-lg"></i> <span ng-bind="snooze.periodicallySetting.type"></span></span>&nbsp;&nbsp;
+                                                            Snoozed <strong ng-bind="snooze.dateCreated | momentFromNow"></strong> until <strong ng-bind="snooze.snoozeToDates[0] | date: 'medium'"></strong>
                                                         </small>
                                                     </div>
                                                     <div class="small-1 columns" ng-click="tabs.snooze.remove($index)">
@@ -535,6 +535,14 @@
         <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
         <script src="bower_components/ngFx/dist/ngFx.js"></script>
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-ui-mask/dist/mask.js"></script>
+        <script src="bower_components/angular-ui-scroll/dist/ui-scroll.js"></script>
+        <script src="bower_components/angular-ui-scrollpoint/dist/scrollpoint.js"></script>
+        <script src="bower_components/angular-ui-event/dist/event.js"></script>
+        <script src="bower_components/angular-ui-validate/dist/validate.js"></script>
+        <script src="bower_components/angular-ui-indeterminate/dist/indeterminate.js"></script>
+        <script src="bower_components/angular-ui-uploader/dist/uploader.js"></script>
+        <script src="bower_components/angular-ui-utils/index.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
