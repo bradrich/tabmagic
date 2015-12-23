@@ -2,6 +2,7 @@
 
 angular.module('TabMagicApp', [
 	'ngAnimate',
+	'ngMessages',
 	'ngFx',
 	'LocalStorageModule',
 	'angular-momentjs',

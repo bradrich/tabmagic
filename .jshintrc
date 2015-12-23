@@ -22,6 +22,7 @@
     "chrome": true,
     "crypto": true,
     "angular": false,
-    "tabMagicApp": true
+    "tabMagicApp": true,
+    "moment": true
   }
 }

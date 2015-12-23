@@ -377,9 +377,12 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 							tab: tab,
 							type: request,
 							periodicallySetting: {
-								type: null
+								type: null,
+								daysOfWeek: [],
+								dayOfMonth: null,
+								monthOfYear: null
 							},
-							snoozeToDates: [],
+							nextSnoozedToDate: null,
 							removedBySnooze: false,
 							tmSelected: false
 						};
@@ -388,29 +391,31 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 						var month,
 						    currentDayIndex,
 						    dayIndex,
+						    monthIndex,
 						    hour,
 						    date,
 						    rightNow,
-						    startingDate = null;
+						    startingDate,
+						    futureDate = null;
 
-						// Set snoozeToDates
+						// Set nextSnoozedToDate
 						if ('laterToday' === request) {
 							hour = parseInt($scope.settings.snooze.data.laterToday.model.replace('in ', '').replace(' hour', '').replace('s', ''));
 							date = $moment().add(hour, 'hours').format();
-							snoozedTab.snoozeToDates.push(date);
+							snoozedTab.nextSnoozedToDate = date;
 						} else if ('thisEvening' === request) {
 							hour = parseInt($scope.settings.snooze.data.workdayEnds.model.replace(':00 PM', '')) + 12;
 							date = $moment().hour(hour).minutes(0).seconds(0).format();
-							snoozedTab.snoozeToDates.push(date);
+							snoozedTab.nextSnoozedToDate = date;
 						} else if ('tomorrow' === request) {
 							hour = parseInt($scope.settings.snooze.data.workdayStarts.model.replace(':00 AM', ''));
 							date = $moment().add(1, 'days').hour(hour).minutes(0).seconds(0).format();
-							snoozedTab.snoozeToDates.push(date);
+							snoozedTab.nextSnoozedToDate = date;
 						} else if ('thisWeekend' === request) {
 							dayIndex = $scope.settings.snooze.data.weekStarts.options.indexOf($scope.settings.snooze.data.weekStarts.model);
 							hour = parseInt($scope.settings.snooze.data.workdayStarts.model.replace(':00 AM', ''));
 							date = $moment().day(dayIndex).hour(hour).minutes(0).seconds(0).format();
-							snoozedTab.snoozeToDates.push(date);
+							snoozedTab.nextSnoozedToDate = date;
 						} else if ('nextWeek' === request) {
 							currentDayIndex = $moment().day();
 							dayIndex = $scope.settings.snooze.data.weekStarts.options.indexOf($scope.settings.snooze.data.weekStarts.model);
@@ -419,20 +424,19 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 							}
 							hour = parseInt($scope.settings.snooze.data.workdayStarts.model.replace(':00 AM', ''));
 							date = $moment().day(dayIndex).hour(hour).minutes(0).seconds(0).format();
-							snoozedTab.snoozeToDates.push(date);
+							snoozedTab.nextSnoozedToDate = date;
 						} else if ('inAMonth' === request) {
 							hour = parseInt($scope.settings.snooze.data.workdayStarts.model.replace(':00 AM', ''));
 							date = $moment().add(1, 'months').hour(hour).minutes(0).seconds(0).format();
-							snoozedTab.snoozeToDates.push(date);
+							snoozedTab.nextSnoozedToDate = date;
 						} else if ('someday' === request) {
 							month = parseInt($scope.settings.snooze.data.someday.model.replace('in ', '').replace(' month', '').replace('s', ''));
 							hour = parseInt($scope.settings.snooze.data.workdayStarts.model.replace(':00 AM', ''));
 							date = $moment().add(month, 'months').hour(hour).minutes(0).seconds(0).format();
-							snoozedTab.snoozeToDates.push(date);
+							snoozedTab.nextSnoozedToDate = date;
 						} else if ('pickADate' === request) {
-							hour = parseInt($scope.settings.snooze.data.workdayStarts.model.replace(':00 AM', ''));
-							date = $moment($scope.tabs.snooze.pickADate.model).hour(hour).minutes(0).seconds(0).format();
-							snoozedTab.snoozeToDates.push(date);
+							date = $moment($scope.tabs.snooze.pickADate.model).format();
+							snoozedTab.nextSnoozedToDate = date;
 						} else if ('periodically' === request) {
 
 							// Set periodicallySetting.type
@@ -447,11 +451,13 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 								snoozedTab.periodicallySetting.type = 'yearly';
 							}
 
-							// If wakeUpThisTab is 'Every day'
-							if ('Every day' === $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit) {
+							// Set current date
+							rightNow = $moment();
 
-								// Set starting day
-								rightNow = $moment();
+							// If wakeUpThisTab is 'Every day'
+							if ('daily' === snoozedTab.periodicallySetting.type) {
+
+								// Set startingDate
 								startingDate = $moment($scope.tabs.snooze.periodically.form.atThisTime.models.edit);
 
 								// If rightNow is AFTER startingDate, then add 1 day to startingDate
@@ -461,18 +467,81 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 
 								// Push date
 								date = startingDate.format();
-								snoozedTab.snoozeToDates.push(date);
+								snoozedTab.nextSnoozedToDate = date;
 							}
 							// If wakeUpThisTab is 'Every week'
-							else if ('Every week' === $scope.tabs.snooze.periodically.form.wakeUpThisTab.models.edit) {
+							else if ('weekly' === snoozedTab.periodicallySetting.type) {
 
 									// Loop through onTheseDays to get the selected days
 									angular.forEach($scope.tabs.snooze.periodically.form.onTheseDays.options, function (option) {
 										if (option.model) {
-											console.log(option.value);
+
+											// Add option.value to periodicallySetting.daysOfWeek
+											snoozedTab.periodicallySetting.daysOfWeek.push(option.value);
+
+											// Set startingDate
+											startingDate = $moment($scope.tabs.snooze.periodically.form.atThisTime.models.edit).day(option.value);
+
+											// If rightNow is AFTER startingDate with that option selected, then add 1 week to that startingDate and set it as the futureDate
+											if (rightNow.diff(startingDate) > 0 && !futureDate) {
+												futureDate = startingDate.add(1, 'weeks');
+											}
+											// If rightNow is BEFORE startingDate, then that is the nextSnoozedToDate
+											else if (rightNow.diff(startingDate) < 0) {
+													date = startingDate.format();
+													snoozedTab.nextSnoozedToDate = date;
+												}
 										}
 									});
+
+									// If after the loop, nextSnoozedToDate has not been set, then set it to the first futureDate created
+									if (!snoozedTab.nextSnoozedToDate) {
+										date = futureDate.format();
+										snoozedTab.nextSnoozedToDate = date;
+									}
 								}
+								// If wakeUpThisTab is 'Every month'
+								else if ('monthly' === snoozedTab.periodicallySetting.type) {
+
+										// Set dayIndex and periodicallySetting.dayOfMonth from onThisDay input
+										dayIndex = parseInt($scope.tabs.snooze.periodically.form.onThisDay.models.edit.replace('st', '').replace('nd', '').replace('rd', '').replace('th', ''));
+										snoozedTab.periodicallySetting.dayOfMonth = dayIndex;
+
+										// Set startingDate
+										startingDate = $moment($scope.tabs.snooze.periodically.form.atThisTime.models.edit).date(dayIndex);
+
+										// If rightNow is AFTER startingDate, then add 1 month to startingDate
+										if (rightNow.diff(startingDate) > 0) {
+											startingDate.add(1, 'months');
+										}
+
+										// Push date
+										date = startingDate.format();
+										snoozedTab.nextSnoozedToDate = date;
+									}
+									// If wakeUpThisTab is 'Every year'
+									else if ('yearly' === snoozedTab.periodicallySetting.type) {
+
+											// Set monthIndex and periodicallySetting.monthOfYear from onThisDate month input
+											monthIndex = $scope.tabs.snooze.periodically.form.onThisDate.monthOptions.indexOf($scope.tabs.snooze.periodically.form.onThisDate.monthModels.edit);
+											snoozedTab.periodicallySetting.monthOfYear = monthIndex;
+
+											// Set dayIndex and periodicallySetting.dayOfMonth from onThisDay input
+											dayIndex = parseInt($scope.tabs.snooze.periodically.form.onThisDate.dayModels.edit.replace('st', '').replace('nd', '').replace('rd', '').replace('th', ''));
+											snoozedTab.periodicallySetting.dayOfMonth = dayIndex;
+
+											// Set startingDate
+											startingDate = $moment($scope.tabs.snooze.periodically.form.atThisTime.models.edit).month(monthIndex).date(dayIndex);
+
+											// If rightNow is AFTER startingDate, then add 1 year to startingDate
+											if (rightNow.diff(startingDate) > 0) {
+												startingDate.add(1, 'years');
+											}
+
+											// Push date
+											date = startingDate.format();
+											snoozedTab.nextSnoozedToDate = date;
+										}
 						}
 
 						// Is this for all tabs?
@@ -480,7 +549,7 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 							$scope.tabs.snooze.current.data.push(snoozedTab);
 						}
 						// Not all tabs, is tab selected?
-						else if (tab.tmSelected && 'weekly' !== snoozedTab.periodicallySetting.type) {
+						else if (tab.tmSelected) {
 								$scope.tabs.snooze.current.data.push(snoozedTab);
 							}
 					});
@@ -500,6 +569,14 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 							tab.removedBySnooze = true;
 						}
 					});
+
+					// Get all windows again to update list
+					$timeout(function () {
+						$scope.windows.getAll();
+					}, 400);
+
+					// Set extension badge text to current snoozed tabs length
+					chrome.browserAction.setBadgeText({ text: $scope.tabs.snooze.current.data.length.toString() });
 				}
 			},
 
@@ -530,6 +607,13 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 				// Resync array
 				var store = { tmSnoozeCurrentTabs: $scope.tabs.snooze.current.data };
 				chrome.storage.sync.set(store);
+
+				// Set extension badge text to current snoozed tabs length
+				if ($scope.tabs.snooze.current.data.length > 0) {
+					chrome.browserAction.setBadgeText({ text: $scope.tabs.snooze.current.data.length.toString() });
+				} else {
+					chrome.browserAction.setBadgeText({ text: '' });
+				}
 			},
 
 			// Reopen
@@ -756,9 +840,10 @@ angular.module('TabMagicApp').controller('PopUpCtrl', function ($tabs, $windows,
 			pickADate: {
 
 				// Necessities
-				model: null,
-				minDate: $moment().add(1, 'days'),
-				showWeeks: false
+				model: $moment().add(1, 'minutes').seconds(0).milliseconds(0).toDate(),
+				minDate: $moment().toISOString(),
+				showWeeks: false,
+				currentPart: 0
 
 			}
 

@@ -199,18 +199,47 @@
                                 </div>
                             </div>
                             <div class="row fx-fade-up fx-easing-elastic" ng-show="tmSnoozePickADateSelected">
-                                <div class="small-12 columns top">
-                                    <uib-datepicker ng-model="tabs.snooze.pickADate.model" min-date="tabs.snooze.pickADate.minDate" show-weeks="tabs.snooze.pickADate.showWeeks" template-url="templates/datepicker/datepicker.html"></uib-datepicker>
-                                </div>
+                                <form name="tabs.snooze.pickADate.form" novalidate>
+                                    <div class="small-12 columns top" ng-show="0 === tabs.snooze.pickADate.currentPart">
+                                        <uib-datepicker ng-model="tabs.snooze.pickADate.model" min-date="tabs.snooze.pickADate.minDate" show-weeks="tabs.snooze.pickADate.showWeeks" template-url="templates/datepicker/datepicker.html"></uib-datepicker>
+                                    </div>
+                                    <div class="small-12 columns top" ng-show="1 === tabs.snooze.pickADate.currentPart">
+                                        <div class="row small-margin-top medium-margin-right medium-margin-left">
+                                            <div class="small-12 columns text-center">
+                                                <label>
+                                                    at this time
+                                                    <input type="time" name="time" class="radius" ng-model="tabs.snooze.pickADate.model" min="tabs.snooze.pickADate.minDate" ng-min="tabs.snooze.pickADate.minDate" ng-required="true" />
+                                                    <span class="fx-fade-normal" ng-messages="tabs.snooze.pickADate.form.time.$error" role="alert">
+                                                        <span ng-message="min">Input a future date to have a valid</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="small-12 columns text-center small-margin-bottom">
+                                                <span>date and time selected</span><br />
+                                                <span ng-bind="tabs.snooze.pickADate.model | date:'MMMM dd \'at\' h:mm a'"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                                 <div class="small-12 columns">
                                     <div class="row collapse">
-                                        <div class="small-6 columns">
+                                        <div class="small-4 columns">
                                             <button class="expand radius small" ng-click="tmSnoozePickADateSelected = !tmSnoozePickADateSelected">
                                                 <i class="fa icon-close"></i>
                                             </button>
                                         </div>
-                                        <div class="small-6 columns">
-                                            <button class="expand radius small" ng-disabled="!tabs.snooze.pickADate.model" ng-click="tabs.snooze.add(false, 'pickADate')">
+                                        <div class="small-4 columns" ng-show="0 === tabs.snooze.pickADate.currentPart">
+                                            <button class="expand radius small" ng-disabled="!tabs.snooze.pickADate.model" ng-click="tabs.snooze.pickADate.currentPart = tabs.snooze.pickADate.currentPart + 1">
+                                                <i class="fa icon-chevron_right"></i>
+                                            </button>
+                                        </div>
+                                        <div class="small-4 columns" ng-show="1 === tabs.snooze.pickADate.currentPart">
+                                            <button class="expand radius small" ng-click="tabs.snooze.pickADate.currentPart = tabs.snooze.pickADate.currentPart - 1">
+                                                <i class="fa icon-chevron_left"></i>
+                                            </button>
+                                        </div>
+                                        <div class="small-4 columns">
+                                            <button class="expand radius small" ng-disabled="tabs.snooze.pickADate.form.time.$invalid || !tabs.snooze.pickADate.model || 1 !== tabs.snooze.pickADate.currentPart" ng-click="tabs.snooze.add(false, 'pickADate')">
                                                 <i class="fa icon-check"></i>
                                             </button>
                                         </div>
@@ -347,8 +376,8 @@
                                                     <div class="columns" ng-class="{ 'small-10': '' !== snooze.tab.favIconUrl && snooze.tab.favIconUrl, 'small-11': '' === snooze.tab.favIconUrl || !snooze.tab.favIconUrl }" ng-click="snooze.tmSelected = !snooze.tmSelected; tabs.unselect()">
                                                         <span ng-bind="snooze.tab.title"></span><br />
                                                         <small>
-                                                            <span class="special-highlight" ng-show="'periodically' === snooze.type"><i class="fa icon-refresh fa-lg"></i> <span ng-bind="snooze.periodicallySetting.type"></span></span>&nbsp;&nbsp;
-                                                            Snoozed <strong ng-bind="snooze.dateCreated | momentFromNow"></strong> until <strong ng-bind="snooze.snoozeToDates[0] | date: 'medium'"></strong>
+                                                            <span class="special-highlight" ng-show="'periodically' === snooze.type"><i class="fa icon-refresh fa-lg"></i> <span ng-bind="snooze.periodicallySetting.type"></span>&nbsp;&nbsp;</span>
+                                                            Snoozed <strong ng-bind="snooze.dateCreated | momentFromNow"></strong> until <strong ng-bind="snooze.nextSnoozedToDate | date: 'medium'"></strong>
                                                         </small>
                                                     </div>
                                                     <div class="small-1 columns" ng-click="tabs.snooze.remove($index)">
@@ -543,6 +572,7 @@
         <script src="bower_components/angular-ui-indeterminate/dist/indeterminate.js"></script>
         <script src="bower_components/angular-ui-uploader/dist/uploader.js"></script>
         <script src="bower_components/angular-ui-utils/index.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
