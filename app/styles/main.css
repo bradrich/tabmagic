@@ -9231,6 +9231,19 @@ select {
     padding: 0.42857rem;
     height: 2.21429rem;
     font-size: 1rem; } }
+.ng-inline-edit__input {
+  display: inline-block !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  border-bottom: 1px dashed #d6000b !important;
+  color: #ffffff !important; }
+
+.ng-inline-edit__button {
+  margin-left: 8px; }
+
 .button, button {
   outline: none; }
   .button .bordered, button .bordered {
@@ -9584,14 +9597,14 @@ table.datepicker {
       padding-bottom: 5px;
       color: #61738a;
       outline: none; }
-      .main-section .content .item:hover {
+      .main-section .content .item:hover .fa-close {
+        display: block; }
+        .main-section .content .item:hover .fa-close:hover {
+          color: #d6000b; }
+      .main-section .content .item.clickable:hover {
         color: #ffffff; }
-        .main-section .content .item:hover .fa-close {
-          display: block; }
-          .main-section .content .item:hover .fa-close:hover {
-            color: #d6000b; }
       .main-section .content .item.selected {
-        color: #d6000b; }
+        color: #d6000b !important; }
       .main-section .content .item.window {
         padding-top: 5px;
         padding-bottom: 6px;

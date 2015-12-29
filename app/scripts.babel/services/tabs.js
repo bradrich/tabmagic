@@ -7,6 +7,9 @@ angular.module('TabMagicApp')
 	// API of factory
 	var factory = {
 
+		// Special types of tabs
+		special: ['chrome-extension:', 'chrome:', 'chrome-devtools:', 'file:', 'chrome.google.com/webstore'],
+
 		// Query
 		query: function(options){
 			var deferred = $q.defer();
@@ -25,13 +28,13 @@ angular.module('TabMagicApp')
 			return deferred.promise;
 		},
 
-		// Is special
-		isSpecial: function(tab){
-			return (tab.url.indexOf('chrome-extension:') > -1 ||
-				tab.url.indexOf('chrome:') > -1 ||
-				tab.url.indexOf('chrome-devtools:') > -1 ||
-				tab.url.indexOf('file:') > -1 ||
-				tab.url.indexOf('chrome.google.com/webstore') > -1);
+		// Is the tab not a special type of tab and thus allowed to be listed
+		notSpecial: function(tab){
+			var allowed = true;
+			angular.forEach(factory.special, function(special){
+				if(tab.url.indexOf(special) > -1){ allowed = false; }
+			});
+			return allowed;
 		}
 
 	};

@@ -2,7 +2,7 @@
 
 angular.module('TabMagicApp')
 
-.factory('$sessions', function($q){
+.factory('$sessions', function($q, $tabs){
 
 	// API of factory
 	var factory = {
@@ -16,6 +16,20 @@ angular.module('TabMagicApp')
 			return deferred.promise;
 		},
 
+		// Recently closed session list builder that removes duplicates
+		addToRecentlyClosed: function(destArray, item){
+			if(factory.isSessionAllowed(item)){
+				if(destArray && destArray.length > 0){
+					var add = true;
+					angular.forEach(destArray, function(destItem){
+						if(destItem.tab.url === item.tab.url){ add = false; }
+					});
+					if(add){ destArray.push(item); }
+				}
+				else{ destArray.push(item); }
+			}
+		},
+
 		// Get synced devices
 		getDevices: function(){
 			var deferred = $q.defer();
@@ -26,13 +40,9 @@ angular.module('TabMagicApp')
 		},
 
 		// Session url filter
-		removeSessionsBasedOnUrl: function(session){
+		isSessionAllowed: function(session){
 			if(session && session.tab && session.tab.url){
-				return !(session.tab.url.indexOf('chrome-extension:') > -1 ||
-					session.tab.url.indexOf('chrome:') > -1 ||
-					session.tab.url.indexOf('chrome-devtools:') > -1 ||
-					session.tab.url.indexOf('file:') > -1 ||
-					session.tab.url.indexOf('chrome.google.com/webstore') > -1);
+				return $tabs.notSpecial(session.tab);
 			}
 		}
 

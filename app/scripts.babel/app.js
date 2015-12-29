@@ -11,7 +11,8 @@ angular.module('TabMagicApp', [
 	'ui.mask',
 	'ui.bootstrap.collapse',
 	'ui.bootstrap.tooltip',
-	'ui.bootstrap.timepicker'
+	'ui.bootstrap.timepicker',
+	'angularInlineEdit'
 ])
 
 // Material design configuration

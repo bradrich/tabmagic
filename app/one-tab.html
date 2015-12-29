@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/ng-inline-edit/dist/ng-inline-edit.css" />
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css styles/main.css -->
@@ -42,9 +43,6 @@
                     <div class="small-12 columns">
                         <h5><span class="primary">TAB</span>MAGIC</h5>
                     </div>
-                    <div class="action-button text-center clickable fx-fade-normal" title="Restore selected" ng-show="actionButtonShow('bringToOne') && navigation === 'bringToOne'" ng-click="oneTab.reopen()">
-                        <i class="fa icon-refresh fa-2x"></i>
-                    </div>
                 </div>
                 <!-- End Header -->
 
@@ -54,23 +52,44 @@
 
                         <!-- Bring to One -->
                         <div class="row fx-fade-up" ng-show="navigation === 'bringToOne'">
-                            <div class="small-12 columns">
-                                <div class="row title no-margin-top">
-                                    <div class="small-11 columns">Bring to One</div>
-                                    <div class="small-1 columns text-right no-padding-left">
-                                        <i class="fa fa-close clickable" tooltip="Close all" tooltip-placement="left" ng-click="oneTab.removeAll()" ng-hide="oneTab.data.tmOneTabSelectedTabs.length === 0"></i>
+
+                            <!-- Groups -->
+                            <div class="small-12 columns" ng-repeat="group in oneTab.groups.data">
+
+                                <!-- Title -->
+                                <div class="row title" ng-class="{ 'no-margin-top': $index === 0 }">
+                                    <div class="small-6 columns">
+                                        <span inline-edit="group.name" inline-edit-btn-edit="<i class='fa icon-edit'></i>" inline-edit-btn-save="<i class='fa icon-check success'></i>" inline-edit-btn-cancel="<i class='fa icon-close'></i>" inline-edit-callback="oneTab.groups.create(group.id)" inline-edit-on-blur="cancel"></span>
+                                    </div>
+                                    <div class="small-6 columns text-right">
+                                        <small ng-bind="group.createDate | date:'EEEE, MMMM d, y'"></small>
+                                    </div>
+                                    <div class="small-12 columns small-margin-top">
+                                        <a ng-click="oneTab.tabs.reopen(group.id, null, true)"><small>Reopen All</small></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a ng-click="oneTab.tabs.remove(group.id, null, true)"><small>Remove All</small></a>
                                     </div>
                                 </div>
-                                <div class="row item clickable" ng-repeat="tab in oneTab.data.tmOneTabSelectedTabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
-                                    <div class="small-1 columns text-center no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
-                                        <img ng-src="{{tab.favIconUrl}}" width="16" />
+                                <!-- End Title -->
+
+                                <!-- Tabs -->
+                                <div class="row" ng-repeat="tab in group.tabs" ng-class="{ even: $even }">
+                                    <div class="small-11 columns">
+                                        <div class="row item clickable" ng-click="oneTab.tabs.reopen(group.id, tab.id, false)">
+                                            <div class="small-1 columns text-center no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
+                                                <img ng-src="{{tab.favIconUrl}}" width="16" />
+                                            </div>
+                                            <div class="columns" ng-class="{ 'small-11': '' !== tab.favIconUrl && tab.favIconUrl, 'small-12': '' === tab.favIconUrl || !tab.favIconUrl }" ng-bind="tab.title"></div>
+                                        </div>
                                     </div>
-                                    <div class="columns" ng-class="{ 'small-10': '' !== tab.favIconUrl && tab.favIconUrl, 'small-11': '' === tab.favIconUrl || !tab.favIconUrl }" ng-bind="tab.title"></div>
                                     <div class="small-1 columns text-right no-padding-left">
-                                        <i class="fa fa-close" ng-click="oneTab.remove($index)"></i>
+                                        <i class="fa icon-close primary clickable tiny-margin-top" ng-click="oneTab.tabs.remove(group.id, tab.id, false)"></i>
                                     </div>
                                 </div>
+                                <!-- End Tabs -->
+
                             </div>
+                            <!-- End Groups -->
+
                         </div>
                         <!-- End Bring to One -->
 
@@ -112,6 +131,7 @@
         <script src="bower_components/angular-ui-uploader/dist/uploader.js"></script>
         <script src="bower_components/angular-ui-utils/index.js"></script>
         <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/ng-inline-edit/dist/ng-inline-edit.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 

@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/ng-inline-edit/dist/ng-inline-edit.css" />
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css styles/main.css -->
@@ -339,7 +340,7 @@
                                         </div>
                                         <div class="row overflow-hidden" uib-collapse="window.tmCollapsed">
                                             <div class="small-12 columns">
-                                                <div class="row item clickable" ng-repeat="tab in window.tabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
+                                                <div class="row item clickable" ng-repeat="tab in tabs = (window.tabs | removeSpecials)" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected">
                                                     <div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
                                                         <img ng-src="{{tab.favIconUrl}}" width="16" />
                                                     </div>
@@ -394,11 +395,14 @@
                                 <div class="row title" ng-class="{ 'no-margin-top': tabs.snooze.current.data.length === 0 }">
                                     <div class="small-12 columns">Snooze this tab</div>
                                 </div>
-                                <div class="row item clickable" ng-class="{ selected: tabs.current.tmSelected }" ng-click="tabs.current.tmSelected = !tabs.current.tmSelected; tabs.select(true, tabs.current.id)">
+                                <div class="row item clickable" ng-show="tabs.current" ng-class="{ selected: tabs.current.tmSelected }" ng-click="tabs.current.tmSelected = !tabs.current.tmSelected; tabs.select(true, tabs.current.id)">
                                     <div class="small-1 columns no-padding-right" ng-show="'' !== tabs.current.favIconUrl && tabs.current.favIconUrl">
                                         <img ng-src="{{tabs.current.favIconUrl}}" width="16" />
                                     </div>
                                     <div class="columns" ng-class="{ 'small-11': '' !== tabs.current.favIconUrl && tabs.current.favIconUrl, 'small-12': '' === tabs.current.favIconUrl || !tabs.current.favIconUrl }" ng-bind="tabs.current.title"></div>
+                                </div>
+                                <div class="row item" ng-show="!tabs.current">
+                                    <div class="small-12 columns">The current tab cannot be snoozed</div>
                                 </div>
                                 <!-- End This Tab -->
 
@@ -420,7 +424,7 @@
                                         </div>
                                         <div class="row overflow-hidden" uib-collapse="window.tmCollapsed">
                                             <div class="small-12 columns">
-                                                <div class="row item clickable" ng-repeat="tab in window.tabs" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected; tabs.select(false, tab.id)">
+                                                <div class="row item clickable" ng-repeat="tab in tabs = (window.tabs | removeSpecials)" ng-class="{ even: $even, selected: tab.tmSelected }" ng-click="tab.tmSelected = !tab.tmSelected; tabs.select(false, tab.id)">
                                                     <div class="small-1 columns no-padding-right" ng-show="'' !== tab.favIconUrl && tab.favIconUrl">
                                                         <img ng-src="{{tab.favIconUrl}}" width="16" />
                                                     </div>
@@ -573,6 +577,7 @@
         <script src="bower_components/angular-ui-uploader/dist/uploader.js"></script>
         <script src="bower_components/angular-ui-utils/index.js"></script>
         <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/ng-inline-edit/dist/ng-inline-edit.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -585,6 +590,7 @@
         <script src="scripts/directives/disable-animate.js"></script>
         <script src="scripts/directives/main-section.js"></script>
         <script src="scripts/filters/moment-from-now.js"></script>
+        <script src="scripts/filters/remove-specials.js"></script>
         <script src="scripts/services/history.js"></script>
         <script src="scripts/services/sessions.js"></script>
         <script src="scripts/services/tabs.js"></script>

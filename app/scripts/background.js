@@ -13,7 +13,7 @@ var tabs = {
         init: function init() {
 
             // Set up a loop to get snoozed tabs
-            window.setInterval(tabs.snooze.get, 10000);
+            window.setInterval(tabs.snooze.get, 7500);
 
             // Create the listener for the evitable sounding alarms
             chrome.alarms.onAlarm.addListener(function (alarm) {
@@ -37,6 +37,9 @@ var tabs = {
                     // Set current snoozed tabs
                     tabs.snooze.current = angular.copy(data.tmSnoozeCurrentTabs);
 
+                    // Set the badge text (just in case)
+                    chrome.browserAction.setBadgeText({ text: tabs.snooze.current.length.toString() });
+
                     // Create the alarms for the snoozed tabs
                     tabs.snooze.alarms.create();
                 } else {
@@ -46,6 +49,9 @@ var tabs = {
 
                     // Set extension badge text to nothing
                     chrome.browserAction.setBadgeText({ text: '' });
+
+                    // Clear all alarms
+                    chrome.alarms.clearAll();
                 }
             });
         },

@@ -5,102 +5,141 @@ angular.module('TabMagicApp').controller('OneTabCtrl', function ($scope, $moment
 	// Navigation
 	$scope.navigation = 'bringToOne';
 
-	// Show requested action button
-	$scope.actionButtonShow = function (button) {
-
-		// Catcher
-		var show = false;
-
-		// Bring to one
-		if ('bringToOne' === button && $scope.oneTab.data) {
-			angular.forEach($scope.oneTab.data.tmOneTabSelectedTabs, function (tab) {
-				if (tab.tmSelected) {
-					show = true;
-				}
-			});
-		}
-
-		return show;
-	};
-
 	// Define one tab
 	$scope.oneTab = {
-
-		// Data
-		data: null,
 
 		// Initialize
 		init: function init() {
 
-			// Get information from storage
-			chrome.storage.sync.get(['tmOneTabSelectedTabs', 'tmOneTabCreateDate'], function (items) {
-
-				// Set data
-				$scope.oneTab.data = angular.copy(items);
-				$scope.oneTab.data.tmOneTabCreateDate = $moment($scope.oneTab.data.tmOneTabCreateDate).format('llll');
-
-				// Loop through selected tabs
-				angular.forEach($scope.oneTab.data.tmOneTabSelectedTabs, function (tab) {
-
-					// Unselect tab
-					tab.tmSelected = false;
-
-					// Remove chrome tab
-					chrome.tabs.remove(tab.id);
-				});
-
-				// Apply to scope
-				$scope.$apply();
-			});
+			// Get groups by ids
+			$scope.oneTab.groups.getIds();
 		},
 
-		// Reopen
-		reopen: function reopen() {
+		// Groups
+		groups: {
 
-			// Selected tabs
-			var selected = [];
-			var toRemove = [];
+			// Data
+			data: [],
 
-			// Loop through selected tabs
-			angular.forEach($scope.oneTab.data.tmOneTabSelectedTabs, function (tab, index) {
-				if (tab.tmSelected) {
+			// Get group ids
+			getIds: function getIds() {
 
-					// Add to select
-					selected.push(tab);
+				// Call the default group
+				$scope.oneTab.groups.get(0);
 
-					// Add to remove
-					toRemove.push(index);
-				}
-			});
+				// Get groups from storage
+				chrome.storage.sync.get('tmOneTabGroups', function (data) {
 
-			// If there are any selected tabs
-			if (selected.length > 0) {
+					// If there were groups returned from storage
+					if (data.tmOneTabGroups) {
+						angular.forEach(data.tmOneTabGroups, function (id) {
+							$scope.oneTab.groups.get(id);
+						});
+					}
+				});
+			},
 
-				// Loop through selected tabs
-				angular.forEach(selected, function (tab) {
+			// Get group
+			get: function get(id) {
 
-					// Call create from tab service
-					$tabs.create(tab.url);
+				// Storage name for group
+				var storageName = 'tmOneTabGroup' + id.toString();
+
+				// Group data
+				var groupData = {};
+
+				// Get group from storage
+				chrome.storage.sync.get(storageName, function (data) {
+					if (data[storageName]) {
+
+						// Set group data
+						groupData.id = id;
+						groupData.name = data[storageName].name;
+						groupData.tabs = data[storageName].tabs;
+						groupData.createDate = $moment(data[storageName].createDate).toDate();
+
+						// Add group to overall data
+						$scope.oneTab.groups.data.push(groupData);
+
+						// Apply it to the scope
+						$scope.$apply();
+					}
+				});
+			},
+
+			// Create or modify a group
+			create: function create(groupId) {
+
+				console.log(groupId);
+			}
+
+		},
+
+		// Tabs
+		tabs: {
+
+			// Reopen
+			reopen: function reopen(groupId, tabId, all) {
+
+				// Loop through all of the groups
+				angular.forEach($scope.oneTab.groups.data, function (group) {
+
+					// If groupId is the group.id
+					if (groupId === group.id) {
+
+						// Loop through all of the group's tabs
+						angular.forEach(group.tabs, function (tab) {
+
+							// If tabId is the tab.id or if all is requested
+							if (tabId === tab.id || all) {
+
+								// Reopen the tab
+								$tabs.create(tab.url);
+							}
+						});
+					}
 				});
 
-				// Reverse then loop through toRemove
-				toRemove.reverse();
-				angular.forEach(toRemove, function (index) {
+				// Remove the tab from the group
+				$scope.oneTab.tabs.remove(groupId, tabId, all);
+			},
 
-					// Remove tab
-					$scope.oneTab.remove(index);
+			// Remove
+			remove: function remove(groupId, tabId, all) {
+
+				// Loop through all of the groups
+				angular.forEach($scope.oneTab.groups.data, function (group) {
+
+					// If groupId is the group.id
+					if (groupId === group.id) {
+
+						// Loop through all of the group's tabs
+						angular.forEach(group.tabs, function (tab) {
+
+							// If tabId is the tab.id or if all is requested
+							if (tabId === tab.id || all) {
+
+								// Remove the tab by its index
+								group.tabs.splice(group.tabs.indexOf(tab), 1);
+							}
+						});
+
+						// Set store
+						var store = {};
+						var storeGroupName = 'tmOneTabGroup' + group.id.toString();
+						store[storeGroupName] = {
+							id: group.id,
+							name: group.name,
+							tabs: group.tabs,
+							createDate: group.createDate
+						};
+
+						// Sync storage
+						chrome.storage.sync.set(store);
+					}
 				});
 			}
-		},
 
-		// Remove
-		remove: function remove(index) {
-			$scope.oneTab.data.tmOneTabSelectedTabs.splice(index, 1);
-		},
-
-		// Remove all
-		removeAll: function removeAll() {
-			$scope.oneTab.data.tmOneTabSelectedTabs.length = 0;
 		}
 
 	};

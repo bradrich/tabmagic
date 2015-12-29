@@ -2,7 +2,7 @@
 
 angular.module('TabMagicApp')
 
-.controller('PopUpCtrl', function($tabs, $windows, $sessions, $history, $scope, $q, $moment, $parse, $timeout) {
+.controller('PopUpCtrl', function($tabs, $windows, $sessions, $history, $scope, $moment, $parse, $timeout) {
 
 	// Navigation
 	$scope.navigation = 'recentlyClosed';
@@ -74,7 +74,7 @@ angular.module('TabMagicApp')
 		recentlyClosed: {
 
 			// Data
-			data: null,
+			data: [],
 
 			// Selected session tabs
 			selectedTabs: [],
@@ -84,10 +84,9 @@ angular.module('TabMagicApp')
 
 				// Call get recently closed from sessions service
 				$sessions.getRecentlyClosed().then(function(sessions){
-
-					// Set recently closed sessions
-					$scope.sessions.recentlyClosed.data = sessions.filter($sessions.removeSessionsBasedOnUrl);
-
+					angular.forEach(sessions, function(session){
+						$sessions.addToRecentlyClosed($scope.sessions.recentlyClosed.data, session);
+					});
 				});
 
 			},
@@ -313,18 +312,12 @@ angular.module('TabMagicApp')
 
 		},
 
-		// One tab
-		oneTab: {
-			tmOneTabSelectedTabs: [],
-			tmOneTabCreateDate: null
-		},
-
 		// Query
 		query: function(active, currentWindow){
 
 			// Call query from tabs service
 			$tabs.query({ active: active, currentWindow: currentWindow }).then(function(tabs){
-				if(tabs.length > 0){
+				if(tabs.length > 0 && $tabs.notSpecial(tabs[0])){
 					$scope.tabs.current = tabs[0];
 				}
 			});
@@ -334,24 +327,36 @@ angular.module('TabMagicApp')
 		// Bring to one tab
 		bringToOne: function(sendAll){
 
+			// Necessities
+			var store = {
+				tmOneTabGroup0: {
+					name: 'Bring to One',
+					tabs: [],
+					createDate: null
+				}
+			};
+
 			// Loop through all windows and tabs to find selected tabs
 			angular.forEach($scope.windows.data, function(window){
 				angular.forEach(window.tabs, function(tab){
+					if(sendAll || tab.tmSelected){
 
-					// Is this for all tabs?
-					if(sendAll){ $scope.tabs.oneTab.tmOneTabSelectedTabs.push(tab); }
-					// Not all tabs, is tab selected?
-					else if(tab.tmSelected){ $scope.tabs.oneTab.tmOneTabSelectedTabs.push(tab); }
+						// Add tab to group
+						store.tmOneTabGroup0.tabs.push(tab);
 
+						// Remove tab from window
+						chrome.tabs.remove(tab.id);
+
+					}
 				});
 			});
 
-			// If there are any selected tabs
-			if($scope.tabs.oneTab.tmOneTabSelectedTabs.length > 0){
+			// If there are any tabs in the group
+			if(store.tmOneTabGroup0.tabs.length > 0){
 
 				// Store selected tabs
-				$scope.tabs.oneTab.tmOneTabCreateDate = $moment().toDate();
-				chrome.storage.sync.set($scope.tabs.oneTab);
+				store.tmOneTabGroup0.createDate = $moment().toDate();
+				chrome.storage.sync.set(store);
 
 				// Create new one-tab tab
 				$tabs.create('one-tab.html').then(function(){
@@ -361,9 +366,6 @@ angular.module('TabMagicApp')
 				});
 
 			}
-
-			// Empty tabs.selected
-			$scope.tabs.oneTab.tmOneTabSelectedTabs.length = 0;
 
 		},
 
@@ -868,7 +870,6 @@ angular.module('TabMagicApp')
 
 	// Initialize tabs snooze
 	$scope.tabs.snooze.init();
-	// chrome.storage.sync.remove('tmSnoozeCurrentTabs');
 
 	// Windows
 	$scope.windows = {
@@ -893,6 +894,8 @@ angular.module('TabMagicApp')
 				// Set windows
 				$scope.windows.data = windowsTemp;
 
+				console.log($scope.windows.data);
+
 			});
 
 		},
@@ -916,6 +919,9 @@ angular.module('TabMagicApp')
 		init: function(){
 			$scope.settings.snooze.init();
 		},
+
+		// Bring to one
+		bringToOne: {},
 
 		// Snooze
 		snooze: {
